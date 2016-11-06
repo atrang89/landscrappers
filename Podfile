@@ -9,5 +9,7 @@ target 'LandScrappers' do
   pod 'Firebase'
   pod 'FirebaseAuth'
   pod 'FirebaseDatabase'
+  pod 'Firebase/Storage'
   pod 'GoogleSignIn'
+
 end

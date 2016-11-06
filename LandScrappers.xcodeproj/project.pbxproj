@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		52430780925BA4C376470C32 /* Pods_LandScrappers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460C75715E145BCF5C835496 /* Pods_LandScrappers.framework */; };
 		9D4A6DA51DC2ED8700E75A00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A6DA41DC2ED8700E75A00 /* AppDelegate.swift */; };
-		9D4A6DA71DC2ED8700E75A00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A6DA61DC2ED8700E75A00 /* ViewController.swift */; };
+		9D4A6DA71DC2ED8700E75A00 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A6DA61DC2ED8700E75A00 /* LoginVC.swift */; };
 		9D4A6DAA1DC2ED8700E75A00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D4A6DA81DC2ED8700E75A00 /* Main.storyboard */; };
 		9D4A6DAC1DC2ED8700E75A00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D4A6DAB1DC2ED8700E75A00 /* Assets.xcassets */; };
 		9D4A6DAF1DC2ED8700E75A00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D4A6DAD1DC2ED8700E75A00 /* LaunchScreen.storyboard */; };
 		9D4A6DB71DC2EE5600E75A00 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D4A6DB61DC2EE5600E75A00 /* GoogleService-Info.plist */; };
+		9DEDB7A81DCAE17900573C2C /* FoundationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDB7A71DCAE17900573C2C /* FoundationVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,7 +23,7 @@
 		74F1CAFA3E8BD137F0597416 /* Pods-LandScrappers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LandScrappers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LandScrappers/Pods-LandScrappers.debug.xcconfig"; sourceTree = "<group>"; };
 		9D4A6DA11DC2ED8700E75A00 /* LandScrappers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LandScrappers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D4A6DA41DC2ED8700E75A00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9D4A6DA61DC2ED8700E75A00 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9D4A6DA61DC2ED8700E75A00 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		9D4A6DA91DC2ED8700E75A00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9D4A6DAB1DC2ED8700E75A00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D4A6DAE1DC2ED8700E75A00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -30,6 +31,7 @@
 		9D4A6DB61DC2EE5600E75A00 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9D80E80F1DC2F231000B845B /* LandScrappers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LandScrappers.entitlements; sourceTree = "<group>"; };
 		9D80E8101DC2F2E4000B845B /* LandScrappers-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LandScrappers-Bridging-Header.h"; sourceTree = "<group>"; };
+		9DEDB7A71DCAE17900573C2C /* FoundationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,9 +84,11 @@
 		9D4A6DA31DC2ED8700E75A00 /* LandScrappers */ = {
 			isa = PBXGroup;
 			children = (
+				9D5DAAF11DCFBA060020B448 /* Model */,
+				9D5DAAF21DCFBA0D0020B448 /* View */,
+				9D5DAAF31DCFBA120020B448 /* Controller */,
 				9D80E80F1DC2F231000B845B /* LandScrappers.entitlements */,
 				9D4A6DA41DC2ED8700E75A00 /* AppDelegate.swift */,
-				9D4A6DA61DC2ED8700E75A00 /* ViewController.swift */,
 				9D4A6DA81DC2ED8700E75A00 /* Main.storyboard */,
 				9D4A6DAB1DC2ED8700E75A00 /* Assets.xcassets */,
 				9D4A6DAD1DC2ED8700E75A00 /* LaunchScreen.storyboard */,
@@ -93,6 +97,29 @@
 				9D80E8101DC2F2E4000B845B /* LandScrappers-Bridging-Header.h */,
 			);
 			path = LandScrappers;
+			sourceTree = "<group>";
+		};
+		9D5DAAF11DCFBA060020B448 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		9D5DAAF21DCFBA0D0020B448 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		9D5DAAF31DCFBA120020B448 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9DEDB7A71DCAE17900573C2C /* FoundationVC.swift */,
+				9D4A6DA61DC2ED8700E75A00 /* LoginVC.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,8 +253,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D4A6DA71DC2ED8700E75A00 /* ViewController.swift in Sources */,
+				9D4A6DA71DC2ED8700E75A00 /* LoginVC.swift in Sources */,
 				9D4A6DA51DC2ED8700E75A00 /* AppDelegate.swift in Sources */,
+				9DEDB7A81DCAE17900573C2C /* FoundationVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     {
         return GIDSignIn.sharedInstance().handle(url,
                                                     sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
-                                                    annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+                          	                          annotation: options[UIApplicationOpenURLOptionsKey.annotation])
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!)
@@ -64,6 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 
                 let myMainStoryBoard: UIStoryboard = UIStoryboard (name:"Main", bundle: nil)
                 self.window?.rootViewController?.performSegue(withIdentifier: "HomeViewSegue", sender: nil)
+                
+                try! FIRAuth.auth()!.signOut()
             })
             
         }
