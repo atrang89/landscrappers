@@ -18,18 +18,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5nN-DE-cnU" customClass="GIDSignInButton">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ht3-bJ-4Fe" userLabel="BGView">
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="hHw-EL-ASJ">
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5nN-DE-cnU" userLabel="GoogleSignIn" customClass="GIDSignInButton">
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="173" id="8JU-tG-ECl"/>
+                                                    <constraint firstAttribute="height" constant="60" id="dzw-SZ-MbX"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zg-eT-J5i" userLabel="FBSignIn">
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="173" id="O0D-3F-mYz"/>
+                                                    <constraint firstAttribute="height" constant="60" id="RXg-qu-tLD"/>
+                                                </constraints>
+                                                <state key="normal" title="Button" image="facebook_2015_logo_detail"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ue9-vJ-osh">
+                                                <color key="backgroundColor" red="0.77254901960784317" green="0.88235294117647056" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="JYU-av-CTs"/>
+                                                    <constraint firstAttribute="width" constant="173" id="Mk2-dy-81b"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="Enter as Guest">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="Hze-gX-SGz"/>
-                                    <constraint firstAttribute="height" constant="128" id="nug-Tt-Z7r"/>
+                                    <constraint firstAttribute="trailing" secondItem="hHw-EL-ASJ" secondAttribute="trailing" constant="101" id="CnP-O0-CHK"/>
+                                    <constraint firstItem="hHw-EL-ASJ" firstAttribute="leading" secondItem="ht3-bJ-4Fe" secondAttribute="leading" constant="101" id="GIY-aC-0ca"/>
+                                    <constraint firstItem="hHw-EL-ASJ" firstAttribute="top" secondItem="ht3-bJ-4Fe" secondAttribute="top" constant="80" id="KX2-T0-62w"/>
+                                    <constraint firstItem="hHw-EL-ASJ" firstAttribute="centerX" secondItem="ht3-bJ-4Fe" secondAttribute="centerX" id="VLg-av-7wK"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.54509803921568623" green="0.76470588235294112" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="5nN-DE-cnU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R4u-Pe-Aam"/>
-                            <constraint firstItem="5nN-DE-cnU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="laY-YT-9bB"/>
+                            <constraint firstItem="ht3-bJ-4Fe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SdE-Uu-t87"/>
+                            <constraint firstAttribute="trailing" secondItem="ht3-bJ-4Fe" secondAttribute="trailing" id="Uo6-ax-s8O"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ht3-bJ-4Fe" secondAttribute="bottom" constant="50" id="Zuj-w3-hWu"/>
+                            <constraint firstItem="ht3-bJ-4Fe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="cxT-E0-dRb"/>
                         </constraints>
                     </view>
                     <connections>
@@ -38,6 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
         </scene>
         <!--FoundationVC-->
         <scene sceneID="DkA-aY-eO9">
@@ -88,7 +125,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="apT-f9-plR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="770.39999999999998" y="35.532233883058474"/>
+            <point key="canvasLocation" x="918" y="124"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="bUQ-bt-d7t">
@@ -103,7 +140,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HVh-oN-VeI" id="Eky-iF-Qd4">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -119,4 +156,7 @@
             <point key="canvasLocation" x="1670" y="27"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="facebook_2015_logo_detail" width="1000" height="347"/>
+    </resources>
 </document>
