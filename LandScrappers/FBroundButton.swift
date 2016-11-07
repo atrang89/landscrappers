@@ -22,7 +22,7 @@ class FBroundButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        //suppose to round the button
+        //suppose to round the corner image
         layer.cornerRadius = 2
     }
 }

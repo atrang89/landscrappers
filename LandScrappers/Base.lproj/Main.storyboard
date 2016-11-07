@@ -35,6 +35,9 @@
                                                     <constraint firstAttribute="height" constant="60" id="RXg-qu-tLD"/>
                                                 </constraints>
                                                 <state key="normal" title="Button" image="facebook_2015_logo_detail"/>
+                                                <connections>
+                                                    <action selector="fbButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t3h-d2-0Kg"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ue9-vJ-osh" customClass="RoundButton" customModule="LandScrappers" customModuleProvider="target">
                                                 <color key="backgroundColor" red="0.77254901960784317" green="0.88235294117647056" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>

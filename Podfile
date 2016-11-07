@@ -11,5 +11,6 @@ target 'LandScrappers' do
   pod 'FirebaseDatabase'
   pod 'Firebase/Storage'
   pod 'GoogleSignIn'
+  pod 'FBSDKLoginKit'
 
 end
