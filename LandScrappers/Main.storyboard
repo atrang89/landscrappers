@@ -295,7 +295,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ejd-pf-ULG" customClass="VisualTweaks" customModule="LandScrappers" customModuleProvider="target">
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oq2-Gr-mAd">
-                                                            <frame key="frameInset" minX="104" minY="26" width="88" height="21"/>
+                                                            <frame key="frameInset" minX="104" minY="26" width="193" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                             <color key="textColor" red="0.42352941176470588" green="0.41960784313725491" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
@@ -362,6 +362,7 @@
                                         <connections>
                                             <outlet property="companyLabel" destination="Oq2-Gr-mAd" id="5rn-SY-ltD"/>
                                             <outlet property="descriptLabel" destination="eGy-Vg-JYZ" id="jz7-MG-RwQ"/>
+                                            <outlet property="likesLabel" destination="uFt-6G-q4n" id="B26-dL-CZj"/>
                                             <outlet property="postImage" destination="Jfz-mC-xIT" id="KVA-gU-SA6"/>
                                         </connections>
                                     </tableViewCell>

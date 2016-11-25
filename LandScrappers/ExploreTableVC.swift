@@ -59,9 +59,17 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let post = posts[indexPath.row]
-        print("ANDREW: \(post.title)")
         
-        return tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell
+        {
+            cell.configureCell(post: post)
+            return cell
+        }
+        else
+        {
+            //empty cell
+            return PostCell ()
+        }
     }
 
     @IBAction func logOutPressed(_ sender: AnyObject)

@@ -15,9 +15,17 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var descriptLabel: UILabel!
     @IBOutlet weak var likesLabel: UILabel!
     
+    var post: ExplorePosts!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
+    func configureCell(post: ExplorePosts)
+    {
+        self.post = post
+        self.companyLabel.text = post.title
+        self.likesLabel.text = "\(post.likes)"
+    }
 }
