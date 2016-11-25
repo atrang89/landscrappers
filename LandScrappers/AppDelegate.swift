@@ -7,15 +7,16 @@
 //
 
 import UIKit
+import GoogleSignIn
 import Firebase
 import FBSDKLoginKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
 
     var window: UIWindow?
     var databaseRef: FIRDatabaseReference!
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -24,17 +25,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
-        
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool
     {
-        return GIDSignIn.sharedInstance().handle(url,
-                                                    sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
-                          	                          annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        let googleDidHandle = GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
+        
+        let facebookDidHandle = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        
+        return googleDidHandle || facebookDidHandle
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!)
@@ -56,7 +59,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             self.databaseRef = FIRDatabase.database().reference()
             
             //check if user has details stored in database
-            self.databaseRef.child("user_profiles").child(user!.uid).observeSingleEvent(of: .value, with: {(snapshot) in
+            self.databaseRef.child("user_profiles").child(user!.uid).observeSingleEvent(of: .value, with:
+            {(snapshot) in
             
                 let snapshot = snapshot.value as? NSDictionary
             
@@ -66,17 +70,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     self.databaseRef.child("user_profiles").child(user!.uid).child("email").setValue(user?.email)
                 }
                 
-                let myMainStoryBoard: UIStoryboard = UIStoryboard (name:"Main", bundle: nil)
-                self.window?.rootViewController?.performSegue(withIdentifier: "HomeViewSegue", sender: nil)
+                //Use when Login from UIViewController to Navigation Controller
+                //googleLoginNavController()
                 
-                try! FIRAuth.auth()!.signOut()
+                self.handleLoginTest()
             })
-            
+        }
+        
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error
+        {
+            print(error.localizedDescription)
+            return
         }
     }
-
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+    
+//    func handleLogin()
+//    {
+//        // Access the storyboard and fetch an instance of the view controller
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "ExploreVCID")
+//        
+//        // Then push that view controller onto the navigation stack
+//        let rootViewController = self.window!.rootViewController! as UIViewController
+//        rootViewController.present(viewController, animated: true)
+//    }
+    
+    func googleLoginNavController()
+    {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ExploreVCID") as! ExploreTableVC
         
+        let tablePage = UINavigationController (rootViewController: viewController)
+        
+        self.window?.rootViewController = tablePage
+    }
+    
+    func handleLoginTest()
+    {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "TabBarID") 
+        self.window?.rootViewController = viewController
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -99,11 +135,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-    
-    //For FB SDK
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 }
 

@@ -8,17 +8,29 @@
 
 import UIKit
 import Firebase
+import GoogleSignIn
 import FBSDKLoginKit
 import FBSDKCoreKit
+import SwiftKeychainWrapper
 
 class LoginVC: UIViewController, GIDSignInUIDelegate {
-
+    
+    @IBOutlet weak var googleSignInBtn: GIDSignInButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         GIDSignIn.sharedInstance().uiDelegate = self
+        
+        if let _ = KeychainWrapper.standard.string (forKey: KEY_UID)
+        {
+            performSegue(withIdentifier: "ToExploreVC", sender: nil)
+        }
+        
+        googleSignInBtn.style = .wide
     }
 
+    
     @IBAction func fbButtonTapped(_ sender: AnyObject) {
         
         let facebookLogin = FBSDKLoginManager()
@@ -51,10 +63,36 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
             {
                 print("AT: Unable to authenticate with firebase")
             }
-            else{
+            else
+            {
                 print ("AT: Successfully authenticated with Firebase")
+                if let user = user
+                {
+                    let userData = ["provider": credential.provider]
+                    self.completeSignIn(id: user.uid, userData: userData)
+                }
             }
         })
+    }
+    
+    //Sign in with Facebook
+    func completeSignIn(id: String, userData: Dictionary<String, String>)
+    {
+        DataService.ds.createFireBaseDBUser(uid: id, userData: userData)
+        let keyChainResult = KeychainWrapper.standard.set(id,forKey: KEY_UID)
+        print("Andrew: Data saved to keychain \(keyChainResult)")
+        performSegue(withIdentifier: "ToExploreVC", sender: nil)
+    }
+    
+    @IBAction func guestBtnPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "ToExploreVC", sender: nil)
+    }
+    
+    @IBAction func signOut(_ sender: UIButton)
+    {
+        let keyChainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
+        print("Andrew: ID removed from keychain \(keyChainResult)")
+        try! FIRAuth.auth()!.signOut()
     }
 }
 

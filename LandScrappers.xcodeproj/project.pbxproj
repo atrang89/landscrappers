@@ -8,38 +8,50 @@
 
 /* Begin PBXBuildFile section */
 		52430780925BA4C376470C32 /* Pods_LandScrappers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460C75715E145BCF5C835496 /* Pods_LandScrappers.framework */; };
+		9D1381311DDE823F00AF69D9 /* ExploreTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1381301DDE823F00AF69D9 /* ExploreTableVC.swift */; };
+		9D429C791DE5559900F33EAA /* DataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D429C781DE5559900F33EAA /* DataServices.swift */; };
 		9D4A6DA51DC2ED8700E75A00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A6DA41DC2ED8700E75A00 /* AppDelegate.swift */; };
 		9D4A6DA71DC2ED8700E75A00 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A6DA61DC2ED8700E75A00 /* LoginVC.swift */; };
-		9D4A6DAA1DC2ED8700E75A00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D4A6DA81DC2ED8700E75A00 /* Main.storyboard */; };
 		9D4A6DAC1DC2ED8700E75A00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D4A6DAB1DC2ED8700E75A00 /* Assets.xcassets */; };
 		9D4A6DAF1DC2ED8700E75A00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D4A6DAD1DC2ED8700E75A00 /* LaunchScreen.storyboard */; };
 		9D4A6DB71DC2EE5600E75A00 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D4A6DB61DC2EE5600E75A00 /* GoogleService-Info.plist */; };
+		9D4F2CCF1DE38CD500D9A988 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D4F2CCE1DE38CD500D9A988 /* Main.storyboard */; };
+		9D4F2CD11DE3AC1C00D9A988 /* InboxVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F2CD01DE3AC1C00D9A988 /* InboxVC.swift */; };
 		9D5DAAF71DCFE1B60020B448 /* VisualTweaks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5DAAF61DCFE1B60020B448 /* VisualTweaks.swift */; };
+		9DC862461DDEBFA0003BA1A9 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC862451DDEBFA0003BA1A9 /* PostCell.swift */; };
+		9DC862481DDEC760003BA1A9 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC862471DDEC760003BA1A9 /* CircleView.swift */; };
+		9DE8AF9F1DE7BB8C006178AE /* ExplorePosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE8AF9E1DE7BB8C006178AE /* ExplorePosts.swift */; };
 		9DEA65801DD0284E00937AB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEA657F1DD0284E00937AB5 /* Constants.swift */; };
 		9DEA65821DD033CA00937AB5 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEA65811DD033CA00937AB5 /* RoundButton.swift */; };
 		9DEA65841DD0391F00937AB5 /* FBroundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEA65831DD0391F00937AB5 /* FBroundButton.swift */; };
-		9DEDB7A81DCAE17900573C2C /* FoundationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDB7A71DCAE17900573C2C /* FoundationVC.swift */; };
+		9DEDB7A81DCAE17900573C2C /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDB7A71DCAE17900573C2C /* RegisterVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		460C75715E145BCF5C835496 /* Pods_LandScrappers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LandScrappers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52648B2D9D2E1B5718605110 /* Pods-LandScrappers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LandScrappers.release.xcconfig"; path = "Pods/Target Support Files/Pods-LandScrappers/Pods-LandScrappers.release.xcconfig"; sourceTree = "<group>"; };
 		74F1CAFA3E8BD137F0597416 /* Pods-LandScrappers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LandScrappers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LandScrappers/Pods-LandScrappers.debug.xcconfig"; sourceTree = "<group>"; };
+		9D1381301DDE823F00AF69D9 /* ExploreTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreTableVC.swift; sourceTree = "<group>"; };
+		9D429C781DE5559900F33EAA /* DataServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataServices.swift; sourceTree = "<group>"; };
 		9D4A6DA11DC2ED8700E75A00 /* LandScrappers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LandScrappers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D4A6DA41DC2ED8700E75A00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D4A6DA61DC2ED8700E75A00 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		9D4A6DA91DC2ED8700E75A00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9D4A6DAB1DC2ED8700E75A00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D4A6DAE1DC2ED8700E75A00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D4A6DB01DC2ED8700E75A00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D4A6DB61DC2EE5600E75A00 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9D4F2CCE1DE38CD500D9A988 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		9D4F2CD01DE3AC1C00D9A988 /* InboxVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxVC.swift; sourceTree = "<group>"; };
 		9D5DAAF61DCFE1B60020B448 /* VisualTweaks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualTweaks.swift; sourceTree = "<group>"; };
 		9D80E80F1DC2F231000B845B /* LandScrappers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LandScrappers.entitlements; sourceTree = "<group>"; };
 		9D80E8101DC2F2E4000B845B /* LandScrappers-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LandScrappers-Bridging-Header.h"; sourceTree = "<group>"; };
+		9DC862451DDEBFA0003BA1A9 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		9DC862471DDEC760003BA1A9 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		9DE8AF9E1DE7BB8C006178AE /* ExplorePosts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplorePosts.swift; sourceTree = "<group>"; };
 		9DEA657F1DD0284E00937AB5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9DEA65811DD033CA00937AB5 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		9DEA65831DD0391F00937AB5 /* FBroundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBroundButton.swift; sourceTree = "<group>"; };
-		9DEDB7A71DCAE17900573C2C /* FoundationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationVC.swift; sourceTree = "<group>"; };
+		9DEDB7A71DCAE17900573C2C /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +83,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9D429C771DE5557C00F33EAA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9D429C781DE5559900F33EAA /* DataServices.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		9D4A6D981DC2ED8500E75A00 = {
 			isa = PBXGroup;
 			children = (
@@ -92,13 +112,14 @@
 		9D4A6DA31DC2ED8700E75A00 /* LandScrappers */ = {
 			isa = PBXGroup;
 			children = (
+				9D429C771DE5557C00F33EAA /* Services */,
 				9DEA657E1DD027A600937AB5 /* Utility */,
 				9D5DAAF11DCFBA060020B448 /* Model */,
 				9D5DAAF21DCFBA0D0020B448 /* View */,
 				9D5DAAF31DCFBA120020B448 /* Controller */,
 				9D80E80F1DC2F231000B845B /* LandScrappers.entitlements */,
+				9D4F2CCE1DE38CD500D9A988 /* Main.storyboard */,
 				9D4A6DA41DC2ED8700E75A00 /* AppDelegate.swift */,
-				9D4A6DA81DC2ED8700E75A00 /* Main.storyboard */,
 				9D4A6DAB1DC2ED8700E75A00 /* Assets.xcassets */,
 				9D4A6DAD1DC2ED8700E75A00 /* LaunchScreen.storyboard */,
 				9D4A6DB01DC2ED8700E75A00 /* Info.plist */,
@@ -111,6 +132,7 @@
 		9D5DAAF11DCFBA060020B448 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9DE8AF9E1DE7BB8C006178AE /* ExplorePosts.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -121,6 +143,8 @@
 				9D5DAAF61DCFE1B60020B448 /* VisualTweaks.swift */,
 				9DEA65811DD033CA00937AB5 /* RoundButton.swift */,
 				9DEA65831DD0391F00937AB5 /* FBroundButton.swift */,
+				9DC862451DDEBFA0003BA1A9 /* PostCell.swift */,
+				9DC862471DDEC760003BA1A9 /* CircleView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -128,8 +152,10 @@
 		9D5DAAF31DCFBA120020B448 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9DEDB7A71DCAE17900573C2C /* FoundationVC.swift */,
+				9DEDB7A71DCAE17900573C2C /* RegisterVC.swift */,
 				9D4A6DA61DC2ED8700E75A00 /* LoginVC.swift */,
+				9D1381301DDE823F00AF69D9 /* ExploreTableVC.swift */,
+				9D4F2CD01DE3AC1C00D9A988 /* InboxVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -213,8 +239,8 @@
 			files = (
 				9D4A6DAF1DC2ED8700E75A00 /* LaunchScreen.storyboard in Resources */,
 				9D4A6DB71DC2EE5600E75A00 /* GoogleService-Info.plist in Resources */,
+				9D4F2CCF1DE38CD500D9A988 /* Main.storyboard in Resources */,
 				9D4A6DAC1DC2ED8700E75A00 /* Assets.xcassets in Resources */,
-				9D4A6DAA1DC2ED8700E75A00 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,25 +301,23 @@
 			files = (
 				9DEA65821DD033CA00937AB5 /* RoundButton.swift in Sources */,
 				9DEA65841DD0391F00937AB5 /* FBroundButton.swift in Sources */,
+				9D4F2CD11DE3AC1C00D9A988 /* InboxVC.swift in Sources */,
+				9D429C791DE5559900F33EAA /* DataServices.swift in Sources */,
 				9DEA65801DD0284E00937AB5 /* Constants.swift in Sources */,
+				9DE8AF9F1DE7BB8C006178AE /* ExplorePosts.swift in Sources */,
 				9D5DAAF71DCFE1B60020B448 /* VisualTweaks.swift in Sources */,
 				9D4A6DA71DC2ED8700E75A00 /* LoginVC.swift in Sources */,
+				9DC862461DDEBFA0003BA1A9 /* PostCell.swift in Sources */,
+				9DC862481DDEC760003BA1A9 /* CircleView.swift in Sources */,
 				9D4A6DA51DC2ED8700E75A00 /* AppDelegate.swift in Sources */,
-				9DEDB7A81DCAE17900573C2C /* FoundationVC.swift in Sources */,
+				9DEDB7A81DCAE17900573C2C /* RegisterVC.swift in Sources */,
+				9D1381311DDE823F00AF69D9 /* ExploreTableVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		9D4A6DA81DC2ED8700E75A00 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9D4A6DA91DC2ED8700E75A00 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9D4A6DAD1DC2ED8700E75A00 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -404,6 +428,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 74F1CAFA3E8BD137F0597416 /* Pods-LandScrappers.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = LandScrappers/LandScrappers.entitlements;
@@ -422,6 +447,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 52648B2D9D2E1B5718605110 /* Pods-LandScrappers.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = LandScrappers/LandScrappers.entitlements;
