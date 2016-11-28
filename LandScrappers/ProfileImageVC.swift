@@ -23,8 +23,13 @@ class ProfileImageVC: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     @IBAction func ImageChange(_ sender: AnyObject) {
-            present(imagePicker, animated: true, completion: nil)
+        present(imagePicker, animated: true, completion: nil)
     }
+    
+    @IBAction func DoneButtonPressed(_ sender: UIButton) {
+        //TODO
+    }
+    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         

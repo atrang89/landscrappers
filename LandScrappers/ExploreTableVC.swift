@@ -63,8 +63,6 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell
         {
-            var img: UIImage!
-            
             if let img = ExploreTableVC.imageCache.object(forKey: post.imageURL as NSString)
             {
                 cell.configureCell(post: post, img: img)
