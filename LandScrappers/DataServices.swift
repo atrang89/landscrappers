@@ -11,15 +11,20 @@ import Firebase
 
 //Reference base and make global = Getting the root URL of firebase
 let DB_Base = FIRDatabase.database().reference()
+let STORAGE_BASE = FIRStorage.storage().reference()
 
 class DataService{
     
     //Singleton class that is accessible
     static let ds = DataService()
     
+    //DB References
     private var _REF_BASE = DB_Base
     private var _REF_POSTS = DB_Base.child("posts")
     private var _REF_USERS = DB_Base.child("user_profiles")
+    
+    //Storage References
+    private var _REF_POSTS_IMAGES = STORAGE_BASE.child("PostPics")
     
     var REF_BASE: FIRDatabaseReference
     {
@@ -34,6 +39,11 @@ class DataService{
     var REF_USERS: FIRDatabaseReference
     {
         return _REF_USERS
+    }
+    
+    var REF_POSTS_IMAGES: FIRStorageReference
+    {
+        return _REF_POSTS_IMAGES
     }
     
     func createFireBaseDBUser(uid: String, userData: Dictionary<String, String>)

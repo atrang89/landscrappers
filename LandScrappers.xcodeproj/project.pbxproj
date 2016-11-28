@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		52430780925BA4C376470C32 /* Pods_LandScrappers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460C75715E145BCF5C835496 /* Pods_LandScrappers.framework */; };
 		9D1381311DDE823F00AF69D9 /* ExploreTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1381301DDE823F00AF69D9 /* ExploreTableVC.swift */; };
+		9D3660131DE8D32C0002C7C8 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3660121DE8D32C0002C7C8 /* NextButton.swift */; };
+		9D3660151DE8E3140002C7C8 /* ProfileImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3660141DE8E3140002C7C8 /* ProfileImageVC.swift */; };
 		9D429C791DE5559900F33EAA /* DataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D429C781DE5559900F33EAA /* DataServices.swift */; };
 		9D4A6DA51DC2ED8700E75A00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A6DA41DC2ED8700E75A00 /* AppDelegate.swift */; };
 		9D4A6DA71DC2ED8700E75A00 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A6DA61DC2ED8700E75A00 /* LoginVC.swift */; };
@@ -32,6 +34,8 @@
 		52648B2D9D2E1B5718605110 /* Pods-LandScrappers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LandScrappers.release.xcconfig"; path = "Pods/Target Support Files/Pods-LandScrappers/Pods-LandScrappers.release.xcconfig"; sourceTree = "<group>"; };
 		74F1CAFA3E8BD137F0597416 /* Pods-LandScrappers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LandScrappers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LandScrappers/Pods-LandScrappers.debug.xcconfig"; sourceTree = "<group>"; };
 		9D1381301DDE823F00AF69D9 /* ExploreTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreTableVC.swift; sourceTree = "<group>"; };
+		9D3660121DE8D32C0002C7C8 /* NextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
+		9D3660141DE8E3140002C7C8 /* ProfileImageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageVC.swift; sourceTree = "<group>"; };
 		9D429C781DE5559900F33EAA /* DataServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataServices.swift; sourceTree = "<group>"; };
 		9D4A6DA11DC2ED8700E75A00 /* LandScrappers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LandScrappers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D4A6DA41DC2ED8700E75A00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 				9DEA65831DD0391F00937AB5 /* FBroundButton.swift */,
 				9DC862451DDEBFA0003BA1A9 /* PostCell.swift */,
 				9DC862471DDEC760003BA1A9 /* CircleView.swift */,
+				9D3660121DE8D32C0002C7C8 /* NextButton.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 				9D4A6DA61DC2ED8700E75A00 /* LoginVC.swift */,
 				9D1381301DDE823F00AF69D9 /* ExploreTableVC.swift */,
 				9D4F2CD01DE3AC1C00D9A988 /* InboxVC.swift */,
+				9D3660141DE8E3140002C7C8 /* ProfileImageVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -301,6 +307,7 @@
 			files = (
 				9DEA65821DD033CA00937AB5 /* RoundButton.swift in Sources */,
 				9DEA65841DD0391F00937AB5 /* FBroundButton.swift in Sources */,
+				9D3660151DE8E3140002C7C8 /* ProfileImageVC.swift in Sources */,
 				9D4F2CD11DE3AC1C00D9A988 /* InboxVC.swift in Sources */,
 				9D429C791DE5559900F33EAA /* DataServices.swift in Sources */,
 				9DEA65801DD0284E00937AB5 /* Constants.swift in Sources */,
@@ -311,6 +318,7 @@
 				9DC862481DDEC760003BA1A9 /* CircleView.swift in Sources */,
 				9D4A6DA51DC2ED8700E75A00 /* AppDelegate.swift in Sources */,
 				9DEDB7A81DCAE17900573C2C /* RegisterVC.swift in Sources */,
+				9D3660131DE8D32C0002C7C8 /* NextButton.swift in Sources */,
 				9D1381311DDE823F00AF69D9 /* ExploreTableVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

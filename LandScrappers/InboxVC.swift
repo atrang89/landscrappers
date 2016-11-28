@@ -15,4 +15,7 @@ class InboxVC: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    @IBAction func buttonPressedToRegister(_ sender: UIButton) {
+        performSegue(withIdentifier: "ToRegisterVC", sender: nil)
+    }
 }

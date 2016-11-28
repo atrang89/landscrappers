@@ -16,6 +16,8 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     
     var posts = [ExplorePosts]()
+    var imagePicker: UIImagePickerController!
+    static var imageCache: NSCache<NSString, UIImage> = NSCache()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +26,6 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.delegate = self
         tableView.dataSource = self
-        
         
         //Snap allows you to turn collection of data into free objects
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in
@@ -62,8 +63,18 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell
         {
-            cell.configureCell(post: post)
-            return cell
+            var img: UIImage!
+            
+            if let img = ExploreTableVC.imageCache.object(forKey: post.imageURL as NSString)
+            {
+                cell.configureCell(post: post, img: img)
+                return cell
+            }
+            else
+            {
+                cell.configureCell(post: post)
+                return cell
+            }
         }
         else
         {
@@ -71,7 +82,7 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             return PostCell ()
         }
     }
-
+    
     @IBAction func logOutPressed(_ sender: AnyObject)
     {
         let keyChainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)  //Remove keychain

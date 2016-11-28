@@ -11,12 +11,18 @@ import Foundation
 class ExplorePosts
 {
     private var _title: String!
+    private var _imageURL: String!
     private var _likes: Int!
     private var _postKey: String!
     
     var title: String
     {
         return _title
+    }
+    
+    var imageURL: String
+    {
+        return _imageURL
     }
     
     var likes: Int
@@ -43,6 +49,11 @@ class ExplorePosts
         if let title = postData["title"] as? String
         {
             self._title = title
+        }
+        
+        if let imageURL = postData["imageURL"] as? String
+        {
+            self._imageURL = imageURL
         }
         
         if let likes = postData["likes"] as? Int
