@@ -87,12 +87,5 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
     @IBAction func guestBtnPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "ToExploreVC", sender: nil)
     }
-    
-    @IBAction func signOut(_ sender: UIButton)
-    {
-        let keyChainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
-        print("Andrew: ID removed from keychain \(keyChainResult)")
-        try! FIRAuth.auth()!.signOut()
-    }
 }
 

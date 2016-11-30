@@ -21,66 +21,44 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ht3-bJ-4Fe" userLabel="BGView">
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="hHw-EL-ASJ">
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5nN-DE-cnU" userLabel="GoogleSignIn" customClass="GIDSignInButton">
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="173" id="8JU-tG-ECl"/>
-                                                    <constraint firstAttribute="height" constant="60" id="dzw-SZ-MbX"/>
-                                                </constraints>
-                                            </view>
-                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zg-eT-J5i" userLabel="FBSignIn" customClass="FBroundButton" customModule="LandScrappers" customModuleProvider="target">
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="173" id="O0D-3F-mYz"/>
-                                                    <constraint firstAttribute="height" constant="60" id="RXg-qu-tLD"/>
-                                                </constraints>
-                                                <state key="normal" title="Button" image="facebook_2015_logo_detail"/>
-                                                <connections>
-                                                    <action selector="fbButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t3h-d2-0Kg"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ue9-vJ-osh" customClass="RoundButton" customModule="LandScrappers" customModuleProvider="target">
-                                                <color key="backgroundColor" red="0.77254901960784317" green="0.88235294117647056" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="JYU-av-CTs"/>
-                                                    <constraint firstAttribute="width" constant="173" id="Mk2-dy-81b"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <state key="normal" title="Enter as Guest">
-                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="guestBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bRG-oO-IPm"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGF-Bq-UQr">
-                                                <state key="normal" title="Sign Out">
-                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="signOut:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4xQ-hY-P4E"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="login-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Xc2-Gd-FYl">
+                                        <frame key="frameInset" minX="62" minY="80" width="250" height="268"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5nN-DE-cnU" userLabel="GoogleSignIn" customClass="GIDSignInButton">
+                                        <frame key="frameInset" minX="62" minY="381" width="250" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zg-eT-J5i" userLabel="FBSignIn" customClass="FBroundButton" customModule="LandScrappers" customModuleProvider="target">
+                                        <frame key="frameInset" minX="62" minY="453" width="250" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="facebook button"/>
+                                        <connections>
+                                            <action selector="fbButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t3h-d2-0Kg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ue9-vJ-osh" customClass="RoundButton" customModule="LandScrappers" customModuleProvider="target">
+                                        <frame key="frameInset" minX="62" minY="525" width="250" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="Guest login">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="guestBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bRG-oO-IPm"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="hHw-EL-ASJ" secondAttribute="trailing" constant="101" id="CnP-O0-CHK"/>
-                                    <constraint firstItem="hHw-EL-ASJ" firstAttribute="leading" secondItem="ht3-bJ-4Fe" secondAttribute="leading" constant="101" id="GIY-aC-0ca"/>
-                                    <constraint firstItem="hHw-EL-ASJ" firstAttribute="top" secondItem="ht3-bJ-4Fe" secondAttribute="top" constant="80" id="KX2-T0-62w"/>
-                                    <constraint firstItem="hHw-EL-ASJ" firstAttribute="centerX" secondItem="ht3-bJ-4Fe" secondAttribute="centerX" id="VLg-av-7wK"/>
-                                </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.54509803921568623" green="0.76470588235294112" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ht3-bJ-4Fe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SdE-Uu-t87"/>
-                            <constraint firstAttribute="trailing" secondItem="ht3-bJ-4Fe" secondAttribute="trailing" id="Uo6-ax-s8O"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ht3-bJ-4Fe" secondAttribute="bottom" constant="50" id="Zuj-w3-hWu"/>
-                            <constraint firstItem="ht3-bJ-4Fe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="cxT-E0-dRb"/>
+                            <constraint firstItem="ht3-bJ-4Fe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="9f1-pb-L94"/>
+                            <constraint firstItem="ht3-bJ-4Fe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nkj-qY-vb8"/>
+                            <constraint firstAttribute="trailing" secondItem="ht3-bJ-4Fe" secondAttribute="trailing" id="oge-Dx-UC0"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ht3-bJ-4Fe" secondAttribute="bottom" id="t7D-wk-MnV"/>
                         </constraints>
                     </view>
                     <connections>
@@ -91,7 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="532" y="124"/>
+            <point key="canvasLocation" x="530.39999999999998" y="123.68815592203899"/>
         </scene>
         <!--My Form-->
         <scene sceneID="MsP-e1-6JT">
@@ -304,8 +282,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sdW-UQ-3Ds" customClass="CircleView" customModule="LandScrappers" customModuleProvider="target">
-                                <color key="backgroundColor" red="0.33333333333333331" green="0.47843137254901957" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add profile img" translatesAutoresizingMaskIntoConstraints="NO" id="sdW-UQ-3Ds" customClass="CircleView" customModule="LandScrappers" customModuleProvider="target">
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="175" id="2rs-7V-jox"/>
@@ -415,9 +392,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="103" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hXC-qS-I6d">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="620" id="5oB-yc-MCl"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="103" id="jlJ-eo-Nwr" customClass="PostCell" customModule="LandScrappers" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="103"/>
@@ -502,13 +476,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Landscape" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ny-gs-OjQ">
-                                <frame key="frameInset" minX="145" minY="28" width="84" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header-bg" translatesAutoresizingMaskIntoConstraints="NO" id="oer-nB-adC"/>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Fc-B9-vUK">
                                 <frame key="frameInset" minX="16" minY="26" width="55" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -521,12 +489,23 @@
                                     <segue destination="BYZ-38-t0r" kind="showDetail" identifier="ToLoginVC" id="iyI-1p-gXv"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Landscape" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ny-gs-OjQ">
+                                <frame key="frameInset" minX="136" minY="30" width="102" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.14117647058823529" green="0.34901960784313724" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="hXC-qS-I6d" secondAttribute="trailing" id="A4Q-qB-bFe"/>
-                            <constraint firstItem="hXC-qS-I6d" firstAttribute="top" secondItem="c4P-1e-wGf" secondAttribute="top" constant="60" id="Bkr-rb-rQe"/>
-                            <constraint firstItem="hXC-qS-I6d" firstAttribute="leading" secondItem="c4P-1e-wGf" secondAttribute="leading" id="vUM-GL-PKq"/>
+                            <constraint firstItem="hXC-qS-I6d" firstAttribute="leading" secondItem="c4P-1e-wGf" secondAttribute="leading" id="503-KP-0wn"/>
+                            <constraint firstItem="hXC-qS-I6d" firstAttribute="top" secondItem="oer-nB-adC" secondAttribute="bottom" id="FlP-Ib-eOg"/>
+                            <constraint firstItem="oer-nB-adC" firstAttribute="leading" secondItem="c4P-1e-wGf" secondAttribute="leading" id="RgU-gY-Uoh"/>
+                            <constraint firstAttribute="bottom" secondItem="hXC-qS-I6d" secondAttribute="bottom" id="SM0-kN-iI4"/>
+                            <constraint firstAttribute="trailing" secondItem="hXC-qS-I6d" secondAttribute="trailing" id="ao6-0u-IZj"/>
+                            <constraint firstItem="oer-nB-adC" firstAttribute="top" secondItem="c4P-1e-wGf" secondAttribute="top" id="lcv-7w-DH4"/>
+                            <constraint firstAttribute="trailing" secondItem="oer-nB-adC" secondAttribute="trailing" id="v0g-xL-vgE"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Explore" id="Rvq-5x-RJV"/>
@@ -536,13 +515,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ADs-Uf-FdP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2492" y="-596"/>
+            <point key="canvasLocation" x="2492" y="-596.85157421289364"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="1T9-P4-u9N">
             <objects>
                 <tabBarController storyboardIdentifier="TabBarID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vCr-La-cUx" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="4LI-sP-V5C">
+                    <tabBar key="tabBar" contentMode="scaleToFill" backgroundImage="Group 2 Copy" id="4LI-sP-V5C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -562,9 +541,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="May-dO-62w" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7yh-K2-871">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7yh-K2-871">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -579,8 +556,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="facebook_2015_logo_detail" width="1000" height="347"/>
+        <image name="Group 2 Copy" width="414" height="65"/>
+        <image name="Guest login" width="253" height="48"/>
+        <image name="add profile img" width="171" height="171"/>
+        <image name="facebook button" width="252" height="48"/>
+        <image name="header-bg" width="414" height="72"/>
         <image name="imagePick" width="300" height="300"/>
+        <image name="login-logo" width="288" height="289"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wfF-K2-0Cw"/>

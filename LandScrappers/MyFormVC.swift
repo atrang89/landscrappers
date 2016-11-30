@@ -60,9 +60,29 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                 {
                     print("ANDREW: Successfully uploaded image to Firebase storage")
                     let downloadURL = metadata?.downloadURL()?.absoluteString
+                    
+                    if let url = downloadURL
+                    {
+                        self.postToFirease(imgURL: url)
+                    }
                 }
             }
         }
+    }
+    
+    //Send data to firebase
+    func postToFirease(imgURL: String)
+    {
+        let post: Dictionary<String, AnyObject> = [
+            "title": captionField.text! as AnyObject,
+            "imageURL": imgURL as AnyObject,
+            "likes": 0 as AnyObject
+        ]
+        
+        //let firebasePost = DataService.ds.REF_POSTS.childByAutoId()   //used to create new child objects
+        let firebasePost = DataService.ds.REF_POSTS.child("post")
+        
+        firebasePost.setValue(post)
     }
     
     @IBAction func ImageChange(_ sender: AnyObject) {
