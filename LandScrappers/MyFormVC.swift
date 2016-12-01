@@ -85,6 +85,8 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         firebasePost.setValue(post)
     }
     
+    
+    
     @IBAction func ImageChange(_ sender: AnyObject) {
         present(imagePicker, animated: true, completion: nil)
     }

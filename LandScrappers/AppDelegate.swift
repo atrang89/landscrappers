@@ -73,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
                 //Use when Login from UIViewController to Navigation Controller
                 //googleLoginNavController()
                 
-                self.handleLoginTest()
+                self.handleLogin()
             })
         }
         
@@ -86,17 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
             return
         }
     }
-    
-//    func handleLogin()
-//    {
-//        // Access the storyboard and fetch an instance of the view controller
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let viewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "ExploreVCID")
-//        
-//        // Then push that view controller onto the navigation stack
-//        let rootViewController = self.window!.rootViewController! as UIViewController
-//        rootViewController.present(viewController, animated: true)
-//    }
+
     
     func googleLoginNavController()
     {
@@ -108,7 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         self.window?.rootViewController = tablePage
     }
     
-    func handleLoginTest()
+    func handleLogin()
     {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "TabBarID") 

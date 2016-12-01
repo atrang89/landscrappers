@@ -29,6 +29,9 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         //Snap allows you to turn collection of data into free objects
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in
+            
+            self.posts = []  //Clear out post array each time its loaded
+            
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot]
             {
                 for snap in snapshot
@@ -47,6 +50,12 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         })
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.tableView.reloadData()
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
