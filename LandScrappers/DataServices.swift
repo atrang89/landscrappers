@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import SwiftKeychainWrapper
 
 //Reference base and make global = Getting the root URL of firebase
 let DB_Base = FIRDatabase.database().reference()
@@ -39,6 +40,13 @@ class DataService{
     var REF_USERS: FIRDatabaseReference
     {
         return _REF_USERS
+    }
+    
+    var REF_USER_CURRENT: FIRDatabaseReference
+    {
+        let uid = KeychainWrapper.standard.string(forKey: KEY_UID)
+        let user = REF_USERS.child(uid!)
+        return user
     }
     
     var REF_POSTS_IMAGES: FIRStorageReference

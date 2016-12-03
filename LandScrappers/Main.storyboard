@@ -434,13 +434,6 @@
                                                             <color key="textColor" red="0.5725490196078431" green="0.5725490196078431" blue="0.5725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Likes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nO9-dm-hqe">
-                                                            <frame key="frameInset" minX="333" minY="52" width="34" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                            <color key="textColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="88888" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFt-6G-q4n">
                                                             <frame key="frameInset" minX="333" minY="65" width="34" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -455,6 +448,10 @@
                                                             <color key="textColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_thumb_up" translatesAutoresizingMaskIntoConstraints="NO" id="TLt-Qt-chD">
+                                                            <frame key="frameInset" minX="333" minY="33" width="34" height="34"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
@@ -470,6 +467,7 @@
                                         <connections>
                                             <outlet property="companyLabel" destination="Oq2-Gr-mAd" id="5rn-SY-ltD"/>
                                             <outlet property="descriptLabel" destination="eGy-Vg-JYZ" id="jz7-MG-RwQ"/>
+                                            <outlet property="likesImage" destination="TLt-Qt-chD" id="lSW-VE-ogg"/>
                                             <outlet property="likesLabel" destination="uFt-6G-q4n" id="B26-dL-CZj"/>
                                             <outlet property="postImage" destination="Jfz-mC-xIT" id="KVA-gU-SA6"/>
                                         </connections>
@@ -541,7 +539,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="May-dO-62w" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7yh-K2-871">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7yh-K2-871">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -561,6 +559,7 @@
         <image name="add profile img" width="171" height="171"/>
         <image name="facebook button" width="252" height="48"/>
         <image name="header-bg" width="414" height="72"/>
+        <image name="ic_thumb_up" width="24" height="24"/>
         <image name="imagePick" width="300" height="300"/>
         <image name="login-logo" width="288" height="289"/>
     </resources>

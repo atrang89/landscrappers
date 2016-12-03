@@ -9,9 +9,9 @@
 import UIKit
 import Firebase
 
-class PostCell: UITableViewCell {
-
-    @IBOutlet weak var postImage: UIImageView!
+class ExplorePostCell: UITableViewCell {
+    
+    @IBOutlet weak var postImage: CircleView!
     @IBOutlet weak var companyLabel: UILabel!
     @IBOutlet weak var descriptLabel: UILabel!
     @IBOutlet weak var likesLabel: UILabel!
@@ -33,7 +33,8 @@ class PostCell: UITableViewCell {
     func configureCell(post: ExplorePosts, img: UIImage? = nil)
     {
         self.post = post
-        likeRef = DataService.ds.REF_USER_CURRENT.child("likes").child(post.postKey)
+        
+        likeRef = DataService.ds.REF_USERS_CURRENT.child("likes").child(post.postKey)
         
         self.companyLabel.text = post.title
         self.likesLabel.text = "\(post.likes)"
@@ -88,7 +89,7 @@ class PostCell: UITableViewCell {
             }
             else
             {
-                self.likesImage.image = UIImage(named: "Circle")
+                self.likesImage.image = UIImage(named: "ic_thumb_up")
                 self.post.adjustLikes(addLike: false)
                 self.likeRef.removeValue()
             }
