@@ -67,6 +67,7 @@ class ExplorePosts
         _postRef = DataService.ds.REF_POSTS.child(_postKey)
     }
     
+    
     func adjustLikes(addLike: Bool)
     {
         if addLike{

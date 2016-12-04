@@ -11,12 +11,16 @@ import Firebase
 import FBSDKLoginKit
 import SwiftKeychainWrapper
 
-class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSource, GIDSignInUIDelegate {
+class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSource, GIDSignInUIDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var posts = [ExplorePosts]()
     var imagePicker: UIImagePickerController!
+    var filteredCompany = [ExplorePosts]()
+    var inSearchMode = false
+    
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
     
     override func viewDidLoad() {
@@ -26,6 +30,11 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        searchBar.delegate = self
+        
+        //Closes keyboard
+        searchBar.returnKeyType = UIReturnKeyType.done
         
         //Snap allows you to turn collection of data into free objects
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in
@@ -52,7 +61,6 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         self.tableView.reloadData()
     }
     
@@ -62,29 +70,37 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        if inSearchMode
+        {
+            return filteredCompany.count
+        }
         return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let post = posts[indexPath.row]
-        
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell
         {
-            if let img = ExploreTableVC.imageCache.object(forKey: post.imageURL as NSString)
-            {
+            let post = posts[indexPath.row]
+            let searchPost: ExplorePosts!
+            
+            if inSearchMode{
+                searchPost = filteredCompany[indexPath.row]
+                cell.configureCell(post: searchPost)
+            }
+            else{
+                searchPost = posts[indexPath.row]
+                cell.configureCell(post: searchPost)
+            }
+    
+            if let img = ExploreTableVC.imageCache.object(forKey: post.imageURL as NSString){
                 cell.configureCell(post: post, img: img)
-                return cell
             }
-            else
-            {
+            else{
                 cell.configureCell(post: post)
-                return cell
             }
+            return cell
         }
-        else
-        {
+        else{
             //empty cell
             return PostCell ()
         }
@@ -105,6 +121,31 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         print("Andrew: ID removed from keychain \(keyChainResult)")
         dismiss(animated: true, completion: nil)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == nil || searchBar.text == ""{
+            inSearchMode = false
+            self.tableView.reloadData()
+            view.endEditing(true)
+        }
+        else{
+            inSearchMode = true
+            
+            let lower = searchBar.text!.lowercased()
+            
+            filteredCompany = posts.filter({$0.title.localizedStandardRange(of: lower) != nil}) //Needs more research
+
+            self.tableView.reloadData()
+        }
     }
 
 }
