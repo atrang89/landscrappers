@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -509,20 +509,21 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vcD-8V-03E">
-                                <frame key="frameInset" minX="71" minY="20" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="vcD-8V-03E">
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="0.14117647058823529" green="0.34901960784313724" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hXC-qS-I6d" firstAttribute="leading" secondItem="c4P-1e-wGf" secondAttribute="leading" id="503-KP-0wn"/>
-                            <constraint firstItem="hXC-qS-I6d" firstAttribute="top" secondItem="oer-nB-adC" secondAttribute="bottom" id="FlP-Ib-eOg"/>
+                            <constraint firstItem="vcD-8V-03E" firstAttribute="top" secondItem="oer-nB-adC" secondAttribute="bottom" id="Gti-IQ-8my"/>
                             <constraint firstItem="oer-nB-adC" firstAttribute="leading" secondItem="c4P-1e-wGf" secondAttribute="leading" id="RgU-gY-Uoh"/>
                             <constraint firstAttribute="bottom" secondItem="hXC-qS-I6d" secondAttribute="bottom" id="SM0-kN-iI4"/>
+                            <constraint firstItem="hXC-qS-I6d" firstAttribute="top" secondItem="vcD-8V-03E" secondAttribute="bottom" id="YN9-2f-Ztf"/>
                             <constraint firstAttribute="trailing" secondItem="hXC-qS-I6d" secondAttribute="trailing" id="ao6-0u-IZj"/>
+                            <constraint firstAttribute="trailing" secondItem="vcD-8V-03E" secondAttribute="trailing" id="hhu-Pz-Pm5"/>
                             <constraint firstItem="oer-nB-adC" firstAttribute="top" secondItem="c4P-1e-wGf" secondAttribute="top" id="lcv-7w-DH4"/>
+                            <constraint firstItem="vcD-8V-03E" firstAttribute="leading" secondItem="c4P-1e-wGf" secondAttribute="leading" id="ody-bK-HnQ"/>
                             <constraint firstAttribute="trailing" secondItem="oer-nB-adC" secondAttribute="trailing" id="v0g-xL-vgE"/>
                         </constraints>
                     </view>
@@ -560,7 +561,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="May-dO-62w" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7yh-K2-871">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7yh-K2-871">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

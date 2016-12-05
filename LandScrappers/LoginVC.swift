@@ -28,6 +28,8 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
         }
         
         googleSignInBtn.style = .wide
+        
+        
     }
     
     @IBAction func fbButtonTapped(_ sender: AnyObject) {

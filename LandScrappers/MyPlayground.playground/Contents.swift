@@ -6,35 +6,49 @@
 //  Copyright © 2016 AlwaysOnAlpha. All rights reserved.
 //
 
-import UIKit
-import Firebase
+/*import UIKit
 import FBSDKLoginKit
 import SwiftKeychainWrapper
 
-class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSource, GIDSignInUIDelegate, UISearchBarDelegate {
-
+class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSource, GIDSignInUIDelegate, UISearchResultsUpdating {
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
     var posts = [ExplorePosts]()
+    var filteredPost = [ExplorePosts]()
     var imagePicker: UIImagePickerController!
-    var filteredCompany = [ExplorePosts]()
+    var usersArray = [NSDictionary?]()
+    var filteredUsers = [NSDictionary?]()
     var inSearchMode = false
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    var databaseRef = FIRDatabase.database().reference()
     
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         GIDSignIn.sharedInstance().uiDelegate = self
         
         tableView.delegate = self
         tableView.dataSource = self
         
-        searchBar.delegate = self
+        //Creating search controller manually
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = false
+        tableView.tableHeaderView = searchController.searchBar
         
-        //Closes keyboard
-        searchBar.returnKeyType = UIReturnKeyType.done
+        databaseRef.child("posts").queryOrdered(byChild: "title").observe(.childAdded, with: {(snapshot)
+            in self.usersArray.append(snapshot.value as? NSDictionary)
+            
+            self.tableView.insertRows(at: [IndexPath(row: self.usersArray.count-1, section: 0)], with: UITableViewRowAnimation.automatic)
+            
+        }) {(error) in
+            print(error.localizedDescription)
+        }
         
         //Snap allows you to turn collection of data into free objects
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in
@@ -58,7 +72,7 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.tableView.reloadData()
         })
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tableView.reloadData()
@@ -68,40 +82,47 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if inSearchMode
-        {
-            return filteredCompany.count
+        
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filteredUsers.count
         }
-        return posts.count
+        return self.usersArray.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let user: NSDictionary?
+        let post: ExplorePosts! //posts[indexPath.row]
+        
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell
         {
-            let post = posts[indexPath.row]
-            let searchPost: ExplorePosts!
+            if searchController.isActive && searchController.searchBar.text != "" {
+                user = filteredUsers[indexPath.row]
+                cell.configureCell(post: post)
+            }
+            else
+            {
+                user = self.usersArray[indexPath.row]
+                cell.configureCell(post: post)
+            }
             
             if let img = ExploreTableVC.imageCache.object(forKey: post.imageURL as NSString){
                 cell.configureCell(post: post, img: img)
             }
-            else{
+            else
+            {
                 cell.configureCell(post: post)
             }
             
-            if inSearchMode{
-                searchPost = filteredCompany[indexPath.row]
-                cell.configureCell(post: searchPost)
-            }
-            else{
-                searchPost = posts[indexPath.row]
-                cell.configureCell(post: searchPost)
-            }
-    
+            cell.textLabel?.text = user?["title"] as? String
+            cell.detailTextLabel?.text = user?["handle"] as? String
+            
             return cell
         }
-        else{
+        else {
             //empty cell
             return PostCell ()
         }
@@ -132,21 +153,19 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         view.endEditing(true)
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text == nil || searchBar.text == ""{
-            inSearchMode = false
-            self.tableView.reloadData()
-            view.endEditing(true)
-        }
-        else{
-            inSearchMode = true
-            
-            let lower = searchBar.text!.lowercased()
-            
-            filteredCompany = posts.filter({$0.title.localizedStandardRange(of: lower) != nil}) //Needs more research
-
-            self.tableView.reloadData()
-        }
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContent(searchText: self.searchController.searchBar.text!)
     }
-
-}
+    
+    func filterContent(searchText: String)
+    {
+        self.filteredUsers = self.usersArray.filter{ user in
+            
+            let username = user!["title"] as? String
+            
+            return(username?.lowercased().contains(searchText.lowercased()))!
+        }
+        
+        tableView.reloadData()
+    }
+}*/
