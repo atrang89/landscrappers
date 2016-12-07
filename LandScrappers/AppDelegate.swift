@@ -10,6 +10,7 @@ import UIKit
 import GoogleSignIn
 import Firebase
 import FBSDKLoginKit
+import SwiftKeychainWrapper
 
 @UIApplicationMain
 
@@ -49,34 +50,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         }
         print("User signed into Google")
         
-        let authentication = user.authentication
-        let credential = FIRGoogleAuthProvider.credential(withIDToken: (authentication?.idToken)!,
-                                                          accessToken: (authentication?.accessToken)!)
+        guard let idToken = user.authentication.idToken else {return}
+        guard let accessToken = user.authentication.accessToken else {return}
         
-        FIRAuth.auth()?.signIn(with: credential)
-        { (user, error) in print("User Signed Into Firebase")
+        let credential = FIRGoogleAuthProvider.credential(withIDToken: idToken,
+                                                          accessToken: accessToken)
+        
+        FIRAuth.auth()?.signIn(with: credential, completion:
+        { (user, error) in
+            if let error = error {
+                print("User Signed Into Firebase", error)
+                return
+            }
             
-            self.databaseRef = FIRDatabase.database().reference()
-            
-            //check if user has details stored in database
-            self.databaseRef.child("user_profiles").child(user!.uid).observeSingleEvent(of: .value, with:
-            {(snapshot) in
-            
-                let snapshot = snapshot.value as? NSDictionary
-            
-                if(snapshot == nil)
+            self.fireBaseAuth(credential)
+        })
+    }
+    
+    func fireBaseAuth(_ credential:FIRAuthCredential)
+    {
+        FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+            if error != nil
+            {
+                print("AT: Unable to authenticate with firebase")
+            }
+            else
+            {
+                print ("AT: Successfully authenticated with Firebase")
+                if let user = user
                 {
-                    self.databaseRef.child("user_profiles").child(user!.uid).child("name").setValue(user?.displayName)
-                    self.databaseRef.child("user_profiles").child(user!.uid).child("email").setValue(user?.email)
+                    let userData = ["provider": credential.provider]
+                    self.completeSignIn(id: user.uid, userData: userData)
+                    self.handleLogin()
                 }
-                
-                //Use when Login from UIViewController to Navigation Controller
-                //googleLoginNavController()
-                
-                self.handleLogin()
-            })
-        }
-        
+            }
+        })
+    }
+    
+    func completeSignIn(id: String, userData: Dictionary<String, String>)
+    {
+        DataService.ds.createFireBaseDBUser(uid: id, userData: userData)
+        let keyChainResult = KeychainWrapper.standard.set(id,forKey: KEY_UID)
+        print("Andrew: Data saved to keychain \(keyChainResult)")
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
