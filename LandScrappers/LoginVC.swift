@@ -26,19 +26,11 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
         {
             performSegue(withIdentifier: "ToExploreVC", sender: nil)
         }
-        
-        setUpGoogleButton()
     }
     
-    fileprivate func setUpGoogleButton()
-    {
-        let customButton = UIButton(type: .system)
-        customButton.frame = CGRect(x:20, y:200, width: view.frame.width - 40, height: 50)
-        customButton.setImage(UIImage(named: "google button"), for: .normal)
-        customButton.addTarget(self, action: #selector(handleGoogleSignIn), for: .touchUpInside)
-        view.addSubview(customButton)
-        
-        GIDSignIn.sharedInstance().uiDelegate = self
+    @IBAction func googleButtonTapped(_ sender: AnyObject) {
+        //GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().signIn()
     }
     
     func handleGoogleSignIn()

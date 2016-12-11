@@ -9,11 +9,13 @@
 import UIKit
 import Firebase
 
-class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var imageAdd: CircleView!
     @IBOutlet weak var captionField: UITextField!
+    @IBOutlet weak var formTableView: UITableView!
     
+    var formData = [FormData]()
     var imagePicker: UIImagePickerController!
     var imageSelected = false
     
@@ -23,6 +25,9 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
+        
+        formTableView.delegate = self
+        formTableView.dataSource = self
     }
 
     @IBAction func TitleInput(_ sender: UITextField) {
@@ -104,5 +109,18 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             print("ANDREW: No Image printed")
         }
         imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        return UITableViewCell()
     }
 }

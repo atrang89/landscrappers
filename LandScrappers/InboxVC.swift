@@ -18,4 +18,9 @@ class InboxVC: UIViewController {
     @IBAction func buttonPressedToRegister(_ sender: UIButton) {
         performSegue(withIdentifier: "ToRegisterVC", sender: nil)
     }
+    
+    
+    @IBAction func btnPressedMap(_ sender: AnyObject) {
+        performSegue(withIdentifier: "ToMapView", sender: nil)
+    }
 }

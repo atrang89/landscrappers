@@ -31,7 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         return true
     }
     
-    
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool
     {
         let googleDidHandle = GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)

@@ -8,10 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		52430780925BA4C376470C32 /* Pods_LandScrappers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460C75715E145BCF5C835496 /* Pods_LandScrappers.framework */; };
+		9D0C583D1DFA315C000132C9 /* FormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0C583C1DFA315C000132C9 /* FormData.swift */; };
+		9D0C583F1DFA4DF0000132C9 /* FormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0C583E1DFA4DF0000132C9 /* FormCell.swift */; };
+		9D0C58411DFA5D68000132C9 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0C58401DFA5D68000132C9 /* MapVC.swift */; };
 		9D1381311DDE823F00AF69D9 /* ExploreTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1381301DDE823F00AF69D9 /* ExploreTableVC.swift */; };
 		9D3660131DE8D32C0002C7C8 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3660121DE8D32C0002C7C8 /* NextButton.swift */; };
 		9D3660151DE8E3140002C7C8 /* ProfileImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3660141DE8E3140002C7C8 /* ProfileImageVC.swift */; };
 		9D429C791DE5559900F33EAA /* DataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D429C781DE5559900F33EAA /* DataServices.swift */; };
+		9D4639211DFE118A00E76980 /* FormPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4639201DFE118A00E76980 /* FormPopUpVC.swift */; };
 		9D4A6DA51DC2ED8700E75A00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A6DA41DC2ED8700E75A00 /* AppDelegate.swift */; };
 		9D4A6DA71DC2ED8700E75A00 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A6DA61DC2ED8700E75A00 /* LoginVC.swift */; };
 		9D4A6DAC1DC2ED8700E75A00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D4A6DAB1DC2ED8700E75A00 /* Assets.xcassets */; };
@@ -19,6 +23,7 @@
 		9D4A6DB71DC2EE5600E75A00 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D4A6DB61DC2EE5600E75A00 /* GoogleService-Info.plist */; };
 		9D4F2CCF1DE38CD500D9A988 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D4F2CCE1DE38CD500D9A988 /* Main.storyboard */; };
 		9D4F2CD11DE3AC1C00D9A988 /* InboxVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F2CD01DE3AC1C00D9A988 /* InboxVC.swift */; };
+		9D550BBF1DFBC233002AF24B /* MyFormPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D550BBE1DFBC233002AF24B /* MyFormPopUp.swift */; };
 		9D5DAAF71DCFE1B60020B448 /* VisualTweaks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5DAAF61DCFE1B60020B448 /* VisualTweaks.swift */; };
 		9DC3037D1DEBEB2D003F3C17 /* MyFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3037C1DEBEB2D003F3C17 /* MyFormVC.swift */; };
 		9DC862461DDEBFA0003BA1A9 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC862451DDEBFA0003BA1A9 /* PostCell.swift */; };
@@ -26,7 +31,6 @@
 		9DE8AF9F1DE7BB8C006178AE /* ExplorePosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE8AF9E1DE7BB8C006178AE /* ExplorePosts.swift */; };
 		9DEA65801DD0284E00937AB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEA657F1DD0284E00937AB5 /* Constants.swift */; };
 		9DEA65821DD033CA00937AB5 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEA65811DD033CA00937AB5 /* RoundButton.swift */; };
-		9DEA65841DD0391F00937AB5 /* FBroundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEA65831DD0391F00937AB5 /* FBroundButton.swift */; };
 		9DEDB7A81DCAE17900573C2C /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDB7A71DCAE17900573C2C /* RegisterVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,10 +38,14 @@
 		460C75715E145BCF5C835496 /* Pods_LandScrappers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LandScrappers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52648B2D9D2E1B5718605110 /* Pods-LandScrappers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LandScrappers.release.xcconfig"; path = "Pods/Target Support Files/Pods-LandScrappers/Pods-LandScrappers.release.xcconfig"; sourceTree = "<group>"; };
 		74F1CAFA3E8BD137F0597416 /* Pods-LandScrappers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LandScrappers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LandScrappers/Pods-LandScrappers.debug.xcconfig"; sourceTree = "<group>"; };
+		9D0C583C1DFA315C000132C9 /* FormData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormData.swift; sourceTree = "<group>"; };
+		9D0C583E1DFA4DF0000132C9 /* FormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormCell.swift; sourceTree = "<group>"; };
+		9D0C58401DFA5D68000132C9 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		9D1381301DDE823F00AF69D9 /* ExploreTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreTableVC.swift; sourceTree = "<group>"; };
 		9D3660121DE8D32C0002C7C8 /* NextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		9D3660141DE8E3140002C7C8 /* ProfileImageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageVC.swift; sourceTree = "<group>"; };
 		9D429C781DE5559900F33EAA /* DataServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataServices.swift; sourceTree = "<group>"; };
+		9D4639201DFE118A00E76980 /* FormPopUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormPopUpVC.swift; sourceTree = "<group>"; };
 		9D4A6DA11DC2ED8700E75A00 /* LandScrappers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LandScrappers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D4A6DA41DC2ED8700E75A00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D4A6DA61DC2ED8700E75A00 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -47,6 +55,7 @@
 		9D4A6DB61DC2EE5600E75A00 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9D4F2CCE1DE38CD500D9A988 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		9D4F2CD01DE3AC1C00D9A988 /* InboxVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxVC.swift; sourceTree = "<group>"; };
+		9D550BBE1DFBC233002AF24B /* MyFormPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFormPopUp.swift; sourceTree = "<group>"; };
 		9D5DAAF61DCFE1B60020B448 /* VisualTweaks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualTweaks.swift; sourceTree = "<group>"; };
 		9D80E80F1DC2F231000B845B /* LandScrappers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LandScrappers.entitlements; sourceTree = "<group>"; };
 		9D80E8101DC2F2E4000B845B /* LandScrappers-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LandScrappers-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -56,7 +65,6 @@
 		9DE8AF9E1DE7BB8C006178AE /* ExplorePosts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplorePosts.swift; sourceTree = "<group>"; };
 		9DEA657F1DD0284E00937AB5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9DEA65811DD033CA00937AB5 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
-		9DEA65831DD0391F00937AB5 /* FBroundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBroundButton.swift; sourceTree = "<group>"; };
 		9DEDB7A71DCAE17900573C2C /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,6 +146,7 @@
 		9D5DAAF11DCFBA060020B448 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9D0C583C1DFA315C000132C9 /* FormData.swift */,
 				9DE8AF9E1DE7BB8C006178AE /* ExplorePosts.swift */,
 			);
 			name = Model;
@@ -146,12 +155,13 @@
 		9D5DAAF21DCFBA0D0020B448 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9D550BBE1DFBC233002AF24B /* MyFormPopUp.swift */,
 				9D5DAAF61DCFE1B60020B448 /* VisualTweaks.swift */,
 				9DEA65811DD033CA00937AB5 /* RoundButton.swift */,
-				9DEA65831DD0391F00937AB5 /* FBroundButton.swift */,
 				9DC862451DDEBFA0003BA1A9 /* PostCell.swift */,
 				9DC862471DDEC760003BA1A9 /* CircleView.swift */,
 				9D3660121DE8D32C0002C7C8 /* NextButton.swift */,
+				9D0C583E1DFA4DF0000132C9 /* FormCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -165,6 +175,8 @@
 				9D1381301DDE823F00AF69D9 /* ExploreTableVC.swift */,
 				9D4F2CD01DE3AC1C00D9A988 /* InboxVC.swift */,
 				9D3660141DE8E3140002C7C8 /* ProfileImageVC.swift */,
+				9D0C58401DFA5D68000132C9 /* MapVC.swift */,
+				9D4639201DFE118A00E76980 /* FormPopUpVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -309,12 +321,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DEA65821DD033CA00937AB5 /* RoundButton.swift in Sources */,
-				9DEA65841DD0391F00937AB5 /* FBroundButton.swift in Sources */,
+				9D4639211DFE118A00E76980 /* FormPopUpVC.swift in Sources */,
 				9D3660151DE8E3140002C7C8 /* ProfileImageVC.swift in Sources */,
 				9D4F2CD11DE3AC1C00D9A988 /* InboxVC.swift in Sources */,
 				9D429C791DE5559900F33EAA /* DataServices.swift in Sources */,
 				9DEA65801DD0284E00937AB5 /* Constants.swift in Sources */,
 				9DE8AF9F1DE7BB8C006178AE /* ExplorePosts.swift in Sources */,
+				9D0C583F1DFA4DF0000132C9 /* FormCell.swift in Sources */,
+				9D0C58411DFA5D68000132C9 /* MapVC.swift in Sources */,
 				9D5DAAF71DCFE1B60020B448 /* VisualTweaks.swift in Sources */,
 				9D4A6DA71DC2ED8700E75A00 /* LoginVC.swift in Sources */,
 				9DC862461DDEBFA0003BA1A9 /* PostCell.swift in Sources */,
@@ -322,7 +336,9 @@
 				9D4A6DA51DC2ED8700E75A00 /* AppDelegate.swift in Sources */,
 				9DC3037D1DEBEB2D003F3C17 /* MyFormVC.swift in Sources */,
 				9DEDB7A81DCAE17900573C2C /* RegisterVC.swift in Sources */,
+				9D0C583D1DFA315C000132C9 /* FormData.swift in Sources */,
 				9D3660131DE8D32C0002C7C8 /* NextButton.swift in Sources */,
+				9D550BBF1DFBC233002AF24B /* MyFormPopUp.swift in Sources */,
 				9D1381311DDE823F00AF69D9 /* ExploreTableVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
