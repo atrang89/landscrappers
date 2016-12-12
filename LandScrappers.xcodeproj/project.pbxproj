@@ -32,6 +32,7 @@
 		9DEA65801DD0284E00937AB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEA657F1DD0284E00937AB5 /* Constants.swift */; };
 		9DEA65821DD033CA00937AB5 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEA65811DD033CA00937AB5 /* RoundButton.swift */; };
 		9DEDB7A81DCAE17900573C2C /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDB7A71DCAE17900573C2C /* RegisterVC.swift */; };
+		9DF1FAAA1DFE2389008E342A /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF1FAA91DFE2389008E342A /* LocalAuthentication.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		9DEA657F1DD0284E00937AB5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9DEA65811DD033CA00937AB5 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		9DEDB7A71DCAE17900573C2C /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		9DF1FAA91DFE2389008E342A /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DF1FAAA1DFE2389008E342A /* LocalAuthentication.framework in Frameworks */,
 				52430780925BA4C376470C32 /* Pods_LandScrappers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,6 +86,7 @@
 		0840F26E4ED8A791125CAC3F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9DF1FAA91DFE2389008E342A /* LocalAuthentication.framework */,
 				460C75715E145BCF5C835496 /* Pods_LandScrappers.framework */,
 			);
 			name = Frameworks;
