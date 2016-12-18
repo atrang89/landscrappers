@@ -8,6 +8,6 @@
 
 import Foundation
 
-class kCVPixelFormatComponentRange_FullRange{
+class FormCell {
     
 }
