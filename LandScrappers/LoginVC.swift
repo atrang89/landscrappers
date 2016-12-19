@@ -29,12 +29,6 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
     }
     
     @IBAction func googleButtonTapped(_ sender: AnyObject) {
-        //GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().signIn()
-    }
-    
-    func handleGoogleSignIn()
-    {
         GIDSignIn.sharedInstance().signIn()
     }
 
@@ -63,12 +57,12 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
         }
     }
     
-    func fireBaseAuth(_ credential:FIRAuthCredential)
+    func fireBaseAuth(_ credential: FIRAuthCredential)
     {
         FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
             if error != nil
             {
-                print("AT: Unable to authenticate with firebase")
+                print("AT: Unable to authenticate with firebase - \(error)")
             }
             else
             {

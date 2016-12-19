@@ -29,6 +29,7 @@
 		9DC3037D1DEBEB2D003F3C17 /* MyFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3037C1DEBEB2D003F3C17 /* MyFormVC.swift */; };
 		9DC862461DDEBFA0003BA1A9 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC862451DDEBFA0003BA1A9 /* PostCell.swift */; };
 		9DC862481DDEC760003BA1A9 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC862471DDEC760003BA1A9 /* CircleView.swift */; };
+		9DDF03261E0745C100CF820D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DDF03251E0745C100CF820D /* MapKit.framework */; };
 		9DE8AF9F1DE7BB8C006178AE /* ExplorePosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE8AF9E1DE7BB8C006178AE /* ExplorePosts.swift */; };
 		9DEA65801DD0284E00937AB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEA657F1DD0284E00937AB5 /* Constants.swift */; };
 		9DEA65821DD033CA00937AB5 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEA65811DD033CA00937AB5 /* RoundButton.swift */; };
@@ -65,6 +66,7 @@
 		9DC3037C1DEBEB2D003F3C17 /* MyFormVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFormVC.swift; sourceTree = "<group>"; };
 		9DC862451DDEBFA0003BA1A9 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		9DC862471DDEC760003BA1A9 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		9DDF03251E0745C100CF820D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9DE8AF9E1DE7BB8C006178AE /* ExplorePosts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplorePosts.swift; sourceTree = "<group>"; };
 		9DEA657F1DD0284E00937AB5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9DEA65811DD033CA00937AB5 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DF1FAAA1DFE2389008E342A /* LocalAuthentication.framework in Frameworks */,
+				9DDF03261E0745C100CF820D /* MapKit.framework in Frameworks */,
 				52430780925BA4C376470C32 /* Pods_LandScrappers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,6 +91,7 @@
 		0840F26E4ED8A791125CAC3F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9DDF03251E0745C100CF820D /* MapKit.framework */,
 				9DF1FAA91DFE2389008E342A /* LocalAuthentication.framework */,
 				460C75715E145BCF5C835496 /* Pods_LandScrappers.framework */,
 			);
@@ -162,13 +166,12 @@
 		9D5DAAF21DCFBA0D0020B448 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9D550BBE1DFBC233002AF24B /* MyFormPopUp.swift */,
+				9D0C583E1DFA4DF0000132C9 /* FormCell.swift */,
+				9DC862451DDEBFA0003BA1A9 /* PostCell.swift */,
 				9D5DAAF61DCFE1B60020B448 /* VisualTweaks.swift */,
 				9DEA65811DD033CA00937AB5 /* RoundButton.swift */,
-				9DC862451DDEBFA0003BA1A9 /* PostCell.swift */,
 				9DC862471DDEC760003BA1A9 /* CircleView.swift */,
 				9D3660121DE8D32C0002C7C8 /* NextButton.swift */,
-				9D0C583E1DFA4DF0000132C9 /* FormCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -176,14 +179,15 @@
 		9D5DAAF31DCFBA120020B448 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9D550BBE1DFBC233002AF24B /* MyFormPopUp.swift */,
 				9DC3037C1DEBEB2D003F3C17 /* MyFormVC.swift */,
+				9D4639201DFE118A00E76980 /* FormPopUpVC.swift */,
 				9DEDB7A71DCAE17900573C2C /* RegisterVC.swift */,
 				9D4A6DA61DC2ED8700E75A00 /* LoginVC.swift */,
 				9D1381301DDE823F00AF69D9 /* ExploreTableVC.swift */,
 				9D4F2CD01DE3AC1C00D9A988 /* InboxVC.swift */,
 				9D3660141DE8E3140002C7C8 /* ProfileImageVC.swift */,
 				9D0C58401DFA5D68000132C9 /* MapVC.swift */,
-				9D4639201DFE118A00E76980 /* FormPopUpVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -236,6 +240,9 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
 						};

@@ -8,6 +8,9 @@
 
 import Foundation
 
-class FormCell {
+class FormCell: UITableViewCell {
+    
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var interestedIMG: UIImageView!
     
 }

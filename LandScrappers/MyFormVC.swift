@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwiftKeychainWrapper
 
 class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource {
 
@@ -28,6 +29,28 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         
         formTableView.delegate = self
         formTableView.dataSource = self
+        
+        //Gets data from firebase forms of type object (snapshot)
+        DataService.ds.REF_FORMS.observe(.value, with: { (snapshot) in
+            
+            self.formData = []  //Clear out post array each time its loaded
+            
+            if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot]
+            {
+                for snap in snapshot
+                {
+                    print("SNAPform: \(snap)")
+                    if let formDict = snap.value as? Dictionary<String, AnyObject>
+                    {
+                        //Getting UniqueKey ID from snap
+                        let key = snap.key
+                        let formData = FormData(formKey: key, formData: formDict)
+                        self.formData.append(formData)
+                    }
+                }
+            }
+            self.formTableView.reloadData()
+        })
     }
 
     @IBAction func TitleInput(_ sender: UITextField) {
@@ -116,11 +139,15 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        
+        return formData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        return UITableViewCell()
+        let forms = formData[indexPath.row]
+        print("FORMS: \(forms)")
+        
+        return tableView.dequeueReusableCell(withIdentifier: "FormCell") as! FormCell
     }
 }

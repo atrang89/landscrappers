@@ -22,6 +22,7 @@ class DataService{
     //DB References
     private var _REF_BASE = DB_Base
     private var _REF_POSTS = DB_Base.child("posts")  //FIRDatabase.database().reference().child("post")
+    private var _REF_FORMS = DB_Base.child("forms")
     private var _REF_USERS = DB_Base.child("user_profiles")
     
     //Storage References
@@ -35,6 +36,11 @@ class DataService{
     var REF_POSTS: FIRDatabaseReference
     {
         return _REF_POSTS
+    }
+    
+    var REF_FORMS: FIRDatabaseReference
+    {
+        return _REF_FORMS
     }
     
     var REF_USERS: FIRDatabaseReference

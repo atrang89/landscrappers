@@ -21,7 +21,7 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var coordinatesLon: UILabel!
     
     var geoCoder: CLGeocoder?
-    //  let person = Person(street: "Street", city: String, address: String) TODO MVC
+    var person = [Person]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

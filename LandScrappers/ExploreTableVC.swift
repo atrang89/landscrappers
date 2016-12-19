@@ -112,6 +112,7 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         let keyChainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)  //Remove keychain
         let loginManager = FBSDKLoginManager()  //Logout Facebook
         loginManager.logOut()
+        
         GIDSignIn.sharedInstance().signOut()    //Logout Google
         try! FIRAuth.auth()!.signOut()          //Logout Firebase
         
