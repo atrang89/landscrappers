@@ -13,4 +13,12 @@ class FormCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var interestedIMG: UIImageView!
     
+    var form: FormData!
+    
+    func configureCell(form: FormData) {
+        self.form = form
+        self.title.text = form.serviceLabel
+        //self.interestedIMG.text = "\(form.interest)"
+    }
+    
 }

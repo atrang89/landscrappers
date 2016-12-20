@@ -16,7 +16,6 @@
 		9D3660131DE8D32C0002C7C8 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3660121DE8D32C0002C7C8 /* NextButton.swift */; };
 		9D3660151DE8E3140002C7C8 /* ProfileImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3660141DE8E3140002C7C8 /* ProfileImageVC.swift */; };
 		9D429C791DE5559900F33EAA /* DataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D429C781DE5559900F33EAA /* DataServices.swift */; };
-		9D4639211DFE118A00E76980 /* FormPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4639201DFE118A00E76980 /* FormPopUpVC.swift */; };
 		9D4A6DA51DC2ED8700E75A00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A6DA41DC2ED8700E75A00 /* AppDelegate.swift */; };
 		9D4A6DA71DC2ED8700E75A00 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A6DA61DC2ED8700E75A00 /* LoginVC.swift */; };
 		9D4A6DAC1DC2ED8700E75A00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D4A6DAB1DC2ED8700E75A00 /* Assets.xcassets */; };
@@ -49,7 +48,6 @@
 		9D3660121DE8D32C0002C7C8 /* NextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		9D3660141DE8E3140002C7C8 /* ProfileImageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageVC.swift; sourceTree = "<group>"; };
 		9D429C781DE5559900F33EAA /* DataServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataServices.swift; sourceTree = "<group>"; };
-		9D4639201DFE118A00E76980 /* FormPopUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormPopUpVC.swift; sourceTree = "<group>"; };
 		9D4A6DA11DC2ED8700E75A00 /* LandScrappers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LandScrappers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D4A6DA41DC2ED8700E75A00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D4A6DA61DC2ED8700E75A00 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -181,7 +179,6 @@
 			children = (
 				9D550BBE1DFBC233002AF24B /* MyFormPopUp.swift */,
 				9DC3037C1DEBEB2D003F3C17 /* MyFormVC.swift */,
-				9D4639201DFE118A00E76980 /* FormPopUpVC.swift */,
 				9DEDB7A71DCAE17900573C2C /* RegisterVC.swift */,
 				9D4A6DA61DC2ED8700E75A00 /* LoginVC.swift */,
 				9D1381301DDE823F00AF69D9 /* ExploreTableVC.swift */,
@@ -335,7 +332,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DEA65821DD033CA00937AB5 /* RoundButton.swift in Sources */,
-				9D4639211DFE118A00E76980 /* FormPopUpVC.swift in Sources */,
 				9D3660151DE8E3140002C7C8 /* ProfileImageVC.swift in Sources */,
 				9D4F2CD11DE3AC1C00D9A988 /* InboxVC.swift in Sources */,
 				9D429C791DE5559900F33EAA /* DataServices.swift in Sources */,

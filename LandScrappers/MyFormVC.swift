@@ -146,8 +146,16 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let forms = formData[indexPath.row]
-        print("FORMS: \(forms)")
         
-        return tableView.dequeueReusableCell(withIdentifier: "FormCell") as! FormCell
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "FormCell") as? FormCell {
+            cell.configureCell(form: forms)
+            return cell
+        }
+        else {
+            //Return empty if failed
+            return FormCell()
+        }
+        
     }
 }

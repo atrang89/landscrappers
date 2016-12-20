@@ -11,7 +11,7 @@ import Foundation
 class FormData  {
     
     private var _serviceLabel: String!
-    private var _interest: Bool!
+    private var _interest: Int!
     private var _formKey: String!
     
     var serviceLabel: String
@@ -19,7 +19,7 @@ class FormData  {
         return _serviceLabel
     }
     
-    var interest: Bool
+    var interest: Int
     {
         return _interest
     }
@@ -29,7 +29,7 @@ class FormData  {
         return _formKey
     }
     
-    init(serviceLabel: String, interest: Bool)
+    init(serviceLabel: String, interest: Int)
     {
         self._serviceLabel = serviceLabel
         self._interest = interest
@@ -43,7 +43,7 @@ class FormData  {
             self._serviceLabel = serviceLabel
         }
         
-        if let interest = formData["interest"] as? Bool {
+        if let interest = formData["interest"] as? Int {
             self._interest = interest
         }
     }
