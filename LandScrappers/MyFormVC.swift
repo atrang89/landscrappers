@@ -23,7 +23,7 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        imagePicker = UIImagePickerController()
+        imagePicker = UIImagePickerController() //Init
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
         
@@ -68,7 +68,7 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             return
         }
         
-        
+        //Send image data to firebase
         //getting image data by uncompression
         if let imgData = UIImageJPEGRepresentation(img, 0.2)
         {
@@ -98,7 +98,7 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         }
     }
     
-    //Send data to firebase
+    //Send data to firebase for ExplorePost
     func postToFirease(imgURL: String)
     {
         let post: Dictionary<String, AnyObject> = [

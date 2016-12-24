@@ -12,7 +12,7 @@ import SwiftKeychainWrapper
 
 //Reference base and make global = Getting the root URL of firebase
 let DB_Base = FIRDatabase.database().reference()
-let STORAGE_BASE = FIRStorage.storage().reference()
+let STORAGE_BASE = FIRStorage.storage().reference()  //Reference to images
 
 class DataService{
     

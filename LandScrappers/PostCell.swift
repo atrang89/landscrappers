@@ -38,13 +38,14 @@ class PostCell: UITableViewCell {
         self.companyLabel.text = post.title
         self.likesLabel.text = "\(post.likes)"
         
-        //Download images here
+        //If in cache, post image
         if img != nil
         {
             self.postImage.image = img
         }
         else
         {
+            //Download images if not in cache
             let ref = FIRStorage.storage().reference(forURL: post.imageURL)
             ref.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in
                 if error != nil

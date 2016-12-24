@@ -152,7 +152,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cps-nA-DpX" id="Id5-UU-Tbc">
-                                            <frame key="frameInset" width="375" height="62.5"/>
+                                            <frame key="frameInset" width="375" height="62"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Circle" translatesAutoresizingMaskIntoConstraints="NO" id="ZUT-Op-tqg">
@@ -252,39 +252,6 @@
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Mnc-kh-6Eq">
                                     <frame key="frameInset"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="moh-qH-Tmd">
-                                            <frame key="frameInset" minY="72" width="375" height="85"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="imagePick" translatesAutoresizingMaskIntoConstraints="NO" id="YRY-eq-ngR" customClass="CircleView" customModule="LandScrappers" customModuleProvider="target">
-                                                    <frame key="frameInset" minX="8" minY="17" width="50" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <gestureRecognizers/>
-                                                </imageView>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="[My Username/Business Name]" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y4b-Mf-Hle">
-                                                    <frame key="frameInset" minX="66" minY="18" width="227" height="27"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="TitleInput:" destination="EBU-qi-Yq3" eventType="editingDidEnd" id="Gq1-VM-qJ1"/>
-                                                    </connections>
-                                                </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CeG-yu-0qu">
-                                                    <frame key="frameInset" minX="320" minY="17" width="30" height="28"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <state key="normal" title="Post"/>
-                                                    <connections>
-                                                        <action selector="postBtnTapped:" destination="EBU-qi-Yq3" eventType="touchUpInside" id="iHe-RL-I2Z"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </view>
-                                    </subviews>
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
@@ -326,10 +293,14 @@
                             <constraint firstItem="GRK-qT-Hju" firstAttribute="leading" secondItem="JoJ-35-vNJ" secondAttribute="leading" id="xvX-ht-cAy"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageSelect" destination="blf-Gv-0bY" id="jjb-oG-asN"/>
+                        <outlet property="textField" destination="FMY-I5-Nwt" id="idm-gt-dwF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dnY-e9-TMy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3319" y="976"/>
+            <point key="canvasLocation" x="3322" y="976"/>
         </scene>
         <!--Register-->
         <scene sceneID="DkA-aY-eO9">
@@ -710,7 +681,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="103"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jlJ-eo-Nwr" id="raY-gV-FBr">
-                                            <frame key="frameInset" width="375" height="102.5"/>
+                                            <frame key="frameInset" width="375" height="102"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ejd-pf-ULG" customClass="VisualTweaks" customModule="LandScrappers" customModuleProvider="target">
@@ -899,7 +870,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="May-dO-62w" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7yh-K2-871">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7yh-K2-871">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

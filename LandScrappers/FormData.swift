@@ -7,12 +7,14 @@
 //
 
 import Foundation
+import Firebase
 
 class FormData  {
     
     private var _serviceLabel: String!
     private var _interest: Int!
     private var _formKey: String!
+    private var _formRef: FIRDatabaseReference!
     
     var serviceLabel: String
     {
@@ -37,6 +39,7 @@ class FormData  {
     
     //Get Firebase data and use in MyFormVC
     init(formKey: String!, formData: Dictionary<String, AnyObject>) {
+        
         self._formKey = formKey
         
         if let serviceLabel = formData["services"] as? String {
@@ -46,5 +49,7 @@ class FormData  {
         if let interest = formData["interest"] as? Int {
             self._interest = interest
         }
+        
+        _formRef = DataService.ds.REF_FORMS.child(_formKey)
     }
 }

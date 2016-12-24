@@ -54,9 +54,9 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                     }
                 }
             }
-            
-            self.tableView.reloadData()
         })
+        
+        self.tableView.reloadData()
     }
 
     override func viewDidAppear(_ animated: Bool) {
