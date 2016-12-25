@@ -32,7 +32,6 @@ class MyFormPopUp: UIViewController {
             self.postToFirebase(service: text)
         }
         
-        
         dismiss(animated: true, completion: nil)
     }
 

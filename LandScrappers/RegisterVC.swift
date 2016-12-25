@@ -21,7 +21,7 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var coordinatesLon: UILabel!
     
     var geoCoder: CLGeocoder?
-    var person = [Person]()
+    var person: Person!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +31,10 @@ class RegisterVC: UIViewController {
     
     @IBAction func geoCode(_ sender: AnyObject) {
         
+        let personInfo = Person(street: streetField.text!, city: cityField.text!, state: stateField.text!, zip: zipField.text!)
         
+        self.addressOutput(person: personInfo)
         
-        //TODO need MVC
-        if addressLbl.text != nil {
-            addressLbl.text = streetField.text! + " " + cityField.text! + " " + stateField.text! + " " + zipField.text!
-        }
         
         if let text = self.addressLbl.text
         {
@@ -59,7 +57,19 @@ class RegisterVC: UIViewController {
                 }
             })
         }
-        
-        
+    }
+    
+    func addressOutput(person: Person)
+    {
+        self.person = person
+        self.streetField.text = person.street
+        self.cityField.text = person.city
+        self.stateField.text = person.state
+        self.zipField.text = person.zip
+        self.addressLbl.text = person.address
+            
+        print ("STREET: \(person.street)")
+        print ("CITY: \(person.city)")
+        print ("ADDRESS: \(person.address)")
     }
 }

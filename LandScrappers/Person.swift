@@ -9,44 +9,35 @@
 import Foundation
 
 class Person {
-    
     private var _street: String!
     private var _city: String!
-    private var _address: String!
+    private var _state: String!
+    private var _zip: String!
     
     var street: String {
-        get {
-            return _street
-        }
-        set{
-            _street = newValue
-        }
-        
+        return _street
     }
     
     var city: String {
-        get {
-            return _city
-        }
-        set{
-            _city = newValue
-        }
+        return _city
+    }
+    
+    var state: String {
+        return _state
+    }
+    
+    var zip: String {
+        return _zip
     }
     
     var address: String {
-        get{
-            return _address
-        }
-        set{
-            _address = newValue
-        }
+        return "\(_street!) \(_city!) \(state) \(zip)"
     }
     
-    init(street: String, city: String, address: String) {
+    init(street: String, city: String, state: String, zip: String) {
         self._street = street
         self._city = city
-        self._address = address
+        self._state = state
+        self._zip = zip
     }
-
-    
 }
