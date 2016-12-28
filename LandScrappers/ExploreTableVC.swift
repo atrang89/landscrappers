@@ -51,12 +51,15 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                         let key = snap.key
                         let post = ExplorePosts(postKey: key, postData: postDict)
                         self.posts.append(post)
+                        
+                        //Updating background thread and prevent crash
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
                     }
                 }
             }
         })
-        
-        self.tableView.reloadData()
     }
 
     override func viewDidAppear(_ animated: Bool) {

@@ -107,8 +107,9 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             "likes": 0 as AnyObject
         ]
         
+        let uid = FIRAuth.auth()?.currentUser?.uid
         //let firebasePost = DataService.ds.REF_POSTS.childByAutoId()   //used to create new child objects
-        let firebasePost = DataService.ds.REF_POSTS.child("post")
+        let firebasePost = DataService.ds.REF_POSTS.child(uid!)
         
         firebasePost.setValue(post)
     }
@@ -141,6 +142,17 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return formData.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath)!
+        selectedCell.contentView.backgroundColor = UIColor.blue
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        //TODO MVC this view
+        let cellToDeSelect:UITableViewCell = tableView.cellForRow(at: indexPath)!
+        cellToDeSelect.contentView.backgroundColor = UIColor(red: LIGHT_GRAY, green: LIGHT_GRAY, blue: LIGHT_GRAY, alpha: 0.8)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

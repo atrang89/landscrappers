@@ -18,7 +18,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var likesImage: UIImageView!
     
     var post: ExplorePosts!
-    var likeRef: FIRDatabaseReference!
+    var likesRef: FIRDatabaseReference!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,7 +33,8 @@ class PostCell: UITableViewCell {
     func configureCell(post: ExplorePosts, img: UIImage? = nil)
     {
         self.post = post
-        likeRef = DataService.ds.REF_USER_CURRENT.child("likes").child(post.postKey)
+        
+        likesRef = DataService.ds.REF_USER_CURRENT.child("likes").child(post.postKey)
         
         self.companyLabel.text = post.title
         self.likesLabel.text = "\(post.likes)"
@@ -47,7 +48,7 @@ class PostCell: UITableViewCell {
         {
             //Download images if not in cache
             let ref = FIRStorage.storage().reference(forURL: post.imageURL)
-            ref.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in
+            ref.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in  //2mb
                 if error != nil
                 {
                     print("ANDREW: Unable to download image from Firebase storage")
@@ -65,33 +66,25 @@ class PostCell: UITableViewCell {
                     }
                 }
                 
-            }) //2mb
+            })
         }
-        
-        likeRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            if let _ = snapshot.value as? NSNull {
-                self.likesImage.image = UIImage(named: "ic_thumb_up")
-            }
-            else
-            {
-                self.likesImage.image = UIImage(named: "ic_thumb_up")
-            }
-        })
     }
     
     func likeTapped(sender: UITapGestureRecognizer)
     {
-        likeRef.observeSingleEvent(of: .value, with: { (snapshot) in
+        likesRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let _ = snapshot.value as? NSNull {
                 self.likesImage.image = UIImage(named: "ic_thumb_up")
                 self.post.adjustLikes(addLike: true)
-                self.likeRef.setValue(true)
+                self.likesRef.setValue(true)
+                self.likesLabel.text = "\(self.post.likes)"
             }
             else
             {
                 self.likesImage.image = UIImage(named: "Circle")
                 self.post.adjustLikes(addLike: false)
-                self.likeRef.removeValue()
+                self.likesRef.removeValue()
+                self.likesLabel.text = "\(self.post.likes)"
             }
         })
     }

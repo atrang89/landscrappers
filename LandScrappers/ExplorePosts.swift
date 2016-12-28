@@ -70,10 +70,10 @@ class ExplorePosts
     
     func adjustLikes(addLike: Bool)
     {
-        if addLike{
+        if addLike {
             _likes = _likes + 1
         }
-        else{
+        else {
             _likes = _likes - 1
         }
         _postRef.child("likes").setValue(_likes)
