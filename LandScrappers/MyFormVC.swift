@@ -16,7 +16,8 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBOutlet weak var captionField: UITextField!
     @IBOutlet weak var formTableView: UITableView!
     
-    var formData = [FormData]()
+    //var formData = [FormData]()
+    var formData: [FormData] = []
     var imagePicker: UIImagePickerController!
     var imageSelected = false
     
@@ -46,9 +47,11 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                         let key = snap.key
                         let formData = FormData(formKey: key, formData: formDict)
                         self.formData.append(formData)
+                        
                     }
                 }
             }
+            self.formData.sort(by: {$0.serviceLabel < $1.serviceLabel})  //sorts table in myForm
             self.formTableView.reloadData()
         })
     }
@@ -145,7 +148,7 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath)!
+        let selectedCell: UITableViewCell = tableView.cellForRow(at: indexPath)!
         selectedCell.contentView.backgroundColor = UIColor.blue
     }
     
@@ -159,7 +162,6 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         
         let forms = formData[indexPath.row]
         
-        
         if let cell = tableView.dequeueReusableCell(withIdentifier: "FormCell") as? FormCell {
             cell.configureCell(form: forms)
             return cell
@@ -168,6 +170,18 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             //Return empty if failed
             return FormCell()
         }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            formData.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        }
+        
+        
+        //TODO need to delete in firebase
         
     }
 }

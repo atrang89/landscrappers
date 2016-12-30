@@ -171,7 +171,6 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <outlet property="interestedIMG" destination="ZUT-Op-tqg" id="M4N-SA-Zhv"/>
                                             <outlet property="title" destination="hzb-av-ING" id="Vwh-Wh-2T7"/>
                                         </connections>
                                     </tableViewCell>
@@ -617,7 +616,6 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhT-U0-Znx" customClass="NextButton" customModule="LandScrappers" customModuleProvider="target">
                                 <frame key="frameInset" minX="129" minY="214" width="116" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="To Register Page">
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -633,7 +631,6 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNR-6m-p1b" customClass="NextButton" customModule="LandScrappers" customModuleProvider="target">
                                 <frame key="frameInset" minX="143" minY="266" width="88" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="To Map View">
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -643,7 +640,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="F3X-gi-9iz" firstAttribute="top" secondItem="sE7-Wf-Zn7" secondAttribute="top" id="Ho9-5R-9R8"/>
                             <constraint firstAttribute="trailing" secondItem="F3X-gi-9iz" secondAttribute="trailing" id="IJq-mQ-uO6"/>
@@ -871,7 +868,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="May-dO-62w" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7yh-K2-871">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7yh-K2-871">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
