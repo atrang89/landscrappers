@@ -117,9 +117,6 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="TitleInput:" destination="EBU-qi-Yq3" eventType="editingDidEnd" id="G6e-Du-bZa"/>
-                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjF-PZ-Aco">
                                         <constraints>
@@ -132,6 +129,13 @@
                                             <action selector="postBtnTapped:" destination="EBU-qi-Yq3" eventType="touchUpInside" id="RgH-dg-Xte"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1320 S. 94th St West Allis WI 53214" placeholder="Street               ST         ZIP" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gcP-HG-LX9">
+                                        <frame key="frameInset" minX="66" minY="47" width="227" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -152,7 +156,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cps-nA-DpX" id="Id5-UU-Tbc">
-                                            <frame key="frameInset" width="375" height="62"/>
+                                            <frame key="frameInset" width="375" height="62.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Float" translatesAutoresizingMaskIntoConstraints="NO" id="ZUT-Op-tqg">
@@ -225,6 +229,7 @@
                         <outlet property="captionField" destination="ILu-XZ-YoO" id="7K2-vY-IZs"/>
                         <outlet property="formTableView" destination="4xu-Kf-UON" id="PKB-4N-IVF"/>
                         <outlet property="imageAdd" destination="CIl-JL-fKE" id="UmF-vz-UQN"/>
+                        <outlet property="locationField" destination="gcP-HG-LX9" id="YZE-7t-ODM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pmE-aW-76n" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -679,7 +684,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="103"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jlJ-eo-Nwr" id="raY-gV-FBr">
-                                            <frame key="frameInset" width="375" height="102"/>
+                                            <frame key="frameInset" width="375" height="102.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ejd-pf-ULG" customClass="VisualTweaks" customModule="LandScrappers" customModuleProvider="target">
@@ -695,22 +700,8 @@
                                                             <frame key="frameInset" minX="20" minY="20" width="50" height="50"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLS-DW-w0E">
-                                                            <frame key="frameInset" minX="281" minY="55" width="16" height="15"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <color key="textColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FaI-2Y-19a">
-                                                            <frame key="frameInset" minX="238" minY="55" width="23" height="15"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <color key="textColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGy-Vg-JYZ">
-                                                            <frame key="frameInset" minX="104" minY="55" width="47" height="15"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1320 S. 94th st WI 53214" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGy-Vg-JYZ">
+                                                            <frame key="frameInset" minX="104" minY="55" width="193" height="15"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" red="0.5725490196078431" green="0.5725490196078431" blue="0.5725490196078431" alpha="1" colorSpace="calibratedRGB"/>
@@ -723,8 +714,8 @@
                                                             <color key="textColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.1 mi" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEa-DN-zXi">
-                                                            <frame key="frameInset" minX="332" minY="8" width="35" height="15"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="mi" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEa-DN-zXi">
+                                                            <frame key="frameInset" minX="355" minY="8" width="12" height="15"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -734,6 +725,13 @@
                                                             <frame key="frameInset" minX="333" minY="33" width="34" height="34"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="88888" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sv5-h1-vit">
+                                                            <frame key="frameInset" minX="321" minY="8" width="34" height="15"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <color key="textColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
@@ -748,9 +746,10 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="companyLabel" destination="Oq2-Gr-mAd" id="5rn-SY-ltD"/>
-                                            <outlet property="descriptLabel" destination="eGy-Vg-JYZ" id="jz7-MG-RwQ"/>
+                                            <outlet property="distanceLabel" destination="sv5-h1-vit" id="XlA-OE-2CK"/>
                                             <outlet property="likesImage" destination="TLt-Qt-chD" id="lSW-VE-ogg"/>
                                             <outlet property="likesLabel" destination="uFt-6G-q4n" id="BSc-QA-9Uo"/>
+                                            <outlet property="locationLabel" destination="eGy-Vg-JYZ" id="x5G-Kh-QG1"/>
                                             <outlet property="postImage" destination="Jfz-mC-xIT" id="KVA-gU-SA6"/>
                                         </connections>
                                     </tableViewCell>
@@ -868,7 +867,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="May-dO-62w" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7yh-K2-871">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7yh-K2-871">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

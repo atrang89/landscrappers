@@ -35,7 +35,6 @@ class RegisterVC: UIViewController {
         
         self.addressOutput(person: personInfo)
         
-        
         if let text = self.addressLbl.text
         {
             self.geoCoder?.geocodeAddressString(text, completionHandler: { (placemarks, error) in

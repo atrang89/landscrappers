@@ -66,6 +66,7 @@ PODS:
   - SwiftKeychainWrapper (3.0.0)
 
 DEPENDENCIES:
+  - FBSDKCoreKit
   - FBSDKLoginKit
   - Firebase
   - Firebase/Storage
@@ -94,6 +95,6 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
   SwiftKeychainWrapper: aa69884eb623a6f7d644921bbf58c8cee416a9e6
 
-PODFILE CHECKSUM: 75ed6384b2b9469ed0a981202a1a7647e646aae5
+PODFILE CHECKSUM: 69987582bcf0cc47410b2b4cc5b68fc96a7c5914
 
 COCOAPODS: 1.1.1

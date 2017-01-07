@@ -68,7 +68,7 @@
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Needs to location always</string>
 	<key>NSLocationWhileInUseUsageDescription</key>
-	<string>Requires access to current location</string>
+	<string>Wants Access for Lefe</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Access to photos is required for posting</string>
 	<key>UILaunchStoryboardName</key>

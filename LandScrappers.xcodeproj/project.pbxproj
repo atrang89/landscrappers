@@ -28,6 +28,7 @@
 		9DC3037D1DEBEB2D003F3C17 /* MyFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3037C1DEBEB2D003F3C17 /* MyFormVC.swift */; };
 		9DC862461DDEBFA0003BA1A9 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC862451DDEBFA0003BA1A9 /* PostCell.swift */; };
 		9DC862481DDEC760003BA1A9 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC862471DDEC760003BA1A9 /* CircleView.swift */; };
+		9DDC5E131E207DED00A90E52 /* MapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDC5E121E207DED00A90E52 /* MapData.swift */; };
 		9DDF03261E0745C100CF820D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DDF03251E0745C100CF820D /* MapKit.framework */; };
 		9DE8AF9F1DE7BB8C006178AE /* ExplorePosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE8AF9E1DE7BB8C006178AE /* ExplorePosts.swift */; };
 		9DEA65801DD0284E00937AB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEA657F1DD0284E00937AB5 /* Constants.swift */; };
@@ -64,6 +65,7 @@
 		9DC3037C1DEBEB2D003F3C17 /* MyFormVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFormVC.swift; sourceTree = "<group>"; };
 		9DC862451DDEBFA0003BA1A9 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		9DC862471DDEC760003BA1A9 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		9DDC5E121E207DED00A90E52 /* MapData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapData.swift; sourceTree = "<group>"; };
 		9DDF03251E0745C100CF820D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9DE8AF9E1DE7BB8C006178AE /* ExplorePosts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplorePosts.swift; sourceTree = "<group>"; };
 		9DEA657F1DD0284E00937AB5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				9D0C583C1DFA315C000132C9 /* FormData.swift */,
 				9DE8AF9E1DE7BB8C006178AE /* ExplorePosts.swift */,
 				9D12010F1E00C193000C9C7B /* Person.swift */,
+				9DDC5E121E207DED00A90E52 /* MapData.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				9D0C58411DFA5D68000132C9 /* MapVC.swift in Sources */,
 				9D5DAAF71DCFE1B60020B448 /* VisualTweaks.swift in Sources */,
 				9D4A6DA71DC2ED8700E75A00 /* LoginVC.swift in Sources */,
+				9DDC5E131E207DED00A90E52 /* MapData.swift in Sources */,
 				9D1201101E00C193000C9C7B /* Person.swift in Sources */,
 				9DC862461DDEBFA0003BA1A9 /* PostCell.swift in Sources */,
 				9DC862481DDEC760003BA1A9 /* CircleView.swift in Sources */,

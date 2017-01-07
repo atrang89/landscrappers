@@ -23,11 +23,12 @@ class MyFormPopUp: UIViewController {
     
     @IBAction func popUpClose(_ sender: AnyObject) {
         
-//        guard let text = textField.text, text != "" else {
-//            print ("Service Text must be entered")
-//            return
-//        }
+        guard let serviceText = textField.text, serviceText != "" else {
+            print("FORM: Description must be entered")
+            return
+        }
         
+        //Optimize later
         if let text = textField.text {
             self.postToFirebase(service: text)
         }

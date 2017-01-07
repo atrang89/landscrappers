@@ -15,6 +15,7 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBOutlet weak var imageAdd: CircleView!
     @IBOutlet weak var captionField: UITextField!
     @IBOutlet weak var formTableView: UITableView!
+    @IBOutlet weak var locationField: UITextField!
     
     //var formData = [FormData]()
     var formData: [FormData] = []
@@ -47,7 +48,6 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                         let key = snap.key
                         let formData = FormData(formKey: key, formData: formDict)
                         self.formData.append(formData)
-                        
                     }
                 }
             }
@@ -55,19 +55,21 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             self.formTableView.reloadData()
         })
     }
-
-    @IBAction func TitleInput(_ sender: UITextField) {
-    }
     
     @IBAction func postBtnTapped(_ sender: AnyObject) {
-        guard let caption = captionField.text, caption != "" else
-        {
-            print("ANDREW: Caption must be entered")
+        
+        guard let caption = captionField.text, caption != "" else {
+            print("POST: Caption must be entered")
+            return
+        }
+        
+        guard let location = locationField.text, location != "" else {
+            print("POST: Address must be entered")
             return
         }
         
         guard let img = imageAdd.image, imageSelected == true else{
-            print("ANDREW: An image must be selected")
+            print("POST: An image must be selected")
             return
         }
         
@@ -106,6 +108,7 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     {
         let post: Dictionary<String, AnyObject> = [
             "title": captionField.text! as AnyObject,
+            "location": locationField.text! as AnyObject,
             "imageURL": imgURL as AnyObject,
             "likes": 0 as AnyObject
         ]
@@ -117,12 +120,9 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         firebasePost.setValue(post)
     }
     
-    
-    
     @IBAction func ImageChange(_ sender: AnyObject) {
         present(imagePicker, animated: true, completion: nil)
     }
-    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
@@ -148,6 +148,7 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //TODO MVC this view
         let selectedCell: UITableViewCell = tableView.cellForRow(at: indexPath)!
         selectedCell.contentView.backgroundColor = UIColor.blue
     }
@@ -170,18 +171,23 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             //Return empty if failed
             return FormCell()
         }
-        
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
+//        let forms = self.formData[indexPath.row]
+//        let uidFormData = forms["uidFormData"]
+//        let firebaseForm = DataService.ds.REF_FORMS
+        
         if editingStyle == UITableViewCellEditingStyle.delete {
             formData.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            
+            //firebaseForm.child("\(uidFormData)").removeValue()
         }
-        
-        
-        //TODO need to delete in firebase
-        
     }
 }

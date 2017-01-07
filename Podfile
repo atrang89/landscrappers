@@ -12,6 +12,7 @@ target 'LandScrappers' do
   pod 'Firebase/Storage'
   pod 'GoogleSignIn'
   pod 'FBSDKLoginKit'
+  pod 'FBSDKCoreKit'
   pod 'SwiftKeychainWrapper'
 
 end

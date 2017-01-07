@@ -71,6 +71,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
     func fireBaseAuth(_ credential:FIRAuthCredential)
     {
         FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+            
+            guard let uid = user?.uid else {
+                return
+            }
+            
+            let usersReference = DataService.ds.REF_BASE.child("user_profiles").child(uid)
+            
             if error != nil
             {
                 print("AT: Unable to authenticate with firebase")
@@ -82,6 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
                 {
                     let userData = ["provider": credential.provider]
                     self.completeSignIn(id: user.uid, userData: userData)
+                    
                     self.handleLogin()
                 }
             }

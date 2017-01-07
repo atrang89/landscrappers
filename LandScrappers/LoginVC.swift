@@ -17,6 +17,8 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
     
     @IBOutlet weak var googleSignInBtn: GIDSignInButton!
     
+    var ref: FIRDatabaseReference!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +44,7 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
                 print("AT: Cannot Authenticate with Facebook - \(error)")
             }
                 
-                //if given the permission but user declines
+            //if given the permission but user declines
             else if result?.isCancelled == true
             {
                 print("AT: User cancelled auth")
@@ -51,7 +53,11 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
             {
                 print("AT: Successfully logged into FB")
                 //Needs credential to communicate with Firebase using token
-                let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+                //let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+                let accessToken = FBSDKAccessToken.current()
+                guard let accessTokenString = accessToken?.tokenString else
+                    {return}
+                let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessTokenString)
                 self.fireBaseAuth(credential)
             }
         }
@@ -60,6 +66,13 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
     func fireBaseAuth(_ credential: FIRAuthCredential)
     {
         FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+            
+            guard let uid = user?.uid else {
+                return
+            }
+            
+            let usersReference = DataService.ds.REF_BASE.child("user_profiles").child(uid)
+            
             if error != nil
             {
                 print("AT: Unable to authenticate with firebase - \(error)")
@@ -72,6 +85,31 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
                     let userData = ["provider": credential.provider]
                     self.completeSignIn(id: user.uid, userData: userData)
                 }
+            }
+            
+            //Getting User name, email, and id
+            FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, email, name"]).start{
+                (connection, result, err) in
+                
+                if err != nil {
+                    print("Failed to start graph request", err)
+                    return
+                }
+                
+                let dict: [String:AnyObject] = result as! [String : AnyObject]
+                print (result!)
+                print (dict)
+
+                // update our databse by using the child database reference above called usersReference
+                usersReference.updateChildValues(dict, withCompletionBlock: { (err, ref) in
+                    // if there's an error in saving to our firebase database
+                    if err != nil {
+                        print(err)
+                        return
+                    }
+                    // no error, so it means we've saved the user into our firebase database successfully
+                    print("Save the user successfully into Firebase database")
+                })
             }
         })
     }
