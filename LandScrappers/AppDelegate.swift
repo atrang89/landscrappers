@@ -54,28 +54,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         guard let idToken = user.authentication.idToken else {return}
         guard let accessToken = user.authentication.accessToken else {return}
         
-        let credential = FIRGoogleAuthProvider.credential(withIDToken: idToken,
-                                                          accessToken: accessToken)
+        let credential = FIRGoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
+
+        let fullName = user.profile.name as NSString
+        let email = user.profile.email as NSString
+        let userId = user.userID as NSString
         
+        print("Google Sign In:\(fullName)")
+        print("Google Sign In:\(email)")
+        print("Google Sign In:\(userId)")
+        
+        let dict: [String: AnyObject] = ["name": fullName, "email": email, "userID": userId]
+            
         FIRAuth.auth()?.signIn(with: credential, completion:
         { (user, error) in
             if let error = error {
                 print("User Signed Into Google", error)
                 return
             }
-            
-            self.fireBaseAuth(credential)
         })
-    }
-    
-    func fireBaseAuth(_ credential:FIRAuthCredential)
-    {
+        
         FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
             
-            guard let uid = user?.uid else {
-                return
-            }
-            
+            guard let uid = user?.uid else {return}
             let usersReference = DataService.ds.REF_BASE.child("user_profiles").child(uid)
             
             if error != nil
@@ -93,6 +94,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
                     self.handleLogin()
                 }
             }
+            
+            // update our databse by using the child database reference above called usersReference
+            usersReference.updateChildValues(dict, withCompletionBlock: { (err, ref) in
+                // if there's an error in saving to our firebase database
+                if err != nil {
+                    print(err)
+                    return
+                }
+                // no error, so it means we've saved the user into our firebase database successfully
+                print("Save the user successfully into Firebase database")
+            })
+            
         })
     }
     

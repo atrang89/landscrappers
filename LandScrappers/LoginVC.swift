@@ -67,9 +67,7 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
     {
         FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
             
-            guard let uid = user?.uid else {
-                return
-            }
+            guard let uid = user?.uid else {return}
             
             let usersReference = DataService.ds.REF_BASE.child("user_profiles").child(uid)
             
@@ -97,8 +95,6 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
                 }
                 
                 let dict: [String:AnyObject] = result as! [String : AnyObject]
-                print (result!)
-                print (dict)
 
                 // update our databse by using the child database reference above called usersReference
                 usersReference.updateChildValues(dict, withCompletionBlock: { (err, ref) in
