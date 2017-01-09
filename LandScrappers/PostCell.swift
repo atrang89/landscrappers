@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import CoreLocation
 
-class PostCell: UITableViewCell {
+class PostCell: UITableViewCell, CLLocationManagerDelegate {
 
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var companyLabel: UILabel!
@@ -24,6 +24,10 @@ class PostCell: UITableViewCell {
     var geoCodeRef: FIRDatabaseReference!
     var geoCoder: CLGeocoder?
     
+    private var locationManager = CLLocationManager()
+    private var userLocation: CLLocationCoordinate2D?
+    private var otherLocation: CLLocationCoordinate2D?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -34,6 +38,16 @@ class PostCell: UITableViewCell {
         tap.numberOfTapsRequired = 1
         likesImage.addGestureRecognizer(tap)
         likesImage.isUserInteractionEnabled = true
+        
+        initializeLocationManager()
+        MapHandler.MapManager.observeMapData()
+    }
+    
+    func initializeLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
     
     func configureCell(post: ExplorePosts, img: UIImage? = nil)
@@ -73,6 +87,8 @@ class PostCell: UITableViewCell {
                 
             })
         }
+        
+        addressToGeoCoordinates ()
     }
     
     //Push and Pull data to firebase
@@ -95,32 +111,25 @@ class PostCell: UITableViewCell {
         })
     }
     
-    //This is pretty bad
-    //Push to firebase
-    func currentGeoCode()
-    {
-        geoCodeRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            if let _ = snapshot.value as? NSNull {
-                self.geoCoder?.geocodeAddressString(self.post.mylocation, completionHandler: { (placemarks, error) in
-                    if error != nil {
-                        print("GEOCODE_AT: \(error)")
-                    } else {
-                        if let placemarks = placemarks?.last {
-                            let lat = placemarks.location!.coordinate.latitude
-                            let lon = placemarks.location!.coordinate.longitude
-                            
-                            let daGeoCode = "\(CLLocation(latitude: lat, longitude: lon))"
-                            print("GEOCODE_AT: \(daGeoCode)")
-                            self.geoCodeRef.setValue(self.post)
-                            self.post.FirebaseGeo(updateGeo: daGeoCode)
-                            //                    let coordinateOther = CLLocation(latitude: 42.96, longitude: -88.00)
-                            //                    let deltaDistance = coordinate.distance(from: coordinateOther)/1609
-                            
-                            
-                        }
+    func addressToGeoCoordinates () {
+        if let text = self.locationLabel.text
+        {
+            self.geoCoder?.geocodeAddressString(text, completionHandler: { (placemarks, error) in
+                if error != nil
+                {
+                    print("Address: \(error)")
+                } else {
+                    if let placemarks = placemarks?.last {
+                        let lat = placemarks.location!.coordinate.latitude
+                        let lon = placemarks.location!.coordinate.longitude
+                        
+                        let uid = FIRAuth.auth()?.currentUser?.uid
+                        
+                        DataService.ds.REF_POSTS.child(uid!).child("lat").setValue(lat)
+                        DataService.ds.REF_POSTS.child(uid!).child("lon").setValue(lon)
                     }
-                })
-            }
-        })
+                }
+            })
+        }
     }
 }

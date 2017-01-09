@@ -35,6 +35,7 @@
 		9DEA65821DD033CA00937AB5 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEA65811DD033CA00937AB5 /* RoundButton.swift */; };
 		9DEDB7A81DCAE17900573C2C /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDB7A71DCAE17900573C2C /* RegisterVC.swift */; };
 		9DF1FAAA1DFE2389008E342A /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF1FAA91DFE2389008E342A /* LocalAuthentication.framework */; };
+		9DF5FFBB1E21F1D100A4DC25 /* MapHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF5FFBA1E21F1D100A4DC25 /* MapHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		9DEA65811DD033CA00937AB5 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		9DEDB7A71DCAE17900573C2C /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		9DF1FAA91DFE2389008E342A /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		9DF5FFBA1E21F1D100A4DC25 /* MapHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,12 +109,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		9D429C771DE5557C00F33EAA /* Services */ = {
+		9D429C771DE5557C00F33EAA /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
 				9D429C781DE5559900F33EAA /* DataServices.swift */,
+				9DF5FFBA1E21F1D100A4DC25 /* MapHandler.swift */,
 			);
-			name = Services;
+			name = Plugins;
 			sourceTree = "<group>";
 		};
 		9D4A6D981DC2ED8500E75A00 = {
@@ -136,7 +139,7 @@
 		9D4A6DA31DC2ED8700E75A00 /* LandScrappers */ = {
 			isa = PBXGroup;
 			children = (
-				9D429C771DE5557C00F33EAA /* Services */,
+				9D429C771DE5557C00F33EAA /* Plugins */,
 				9DEA657E1DD027A600937AB5 /* Utility */,
 				9D5DAAF11DCFBA060020B448 /* Model */,
 				9D5DAAF21DCFBA0D0020B448 /* View */,
@@ -339,6 +342,7 @@
 				9D4F2CD11DE3AC1C00D9A988 /* InboxVC.swift in Sources */,
 				9D429C791DE5559900F33EAA /* DataServices.swift in Sources */,
 				9DEA65801DD0284E00937AB5 /* Constants.swift in Sources */,
+				9DF5FFBB1E21F1D100A4DC25 /* MapHandler.swift in Sources */,
 				9DE8AF9F1DE7BB8C006178AE /* ExplorePosts.swift in Sources */,
 				9D0C583F1DFA4DF0000132C9 /* FormCell.swift in Sources */,
 				9D0C58411DFA5D68000132C9 /* MapVC.swift in Sources */,

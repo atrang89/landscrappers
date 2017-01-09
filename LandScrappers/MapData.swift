@@ -9,9 +9,6 @@
 import Foundation
 
 class MapData {
-    
-    private var _name: String!
     private var _latitude: String!
     private var _longitude: String!
-    
 }

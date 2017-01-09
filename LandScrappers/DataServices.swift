@@ -24,7 +24,6 @@ class DataService{
     private var _REF_POSTS = DB_Base.child("posts")  //FIRDatabase.database().reference().child("post")
     private var _REF_FORMS = DB_Base.child("forms")
     private var _REF_USERS = DB_Base.child("user_profiles")
-    private var _REF_RIDERS = DB_Base.child(RIDERS)
     
     //Storage References
     private var _REF_POSTS_IMAGES = STORAGE_BASE.child("PostPics")
@@ -61,20 +60,10 @@ class DataService{
         return _REF_POSTS_IMAGES
     }
     
-    var REF_RIDERS: FIRDatabaseReference
-    {
-        return _REF_RIDERS
-    }
     
     func createFireBaseDBUser(uid: String, userData: Dictionary<String, String>)
     {
         //Firebase will create a new key
         REF_USERS.child(uid).updateChildValues(userData)
-    }
-    
-    func saveUser(withID: String, email: String, password: String) {
-        let data: Dictionary<String, Any> = ["email": email];
-        
-        REF_RIDERS.child(withID).child("data").setValue(data)
     }
 }
