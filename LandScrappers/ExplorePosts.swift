@@ -16,7 +16,7 @@ class ExplorePosts
     private var _imageURL: String!
     private var _likes: Int!
     private var _location: String!
-    private var _geoCode: String!
+    private var _distance: Double!
     
     private var _postKey: String!
     private var _postRef: FIRDatabaseReference!
@@ -40,9 +40,9 @@ class ExplorePosts
         return _likes
     }
     
-    var geoCode: String
+    var distance: Double
     {
-        return _geoCode
+        return _distance
     }
     
     var postKey: String
@@ -50,13 +50,13 @@ class ExplorePosts
         return _postKey
     }
     
-    init(title: String, imageURL: String, mylocation: String, likes: Int, geoCode: String)
+    init(title: String, imageURL: String, mylocation: String, likes: Int, distance: Double)
     {
         self._title = title
         self._imageURL = imageURL
         self._location = mylocation
         self._likes = likes
-        self._geoCode = geoCode
+        self._distance = distance
     }
     
     //Convert data from firebase to use
@@ -84,9 +84,9 @@ class ExplorePosts
             self._likes = likes
         }
         
-        if let geoCode = postData["geoCode"] as? String
+        if let distance = postData["distance"] as? Double
         {
-            self._geoCode = geoCode
+            self._distance = distance
         }
         
         _postRef = DataService.ds.REF_POSTS.child(_postKey)
@@ -103,10 +103,10 @@ class ExplorePosts
         _postRef.child("likes").setValue(_likes)
     }
     
-    func FirebaseGeo(updateGeo: String)
-    {
-        _geoCode = updateGeo
+    func calculateDistancelat(myDistance: Double) {
+            let roundedDistance = round(myDistance * 100) / 100
+            _distance = roundedDistance
         
-        _postRef.child("geoCode").setValue(_geoCode)
+        _postRef.child("distance").setValue(_distance)
     }
 }

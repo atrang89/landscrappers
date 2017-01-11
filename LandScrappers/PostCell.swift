@@ -21,7 +21,7 @@ class PostCell: UITableViewCell, CLLocationManagerDelegate {
     
     var post: ExplorePosts!
     var likesRef: FIRDatabaseReference!
-    var geoCodeRef: FIRDatabaseReference!
+    var distanceRef: FIRDatabaseReference!
     var geoCoder: CLGeocoder?
     
     private var locationManager = CLLocationManager()
@@ -44,6 +44,7 @@ class PostCell: UITableViewCell, CLLocationManagerDelegate {
     }
     
     func initializeLocationManager() {
+        //TODO Utilize location manager later
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
@@ -55,10 +56,12 @@ class PostCell: UITableViewCell, CLLocationManagerDelegate {
         self.post = post
         
         likesRef = DataService.ds.REF_USER_CURRENT.child("likes").child(post.postKey)
+        distanceRef = DataService.ds.REF_USER_CURRENT.child("post").child(post.postKey)
         
         self.companyLabel.text = post.title
         self.locationLabel.text = post.mylocation
         self.likesLabel.text = "\(post.likes)"
+        self.distanceLabel.text = "\(post.distance)"
         
         //If in cache, post image
         if img != nil {
@@ -127,6 +130,14 @@ class PostCell: UITableViewCell, CLLocationManagerDelegate {
                         
                         DataService.ds.REF_POSTS.child(uid!).child("lat").setValue(lat)
                         DataService.ds.REF_POSTS.child(uid!).child("lon").setValue(lon)
+                        
+                        let userLocation = CLLocation(latitude: lat, longitude: lon)
+                        let otherLocation = CLLocation(latitude: lat, longitude: lon)
+                        
+                        let distance = userLocation.distance(from: otherLocation)/1609
+                        
+                        self.post.calculateDistancelat(myDistance: distance)
+                        self.distanceLabel.text = "\(self.post.distance)"
                     }
                 }
             })

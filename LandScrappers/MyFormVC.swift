@@ -186,8 +186,6 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         if editingStyle == UITableViewCellEditingStyle.delete {
             formData.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-            
-            //firebaseForm.child("\(uidFormData)").removeValue()
         }
     }
 }
