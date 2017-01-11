@@ -67,7 +67,7 @@
 	</array>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Needs to location always</string>
-	<key>NSLocationWhileInUseUsageDescription</key>
+	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Wants Access for Lefe</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Access to photos is required for posting</string>

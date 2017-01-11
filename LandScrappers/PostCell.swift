@@ -55,13 +55,12 @@ class PostCell: UITableViewCell, CLLocationManagerDelegate {
     {
         self.post = post
         
-        likesRef = DataService.ds.REF_USER_CURRENT.child("likes").child(post.postKey)
-        distanceRef = DataService.ds.REF_USER_CURRENT.child("post").child(post.postKey)
+        likesRef = DataService.ds.REF_USER_CURRENT.child("sex").child(post.postKey)
         
         self.companyLabel.text = post.title
         self.locationLabel.text = post.mylocation
         self.likesLabel.text = "\(post.likes)"
-        self.distanceLabel.text = "\(post.distance)"
+        //self.distanceLabel.text = "\(post.distance)"
         
         //If in cache, post image
         if img != nil {
@@ -131,13 +130,17 @@ class PostCell: UITableViewCell, CLLocationManagerDelegate {
                         DataService.ds.REF_POSTS.child(uid!).child("lat").setValue(lat)
                         DataService.ds.REF_POSTS.child(uid!).child("lon").setValue(lon)
                         
-                        let userLocation = CLLocation(latitude: lat, longitude: lon)
+                        let userLocation = CLLocation(latitude: 50, longitude: 70)
                         let otherLocation = CLLocation(latitude: lat, longitude: lon)
                         
-                        let distance = userLocation.distance(from: otherLocation)/1609
+                        let myDistance: Double = userLocation.distance(from: otherLocation)/1609
                         
-                        self.post.calculateDistancelat(myDistance: distance)
+                        self.post.calculateDistance(myDistance: myDistance)
+                        DataService.ds.REF_USER_CURRENT.child("distance").child(self.post.postKey)
+                        
                         self.distanceLabel.text = "\(self.post.distance)"
+                        
+                        print("POSTDistance: \(self.post.distance)")
                     }
                 }
             })

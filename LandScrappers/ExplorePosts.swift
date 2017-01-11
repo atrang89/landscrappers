@@ -103,7 +103,7 @@ class ExplorePosts
         _postRef.child("likes").setValue(_likes)
     }
     
-    func calculateDistancelat(myDistance: Double) {
+    func calculateDistance(myDistance: Double) {
             let roundedDistance = round(myDistance * 100) / 100
             _distance = roundedDistance
         
