@@ -130,8 +130,8 @@ class PostCell: UITableViewCell, CLLocationManagerDelegate {
                         DataService.ds.REF_POSTS.child(uid!).child("lat").setValue(lat)
                         DataService.ds.REF_POSTS.child(uid!).child("lon").setValue(lon)
                         
-                        let userLocation = CLLocation(latitude: 50, longitude: 70)
-                        let otherLocation = CLLocation(latitude: lat, longitude: lon)
+                        let userLocation = CLLocation(latitude: lat, longitude: lon) //userLocation
+                        let otherLocation = CLLocation(latitude: lat, longitude: lon) //otherLocation
                         
                         let myDistance: Double = userLocation.distance(from: otherLocation)/1609
                         

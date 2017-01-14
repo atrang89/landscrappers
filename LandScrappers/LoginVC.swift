@@ -63,6 +63,11 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
         }
     }
     
+    @IBAction func LoginPressed(_ sender: AnyObject) {
+        performSegue(withIdentifier: "ToEmailVC", sender: nil)
+    }
+    
+    
     func fireBaseAuth(_ credential: FIRAuthCredential)
     {
         FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
