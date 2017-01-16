@@ -55,18 +55,23 @@ class PostCell: UITableViewCell, CLLocationManagerDelegate {
     {
         self.post = post
         
-        likesRef = DataService.ds.REF_USER_CURRENT.child("sex").child(post.postKey)
+        //Send data to firebase
+        likesRef = DataService.ds.REF_USER_CURRENT.child("likes").child(post.postKey)
         
         self.companyLabel.text = post.title
         self.locationLabel.text = post.mylocation
         self.likesLabel.text = "\(post.likes)"
         //self.distanceLabel.text = "\(post.distance)"
         
+        if img == nil {
+            postImage.image = UIImage(named: "add profile img")
+            return
+        }
+        
         //If in cache, post image
         if img != nil {
             self.postImage.image = img
-        }
-        else {
+        } else {
             //Download images if not in cache
             let ref = FIRStorage.storage().reference(forURL: post.imageURL)
             ref.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in  //2mb
@@ -89,7 +94,6 @@ class PostCell: UITableViewCell, CLLocationManagerDelegate {
                 
             })
         }
-        
         addressToGeoCoordinates ()
     }
     

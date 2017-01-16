@@ -27,7 +27,7 @@ class ProfileImageVC: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func DoneButtonPressed(_ sender: UIButton) {
-        //TODO
+        performSegue(withIdentifier: "ToExploreVC", sender: nil)
     }
     
     

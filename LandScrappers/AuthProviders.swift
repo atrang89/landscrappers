@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-typealias LoginHandler = (_ msg: String) -> Void //we dont have to return msg
+typealias LoginHandler = (_ msg: String?) -> Void //we dont have to return msg
 
 struct LoginErrorCode {
     static let INVALID_EMAIL = "Invalid Email Address, Please Provide A Real Email Address"
@@ -36,6 +36,28 @@ class AuthProvider {
                 loginHandler?(nil)
             }
         })
+    }
+    
+    func signUp(withEmail: String, password: String, name: String, loginHandler: LoginHandler?) {
+        
+        FIRAuth.auth()?.createUser(withEmail: withEmail, password: password, completion: { (user, error) in
+            
+            if error != nil {
+                self.handleErrors(err: error as! NSError, loginHandler: loginHandler);
+            } else {
+                
+                if user?.uid != nil {
+                    
+                    // create the user to database
+                    DataService.ds.saveUser(uid: user!.uid, email: withEmail, password: password, name: name);
+                    
+                    // login the user
+                    self.login(withEmail: withEmail, password: password, loginHandler: loginHandler);
+                }
+            }
+            
+        });
+        
     }
     
     private func handleErrors(err: NSError, loginHandler: LoginHandler?) {

@@ -11,9 +11,10 @@ import Firebase
 
 class EmailLoginVC: UIViewController {
 
-    
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    
+    private let EXPLORE_SEGUE = "ToExploreVC"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,14 +22,26 @@ class EmailLoginVC: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     @IBAction func loginPressed(_ sender: AnyObject) {
-        if let email = emailField.text, let pwd = passwordField.text {
-            FIRAuth.auth()?.signIn(withEmail: email, password: pwd, completion: { (user, error) in
+        if emailField.text != "" && passwordField.text != "" {
+            
+            AuthProvider.Instance.login(withEmail: emailField.text!, password: passwordField.text!, loginHandler: { (message) in
+                if message != nil {
+                    self.alertTheUser(title: "Problem with Authentication", message: message!)
+                } else {
+                    
+                    self.emailField.text = "";
+                    self.passwordField.text = "";
+                    
+                    self.performSegue(withIdentifier: self.EXPLORE_SEGUE, sender: nil)
+                }
+            })
+        } else {
+            alertTheUser(title: "Email And Password Are Required", message: "Please enter email and password in the text fields")
+        }
+            
+            //Basic way (use for start up)
+            /*FIRAuth.auth()?.signIn(withEmail: email, password: pwd, completion: { (user, error) in
                 if error == nil {
                     print("Email: Success")
                 } else {
@@ -41,8 +54,20 @@ class EmailLoginVC: UIViewController {
                         }
                     })
                 }
-            })
-        }
+            })*/
     }
-
+    
+    @IBAction func backBtnPressed(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    private func alertTheUser(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil) //creates button
+        alert.addAction(ok) //adds button
+        present(alert, animated: true, completion: nil) //presents alert
+    }
 }
+

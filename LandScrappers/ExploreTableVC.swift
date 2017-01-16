@@ -17,7 +17,7 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var searchBar: UISearchBar!
     
     var posts = [ExplorePosts]()
-    var imagePicker: UIImagePickerController!
+    //var imagePicker: UIImagePickerController!
     var filteredCompany = [ExplorePosts]()
     var inSearchMode = false
     
@@ -36,11 +36,16 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         //Closes keyboard
         searchBar.returnKeyType = UIReturnKeyType.done
         
+        fetchUsers()
+    }
+    
+    func fetchUsers() {
         //Snap allows you to turn collection of data into free objects
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in
             
             self.posts = []  //Clear out post array each time its loaded
             
+            //Pull data from firebase
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot]
             {
                 for snap in snapshot
@@ -61,14 +66,8 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         })
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.tableView.reloadData()
-    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 

@@ -15,3 +15,16 @@ let KEY_UID = "uid"
 
 let EMAIL = "email"
 let PASSWORD = "password"
+
+
+//if FIRAuth.auth()?.currentUser?.uid == nil {
+//    performSelector(#selector(handleLogout), withObject: nil, afterDelay: 0)
+//} else {
+//    let uid = FIRAuth.auth()?.currentUser?.uid
+//    FIRDatabase.database().reference().child("users").child(uid!).observeSingleEventOfType(.Value, withBlock: {snapshot) in
+//        
+//        print (snapshot) }, withCancelBlock: nil)}
+//
+//https://www.youtube.com/watch?v=qD582zfXlgo&index=4&list=PL0dzCUj1L5JEfHqwjBV0XFb9qx9cGXwkq
+//}
+//}

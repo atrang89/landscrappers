@@ -21,34 +21,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ht3-bJ-4Fe" userLabel="BGView">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ht3-bJ-4Fe" userLabel="BGView">
+                                <frame key="frameInset" minY="2" width="375" height="665"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Xc2-Gd-FYl"/>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="IcN-kO-vWE">
+                                    <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVg-zf-i2C">
+                                        <frame key="frameInset" minX="62" minY="547" width="120" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="Login button"/>
+                                        <connections>
+                                            <action selector="LoginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Myr-6T-KII"/>
+                                            <segue destination="EpS-kA-gXq" kind="show" identifier="ToEmailVC" action="showDetailViewController:sender:" id="HcY-jG-9AY"/>
+                                        </connections>
+                                    </button>
+                                    <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thV-Qa-Y2o">
+                                        <frame key="frameInset" minX="194" minY="547" width="121" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="register button"/>
+                                        <connections>
+                                            <action selector="registerPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rb2-DU-vAv"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="IcN-kO-vWE">
+                                        <frame key="frameInset" minX="62" minY="357" width="253" height="174"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZkM-oA-vVi" userLabel="GoogleSignIn">
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="0CF-LI-0ka"/>
-                                                </constraints>
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZkM-oA-vVi" userLabel="GoogleSignIn">
+                                                <frame key="frameInset" width="253" height="48"/>
                                                 <state key="normal" image="google button"/>
                                                 <connections>
                                                     <action selector="fbButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rbu-wQ-wVL"/>
                                                     <action selector="googleButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jn1-98-1SQ"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zg-eT-J5i" userLabel="FBSignIn">
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="ZHm-PV-AHD"/>
-                                                </constraints>
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zg-eT-J5i" userLabel="FBSignIn">
+                                                <frame key="frameInset" minY="63" width="253" height="48"/>
                                                 <state key="normal" image="facebook button"/>
                                                 <connections>
                                                     <action selector="fbButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t3h-d2-0Kg"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ue9-vJ-osh" userLabel="Guest">
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="XW9-JF-Rvm"/>
-                                                </constraints>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ue9-vJ-osh" userLabel="Guest">
+                                                <frame key="frameInset" minY="126" width="253" height="48"/>
                                                 <state key="normal" image="Guest login">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -58,52 +72,19 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVg-zf-i2C">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="120" id="9ve-tk-0bL"/>
-                                            <constraint firstAttribute="height" constant="22" id="k1T-40-01u"/>
-                                        </constraints>
-                                        <state key="normal" title="Button" image="Login button"/>
-                                        <connections>
-                                            <action selector="LoginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Myr-6T-KII"/>
-                                            <segue destination="EpS-kA-gXq" kind="showDetail" identifier="ToEmailVC" id="HcY-jG-9AY"/>
-                                        </connections>
-                                    </button>
-                                    <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thV-Qa-Y2o">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="121" id="LOS-gH-07H"/>
-                                            <constraint firstAttribute="height" constant="22" id="kdw-X3-q63"/>
-                                        </constraints>
-                                        <state key="normal" title="Button" image="register button"/>
-                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="login-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Xc2-Gd-FYl">
+                                        <frame key="frameInset" minX="62" minY="36" width="250" height="289"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="thV-Qa-Y2o" firstAttribute="trailing" secondItem="Ue9-vJ-osh" secondAttribute="trailing" id="369-kG-w8U"/>
-                                    <constraint firstItem="hVg-zf-i2C" firstAttribute="leading" secondItem="Ue9-vJ-osh" secondAttribute="leading" id="79g-OG-gvg"/>
-                                    <constraint firstAttribute="trailing" secondItem="Xc2-Gd-FYl" secondAttribute="trailing" constant="63" id="A3C-Bk-dHF"/>
-                                    <constraint firstItem="thV-Qa-Y2o" firstAttribute="top" secondItem="Ue9-vJ-osh" secondAttribute="bottom" constant="15" id="AT6-Ig-sMU"/>
-                                    <constraint firstItem="Xc2-Gd-FYl" firstAttribute="centerX" secondItem="ht3-bJ-4Fe" secondAttribute="centerX" id="At1-0v-qM4"/>
-                                    <constraint firstItem="IcN-kO-vWE" firstAttribute="leading" secondItem="ht3-bJ-4Fe" secondAttribute="leading" constant="62" id="FjF-RX-LIA"/>
-                                    <constraint firstAttribute="trailing" secondItem="IcN-kO-vWE" secondAttribute="trailing" constant="62" id="afV-9a-pyl"/>
-                                    <constraint firstItem="Xc2-Gd-FYl" firstAttribute="leading" secondItem="ht3-bJ-4Fe" secondAttribute="leading" constant="62" id="bWc-Qu-CVE"/>
-                                    <constraint firstItem="IcN-kO-vWE" firstAttribute="top" secondItem="Xc2-Gd-FYl" secondAttribute="bottom" constant="50" id="gVV-FH-UXe"/>
-                                    <constraint firstItem="Xc2-Gd-FYl" firstAttribute="top" secondItem="ht3-bJ-4Fe" secondAttribute="top" constant="60" id="jg8-0L-99o"/>
-                                    <constraint firstItem="hVg-zf-i2C" firstAttribute="top" secondItem="Ue9-vJ-osh" secondAttribute="bottom" constant="15" id="s5Z-cB-A3Q"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="ht3-bJ-4Fe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="9f1-pb-L94"/>
-                            <constraint firstItem="ht3-bJ-4Fe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nkj-qY-vb8"/>
-                            <constraint firstAttribute="trailing" secondItem="ht3-bJ-4Fe" secondAttribute="trailing" id="oge-Dx-UC0"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ht3-bJ-4Fe" secondAttribute="bottom" id="t7D-wk-MnV"/>
-                        </constraints>
                     </view>
                     <connections>
-                        <segue destination="May-dO-62w" kind="showDetail" identifier="ToInboxVC" id="gg7-jR-iB7"/>
+                        <segue destination="May-dO-62w" kind="showDetail" identifier="ToRegisterVC" id="gg7-jR-iB7"/>
                         <segue destination="vCr-La-cUx" kind="showDetail" identifier="ToExploreVC" id="ldc-Si-cm7"/>
                     </connections>
                 </viewController>
@@ -359,7 +340,7 @@
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <segue destination="xFD-Da-a5X" kind="show" identifier="" id="THo-Py-ETs"/>
+                                    <action selector="nextBtnPress:" destination="hFB-u2-sSx" eventType="touchUpInside" id="gFJ-sN-Lql"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1320 S. 94th" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NAW-c6-IeE">
@@ -543,15 +524,26 @@
                             <constraint firstItem="sxG-pe-5zP" firstAttribute="top" secondItem="spn-IP-hJa" secondAttribute="bottom" constant="-1" id="xTH-vr-9Jc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Register" id="vVf-oU-JHe"/>
+                    <navigationItem key="navigationItem" title="Register" id="vVf-oU-JHe">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="DS1-of-GiA">
+                            <connections>
+                                <action selector="cancelPressed:" destination="hFB-u2-sSx" id="441-Zy-qVD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addressLbl" destination="4cM-KR-AEH" id="Lsl-HN-aiP"/>
                         <outlet property="cityField" destination="0mc-Fj-4qo" id="eFr-Vk-wOi"/>
+                        <outlet property="confirmPassword" destination="gTR-2W-lRq" id="bbV-jf-jpe"/>
                         <outlet property="coordinates" destination="KxJ-Nt-mkc" id="2jz-VC-3bm"/>
                         <outlet property="coordinatesLon" destination="E1s-fN-dl5" id="36N-yR-VCg"/>
+                        <outlet property="emailField" destination="kzI-sl-sFY" id="6LM-7k-hDh"/>
+                        <outlet property="nameField" destination="spn-IP-hJa" id="TRB-O7-Bks"/>
+                        <outlet property="passwordField" destination="VJc-VV-EjM" id="eqj-Jg-bKn"/>
                         <outlet property="stateField" destination="dkJ-FV-fte" id="eGC-mw-7A1"/>
                         <outlet property="streetField" destination="NAW-c6-IeE" id="bRR-gu-t68"/>
                         <outlet property="zipField" destination="hQh-lL-H7R" id="412-ir-yBY"/>
+                        <segue destination="xFD-Da-a5X" kind="show" identifier="ToProfileVC" id="rul-7q-YX0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="apT-f9-plR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -617,6 +609,7 @@
                     <navigationItem key="navigationItem" title="Profile" id="jVt-PR-UfJ"/>
                     <connections>
                         <outlet property="profileImage" destination="sdW-UQ-3Ds" id="Ebd-6z-uXb"/>
+                        <segue destination="vCr-La-cUx" kind="show" identifier="ToExploreVC" id="sJ8-Kj-nS1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Goc-yd-GMv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -787,7 +780,7 @@
                                 </state>
                                 <connections>
                                     <action selector="logOutPressed:" destination="MhX-9U-dza" eventType="touchUpInside" id="cx1-zk-f7h"/>
-                                    <segue destination="BYZ-38-t0r" kind="showDetail" identifier="ToLoginVC" id="iyI-1p-gXv"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ToLoginVC" action="showDetailViewController:sender:" id="iyI-1p-gXv"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Landscape" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ny-gs-OjQ">
@@ -889,6 +882,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="May-dO-62w" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7yh-K2-871">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -936,11 +931,6 @@
                             <view alpha="0.69999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A1z-eb-mTv">
                                 <color key="backgroundColor" red="0.64313725489999995" green="0.59607843140000005" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header-bg" translatesAutoresizingMaskIntoConstraints="NO" id="FGG-jS-0lY">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="72" id="a8x-vh-IbS"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ou3-Fx-ijp">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="HJT-SO-Btk"/>
@@ -948,7 +938,20 @@
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="loginPressed:" destination="EpS-kA-gXq" eventType="touchUpInside" id="gFE-em-nMk"/>
-                                    <segue destination="vCr-La-cUx" kind="showDetail" identifier="ToExploreVC" id="Wwu-Tt-gQm"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header-bg" translatesAutoresizingMaskIntoConstraints="NO" id="FGG-jS-0lY">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="a8x-vh-IbS"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGX-zM-AeQ">
+                                <frame key="frameInset" minX="22" minY="28" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backBtnPressed:" destination="EpS-kA-gXq" eventType="touchUpInside" id="BDJ-d8-qXh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -979,11 +982,12 @@
                     <connections>
                         <outlet property="emailField" destination="DO8-dT-Ryu" id="64L-AG-zsB"/>
                         <outlet property="passwordField" destination="f5f-O1-Q0P" id="MRY-3H-6rl"/>
+                        <segue destination="vCr-La-cUx" kind="showDetail" identifier="ToExploreVC" id="L95-H1-jSK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y7q-gx-Ulp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1674" y="-597"/>
+            <point key="canvasLocation" x="1672.8" y="-597.75112443778119"/>
         </scene>
     </scenes>
     <resources>
@@ -1004,7 +1008,7 @@
         <image name="register button" width="120" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ldc-Si-cm7"/>
+        <segue reference="L95-H1-jSK"/>
         <segue reference="gg7-jR-iB7"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -11,6 +11,11 @@ import CoreLocation
 
 class RegisterVC: UIViewController {
 
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var confirmPassword: UITextField!
+    
     @IBOutlet weak var streetField: UITextField!
     @IBOutlet weak var cityField: UITextField!
     @IBOutlet weak var stateField: UITextField!
@@ -22,6 +27,7 @@ class RegisterVC: UIViewController {
     
     var geoCoder: CLGeocoder?
     var person: Person!
+    private let PROFILE_SEGUE = "ToProfileVC"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,17 +52,43 @@ class RegisterVC: UIViewController {
                         self.coordinates.text = "lat: \(placemarks.location!.coordinate.latitude)"
                         self.coordinatesLon.text = "long: \(placemarks.location!.coordinate.longitude)"
                         
-                        let coordinate1 = CLLocation(latitude: placemarks.location!.coordinate.latitude, longitude: placemarks.location!.coordinate.longitude)
-                        let coordinate2 = CLLocation(latitude: 42.96, longitude: -88.00)
-                        let distanceInMeters = coordinate1.distance(from: coordinate2) / 1609
+                        let coordinate = CLLocation(latitude: placemarks.location!.coordinate.latitude, longitude: placemarks.location!.coordinate.longitude)
                         
-                        
-                        print("DISTANCE: \(distanceInMeters)")
+                        print("DISTANCE: \(coordinate)")
                     }
                 }
             })
         }
     }
+    
+    @IBAction func nextBtnPress(_ sender: AnyObject) {
+        if emailField.text != "" && passwordField.text != ""{
+            
+            if passwordField.text! == confirmPassword.text! {
+            
+                AuthProvider.Instance.signUp(withEmail: emailField.text!, password: passwordField.text!, name: nameField.text!, loginHandler: { (message) in
+                
+                    if message != nil {
+                        self.alertTheUser(title: "Problem With Creating A New User", message: message!)
+                    } else {
+                        self.emailField.text = ""
+                        self.passwordField.text = ""
+                    
+                        self.performSegue(withIdentifier: self.PROFILE_SEGUE, sender: nil)
+                    }
+                })
+            } else {
+                alertTheUser(title: "Passwords Do Not Match", message: "Please make sure your passwords are entered correctly")
+            }
+        } else {
+            alertTheUser(title: "Email And Password Are Required", message: "Please enter email and password in the text fields")
+        }
+    }
+    
+    @IBAction func cancelPressed(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     func addressOutput(person: Person)
     {
@@ -70,5 +102,12 @@ class RegisterVC: UIViewController {
         print ("STREET: \(person.street)")
         print ("CITY: \(person.city)")
         print ("ADDRESS: \(person.address)")
+    }
+    
+    private func alertTheUser(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert);
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil);
+        alert.addAction(ok);
+        present(alert, animated: true, completion: nil);
     }
 }

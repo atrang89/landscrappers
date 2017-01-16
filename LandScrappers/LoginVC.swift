@@ -18,6 +18,9 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
     @IBOutlet weak var googleSignInBtn: GIDSignInButton!
     
     var ref: FIRDatabaseReference!
+    private let EMAIL_SEGUE = "ToEmailVC";
+    private let EXPLORE_SEGUE = "ToExploreVC";
+    private let REGISTER_SEGUE = "ToRegisterVC";
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +29,7 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
         
         if let _ = KeychainWrapper.standard.string (forKey: KEY_UID)
         {
-            performSegue(withIdentifier: "ToExploreVC", sender: nil)
+            performSegue(withIdentifier: self.EXPLORE_SEGUE, sender: nil)
         }
     }
     
@@ -64,7 +67,11 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
     }
     
     @IBAction func LoginPressed(_ sender: AnyObject) {
-        performSegue(withIdentifier: "ToEmailVC", sender: nil)
+        performSegue(withIdentifier: self.EMAIL_SEGUE, sender: nil)
+    }
+    
+    @IBAction func registerPressed(_ sender: AnyObject) {
+        performSegue(withIdentifier: self.REGISTER_SEGUE, sender: nil)
     }
     
     
@@ -121,11 +128,11 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
         DataService.ds.createFireBaseDBUser(uid: id, userData: userData)
         let keyChainResult = KeychainWrapper.standard.set(id,forKey: KEY_UID)
         print("Andrew: Data saved to keychain \(keyChainResult)")
-        performSegue(withIdentifier: "ToExploreVC", sender: nil)
+        performSegue(withIdentifier: self.EXPLORE_SEGUE, sender: nil)
     }
     
     @IBAction func guestBtnPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "ToExploreVC", sender: nil)
+        performSegue(withIdentifier: self.EXPLORE_SEGUE, sender: nil)
     }
 }
 

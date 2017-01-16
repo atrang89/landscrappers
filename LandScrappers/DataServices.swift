@@ -66,4 +66,10 @@ class DataService{
         //Firebase will create a new key
         REF_USERS.child(uid).updateChildValues(userData)
     }
+    
+    func saveUser(uid: String, email: String, password: String, name: String) {
+        let data: Dictionary<String, Any> = ["email": email, "password": password, "name": name];
+        REF_USERS.child(uid).setValue(data)
+        //driversRef.child(withID).child(Constants.DATA).setValue(data);
+    }
 }
