@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         print("Google Sign In:\(email)")
         print("Google Sign In:\(userId)")
         
-        let dict: [String: AnyObject] = ["name": fullName, "email": email, "userID": userId]
+        let dict: [String: AnyObject] = ["name": fullName, "email": email, "id": userId]
             
         FIRAuth.auth()?.signIn(with: credential, completion:
         { (user, error) in

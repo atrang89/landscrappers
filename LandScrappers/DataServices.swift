@@ -23,6 +23,7 @@ class DataService{
     private var _REF_BASE = DB_Base
     private var _REF_POSTS = DB_Base.child("posts")  //FIRDatabase.database().reference().child("post")
     private var _REF_FORMS = DB_Base.child("forms")
+    private var _REF_LOCATION = DB_Base.child("location")
     private var _REF_USERS = DB_Base.child("user_profiles")
     
     //Storage References
@@ -41,6 +42,11 @@ class DataService{
     var REF_FORMS: FIRDatabaseReference
     {
         return _REF_FORMS
+    }
+    
+    var REF_LOCATION: FIRDatabaseReference
+    {
+        return _REF_LOCATION
     }
     
     var REF_USERS: FIRDatabaseReference
@@ -70,6 +76,5 @@ class DataService{
     func saveUser(uid: String, email: String, password: String, name: String) {
         let data: Dictionary<String, Any> = ["email": email, "password": password, "name": name];
         REF_USERS.child(uid).setValue(data)
-        //driversRef.child(withID).child(Constants.DATA).setValue(data);
     }
 }

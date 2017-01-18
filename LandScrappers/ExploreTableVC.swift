@@ -17,7 +17,6 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var searchBar: UISearchBar!
     
     var posts = [ExplorePosts]()
-    //var imagePicker: UIImagePickerController!
     var filteredCompany = [ExplorePosts]()
     var inSearchMode = false
     
@@ -77,6 +76,11 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             return filteredCompany.count
         }
         return posts.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = posts[indexPath.row]
+        self.performSegue(withIdentifier: "ToExploreDetailsVC", sender: cell)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

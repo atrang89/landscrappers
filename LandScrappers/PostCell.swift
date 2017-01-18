@@ -63,11 +63,6 @@ class PostCell: UITableViewCell, CLLocationManagerDelegate {
         self.likesLabel.text = "\(post.likes)"
         //self.distanceLabel.text = "\(post.distance)"
         
-        if img == nil {
-            postImage.image = UIImage(named: "add profile img")
-            return
-        }
-        
         //If in cache, post image
         if img != nil {
             self.postImage.image = img
@@ -88,13 +83,12 @@ class PostCell: UITableViewCell, CLLocationManagerDelegate {
                         {
                             self.postImage.image = img
                             ExploreTableVC.imageCache.setObject(img, forKey: post.imageURL as NSString)
+                            //self.addressToGeoCoordinates ()  //TODO for distance later
                         }
                     }
                 }
-                
             })
         }
-        addressToGeoCoordinates ()
     }
     
     //Push and Pull data to firebase

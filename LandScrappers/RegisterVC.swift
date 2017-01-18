@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import Firebase
 
 class RegisterVC: UIViewController {
 
@@ -22,9 +23,6 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var zipField: UITextField!
     @IBOutlet weak var addressLbl: UILabel!
     
-    @IBOutlet weak var coordinates: UILabel!
-    @IBOutlet weak var coordinatesLon: UILabel!
-    
     var geoCoder: CLGeocoder?
     var person: Person!
     private let PROFILE_SEGUE = "ToProfileVC"
@@ -33,32 +31,6 @@ class RegisterVC: UIViewController {
         super.viewDidLoad()
 
         self.geoCoder = CLGeocoder()
-    }
-    
-    @IBAction func geoCode(_ sender: AnyObject) {
-        
-        let personInfo = Person(street: streetField.text!, city: cityField.text!, state: stateField.text!, zip: zipField.text!)
-        
-        self.addressOutput(person: personInfo)
-        
-        if let text = self.addressLbl.text
-        {
-            self.geoCoder?.geocodeAddressString(text, completionHandler: { (placemarks, error) in
-                if error != nil
-                {
-                    print("Address: \(error)")
-                } else {
-                    if let placemarks = placemarks?.last {
-                        self.coordinates.text = "lat: \(placemarks.location!.coordinate.latitude)"
-                        self.coordinatesLon.text = "long: \(placemarks.location!.coordinate.longitude)"
-                        
-                        let coordinate = CLLocation(latitude: placemarks.location!.coordinate.latitude, longitude: placemarks.location!.coordinate.longitude)
-                        
-                        print("DISTANCE: \(coordinate)")
-                    }
-                }
-            })
-        }
     }
     
     @IBAction func nextBtnPress(_ sender: AnyObject) {
@@ -73,7 +45,8 @@ class RegisterVC: UIViewController {
                     } else {
                         self.emailField.text = ""
                         self.passwordField.text = ""
-                    
+                        self.geoCoordinates()
+                        
                         self.performSegue(withIdentifier: self.PROFILE_SEGUE, sender: nil)
                     }
                 })
@@ -89,7 +62,6 @@ class RegisterVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    
     func addressOutput(person: Person)
     {
         self.person = person
@@ -102,6 +74,34 @@ class RegisterVC: UIViewController {
         print ("STREET: \(person.street)")
         print ("CITY: \(person.city)")
         print ("ADDRESS: \(person.address)")
+    }
+    
+    func geoCoordinates()
+    {
+        let ref = DataService.ds.REF_LOCATION
+        
+        let personInfo = Person(street: streetField.text!, city: cityField.text!, state: stateField.text!, zip: zipField.text!)
+        
+        self.addressOutput(person: personInfo)
+        
+        if let text = self.addressLbl.text
+        {
+            self.geoCoder?.geocodeAddressString(text, completionHandler: { (placemarks, error) in
+                if error != nil
+                {
+                    print("Address: \(error)")
+                } else {
+                    if let placemarks = placemarks?.last {
+                        let lat = placemarks.location!.coordinate.latitude
+                        let lon = placemarks.location!.coordinate.longitude
+
+                        let values = ["lat": lat, "lon": lon]
+                        ref.setValue(values)
+                    }
+                }
+            })
+        }
+        
     }
     
     private func alertTheUser(title: String, message: String) {

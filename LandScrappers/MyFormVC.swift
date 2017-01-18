@@ -74,7 +74,7 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         }
         
         //Send image data to firebase
-        //getting image data by uncompression
+        //getting image data by uncompression 20% of quality
         if let imgData = UIImageJPEGRepresentation(img, 0.2)
         {
             //Getting unique identifier
