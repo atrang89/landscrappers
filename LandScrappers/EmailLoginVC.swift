@@ -61,7 +61,6 @@ class EmailLoginVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    
     private func alertTheUser(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         

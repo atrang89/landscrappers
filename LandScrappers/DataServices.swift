@@ -77,4 +77,17 @@ class DataService{
         let data: Dictionary<String, Any> = ["email": email, "password": password, "name": name];
         REF_USERS.child(uid).setValue(data)
     }
+    
+    func sendMediaPullRequest(senderUID: String, sendingTo:Dictionary<String, User>) {
+        
+        var uids = [String]()
+        for uid in sendingTo.keys {
+            uids.append(uid)
+        }
+        
+        let pr: Dictionary<String, AnyObject> = ["userID":senderUID as AnyObject, "recipients":uids as AnyObject] 
+        
+        DB_Base.child("pullRequests").childByAutoId().setValue(pr)
+        
+    }
 }

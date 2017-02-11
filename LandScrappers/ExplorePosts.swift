@@ -18,7 +18,7 @@ class ExplorePosts
     private var _location: String!
     private var _distance: Double!
     
-    private var _postKey: String!
+    private var _postKey: String! //used in toID
     private var _postRef: FIRDatabaseReference!
     
     var title: String
@@ -35,6 +35,7 @@ class ExplorePosts
     {
         return _location
     }
+    
     var likes: Int
     {
         return _likes
@@ -88,7 +89,7 @@ class ExplorePosts
         {
             self._distance = distance
         }
-        
+
         _postRef = DataService.ds.REF_POSTS.child(_postKey)
     }
     

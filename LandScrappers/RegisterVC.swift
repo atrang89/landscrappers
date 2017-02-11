@@ -101,7 +101,6 @@ class RegisterVC: UIViewController {
                 }
             })
         }
-        
     }
     
     private func alertTheUser(title: String, message: String) {

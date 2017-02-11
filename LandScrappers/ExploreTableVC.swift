@@ -16,9 +16,10 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var posts = [ExplorePosts]()
-    var filteredCompany = [ExplorePosts]()
-    var inSearchMode = false
+    private var posts = [ExplorePosts]()
+    private var filteredCompany = [ExplorePosts]()
+    private var selectedUsers = Dictionary<String, ExplorePosts>()
+    private var inSearchMode = false
     
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
     
@@ -56,7 +57,7 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                         let post = ExplorePosts(postKey: key, postData: postDict)
                         self.posts.append(post)
                         
-                        //Updating background thread and prevent crash
+                        //Updating main thread and prevent crash
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
                         }
@@ -79,8 +80,9 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = posts[indexPath.row]
-        self.performSegue(withIdentifier: "ToExploreDetailsVC", sender: cell)
+        let user = posts[indexPath.row]
+        selectedUsers[user.postKey] = user
+        self.performSegue(withIdentifier: "ToExploreDetailsVC", sender: user)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
