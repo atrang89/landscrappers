@@ -18,7 +18,6 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     private var posts = [ExplorePosts]()
     private var filteredCompany = [ExplorePosts]()
-    private var selectedUsers = Dictionary<String, ExplorePosts>()
     private var inSearchMode = false
     
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
@@ -57,10 +56,10 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                         let post = ExplorePosts(postKey: key, postData: postDict)
                         self.posts.append(post)
                         
-                        //Updating main thread and prevent crash
-                        DispatchQueue.main.async {
+                        //this will crash because of background thread, so lets call this on dispatch_async main thread
+                        DispatchQueue.main.async(execute: {
                             self.tableView.reloadData()
-                        }
+                        })
                     }
                 }
             }
@@ -79,11 +78,6 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         return posts.count
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let user = posts[indexPath.row]
-        selectedUsers[user.postKey] = user
-        self.performSegue(withIdentifier: "ToExploreDetailsVC", sender: user)
-    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell
@@ -112,6 +106,19 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         else{
             //empty cell
             return PostCell ()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let user = posts[indexPath.row]
+        self.performSegue(withIdentifier: "ToExploreDetailsVC", sender: user)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? ExploreDetailsVC {
+            if let selection = sender as? ExplorePosts {
+                destination.post = selection
+            }
         }
     }
     

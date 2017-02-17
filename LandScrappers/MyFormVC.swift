@@ -83,7 +83,6 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             let metadata = FIRStorageMetadata()
             metadata.contentType = "image/jpeg"
             
-            
             DataService.ds.REF_POSTS_IMAGES.child(imageUID).put(imgData, metadata: metadata) { (metadata, error) in
                 if error != nil
                 {
@@ -114,7 +113,6 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         ]
         
         let uid = FIRAuth.auth()?.currentUser?.uid
-        //let firebasePost = DataService.ds.REF_POSTS.childByAutoId()   //used to create new child objects
         let firebasePost = DataService.ds.REF_POSTS.child(uid!)
         
         firebasePost.setValue(post)

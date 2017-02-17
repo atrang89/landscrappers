@@ -18,6 +18,7 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
     @IBOutlet weak var googleSignInBtn: GIDSignInButton!
     
     var ref: FIRDatabaseReference!
+    
     private let EMAIL_SEGUE = "ToEmailVC";
     private let EXPLORE_SEGUE = "ToExploreVC";
     private let REGISTER_SEGUE = "ToRegisterVC";

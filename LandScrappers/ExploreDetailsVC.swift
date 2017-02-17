@@ -11,8 +11,17 @@ import Firebase
 
 class ExploreDetailsVC: UIViewController {
     
-    var user: ExplorePosts!
+    private var _post: ExplorePosts!
+    private var _post2: ExploreTableVC!
     
+    var post: ExplorePosts {
+        get {
+            return _post
+        } set {
+            _post = newValue
+        }
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,13 +29,11 @@ class ExploreDetailsVC: UIViewController {
     }
     
     @IBAction func blueBtnPressed(_ sender: AnyObject) {
-        let ref = DataService.ds.REF_FORMS
-        let childRef = ref.childByAutoId()
         let fromID = FIRAuth.auth()!.currentUser!.uid
-        let toID = user.postKey
-        
+        let toID = post.postKey
+
         let values = ["fromID": fromID, "toID": toID] as [String : Any]
-        
-        childRef.updateChildValues(values)
+       
+        DataService.ds.REF_FORMS.childByAutoId().updateChildValues(values)
     }
 }
