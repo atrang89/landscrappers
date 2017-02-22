@@ -168,7 +168,7 @@
                                             <frame key="frameInset" width="375" height="62"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Float" translatesAutoresizingMaskIntoConstraints="NO" id="ZUT-Op-tqg">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="messageindicatorchecked3" translatesAutoresizingMaskIntoConstraints="NO" id="ZUT-Op-tqg">
                                                     <frame key="frameInset" minX="8" minY="20" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -278,7 +278,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Float" translatesAutoresizingMaskIntoConstraints="NO" id="blf-Gv-0bY">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="messageindicatorchecked3" translatesAutoresizingMaskIntoConstraints="NO" id="blf-Gv-0bY">
                                         <frame key="frameInset" minX="8" minY="20" width="22" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -981,12 +981,7 @@
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1320 S. 94th St West Allis WI 53214" placeholder="Street               ST         ZIP" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="49U-oE-USh">
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1320 S. 94th St West Allis WI 53214" placeholder="Street               ST         ZIP" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CTq-K4-cPM">
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="88888" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPk-jS-3Ck">
@@ -994,21 +989,26 @@
                                                 <color key="textColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1320 S. 94th St West Allis WI 53214" placeholder="Street               ST         ZIP" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CTq-K4-cPM">
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="CTq-K4-cPM" firstAttribute="leading" secondItem="8fX-E7-9qc" secondAttribute="trailing" constant="9" id="9e6-G2-tPP"/>
-                                            <constraint firstItem="CTq-K4-cPM" firstAttribute="centerY" secondItem="wPk-jS-3Ck" secondAttribute="centerY" id="KgW-0W-biw"/>
+                                            <constraint firstItem="CTq-K4-cPM" firstAttribute="leading" secondItem="8fX-E7-9qc" secondAttribute="trailing" constant="8" id="9e6-G2-tPP"/>
+                                            <constraint firstItem="CTq-K4-cPM" firstAttribute="centerY" secondItem="wPk-jS-3Ck" secondAttribute="centerY" constant="7" id="KgW-0W-biw"/>
                                             <constraint firstItem="wPk-jS-3Ck" firstAttribute="trailing" secondItem="gHi-M6-rLd" secondAttribute="trailingMargin" id="PPt-LV-WGc"/>
-                                            <constraint firstItem="49U-oE-USh" firstAttribute="leading" secondItem="8fX-E7-9qc" secondAttribute="trailing" constant="8" symbolic="YES" id="W3C-Qn-4za"/>
-                                            <constraint firstItem="CTq-K4-cPM" firstAttribute="top" secondItem="gHi-M6-rLd" secondAttribute="top" constant="10" id="hXO-6W-Dip"/>
-                                            <constraint firstItem="49U-oE-USh" firstAttribute="top" secondItem="CTq-K4-cPM" secondAttribute="bottom" constant="7" id="oYa-dP-55K"/>
-                                            <constraint firstItem="CTq-K4-cPM" firstAttribute="centerX" secondItem="49U-oE-USh" secondAttribute="centerX" id="rma-ug-gfr"/>
+                                            <constraint firstItem="49U-oE-USh" firstAttribute="leading" secondItem="8fX-E7-9qc" secondAttribute="trailing" constant="10" id="W3C-Qn-4za"/>
+                                            <constraint firstItem="CTq-K4-cPM" firstAttribute="top" secondItem="gHi-M6-rLd" secondAttribute="top" constant="17" id="hXO-6W-Dip"/>
+                                            <constraint firstItem="49U-oE-USh" firstAttribute="top" secondItem="CTq-K4-cPM" secondAttribute="bottom" id="oYa-dP-55K"/>
+                                            <constraint firstItem="CTq-K4-cPM" firstAttribute="centerX" secondItem="49U-oE-USh" secondAttribute="centerX" constant="-3" id="rma-ug-gfr"/>
                                             <constraint firstItem="8fX-E7-9qc" firstAttribute="top" secondItem="wPk-jS-3Ck" secondAttribute="top" id="rtQ-rn-i4T"/>
                                             <constraint firstItem="8fX-E7-9qc" firstAttribute="top" secondItem="gHi-M6-rLd" secondAttribute="top" constant="17" id="s9H-O3-i9h"/>
                                             <constraint firstItem="8fX-E7-9qc" firstAttribute="centerY" secondItem="gHi-M6-rLd" secondAttribute="centerY" id="tlJ-hz-QWE"/>
-                                            <constraint firstItem="wPk-jS-3Ck" firstAttribute="leading" secondItem="CTq-K4-cPM" secondAttribute="trailing" constant="29" id="u9O-IO-KQ3"/>
-                                            <constraint firstAttribute="trailing" secondItem="49U-oE-USh" secondAttribute="trailing" constant="70" id="xHq-0R-Orv"/>
+                                            <constraint firstItem="wPk-jS-3Ck" firstAttribute="leading" secondItem="CTq-K4-cPM" secondAttribute="trailing" constant="30" id="u9O-IO-KQ3"/>
+                                            <constraint firstAttribute="trailing" secondItem="49U-oE-USh" secondAttribute="trailing" constant="68" id="xHq-0R-Orv"/>
                                             <constraint firstAttribute="bottom" secondItem="wPk-jS-3Ck" secondAttribute="bottom" constant="53" id="z5h-cX-esu"/>
                                         </constraints>
                                     </view>
@@ -1023,23 +1023,10 @@
                                                 <color key="textColor" red="0.42352941179999998" green="0.41960784309999999" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="highlightedColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXs-As-DMv">
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="120" id="bTJ-Kp-ntm"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <state key="normal" title="+Add New Services">
-                                                    <color key="titleColor" red="0.97254901959999995" green="0.40784313729999999" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.92941176469999998" green="0.92549019610000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="KW6-Cw-lym" firstAttribute="centerY" secondItem="fXs-As-DMv" secondAttribute="centerY" id="1mY-BF-rIk"/>
-                                            <constraint firstItem="fXs-As-DMv" firstAttribute="trailing" secondItem="uTr-NE-HKv" secondAttribute="trailingMargin" id="5ba-h6-XX3"/>
                                             <constraint firstItem="KW6-Cw-lym" firstAttribute="leading" secondItem="uTr-NE-HKv" secondAttribute="leadingMargin" id="7b2-81-shn"/>
-                                            <constraint firstItem="fXs-As-DMv" firstAttribute="centerY" secondItem="uTr-NE-HKv" secondAttribute="centerY" id="7uM-pt-IWU"/>
-                                            <constraint firstItem="fXs-As-DMv" firstAttribute="top" secondItem="uTr-NE-HKv" secondAttribute="top" constant="3" id="FfB-QL-DpZ"/>
                                             <constraint firstItem="KW6-Cw-lym" firstAttribute="top" secondItem="uTr-NE-HKv" secondAttribute="topMargin" id="mbw-lJ-fKj"/>
                                         </constraints>
                                     </view>
@@ -1049,7 +1036,7 @@
                                             <constraint firstAttribute="height" constant="376" id="f4Z-zC-6gL"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FormCell" rowHeight="63" id="anl-au-OvT" customClass="FormCell" customModule="LandScrappers" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FormInteract" rowHeight="63" id="anl-au-OvT" customClass="FormInteract" customModule="LandScrappers" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="63"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="anl-au-OvT" id="WJV-XG-Q0J">
@@ -1064,7 +1051,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Float" translatesAutoresizingMaskIntoConstraints="NO" id="EQw-Ka-Jyr">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="messageindicatorchecked3" translatesAutoresizingMaskIntoConstraints="NO" id="EQw-Ka-Jyr">
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="22" id="GS4-BI-Sbp"/>
                                                                 <constraint firstAttribute="width" constant="22" id="OOI-8N-U2E"/>
@@ -1082,12 +1069,13 @@
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
-                                                    <outlet property="title" destination="KB3-Gz-iNT" id="ctf-hE-lQP"/>
+                                                    <outlet property="selectBtn" destination="EQw-Ka-Jyr" id="jbt-jU-tQ1"/>
+                                                    <outlet property="title" destination="KB3-Gz-iNT" id="hsz-lc-xQ4"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ntx-im-RMQ" customClass="RoundButton" customModule="LandScrappers" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ntx-im-RMQ" customClass="RoundButton" customModule="LandScrappers" customModuleProvider="target">
                                         <color key="backgroundColor" red="0.16862745100000001" green="0.31764705879999999" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="FFv-Qy-wKK"/>
@@ -1137,7 +1125,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Float" width="22" height="22"/>
         <image name="Guest login" width="253" height="48"/>
         <image name="Login button" width="119" height="22"/>
         <image name="add profile img" width="171" height="171"/>
@@ -1151,6 +1138,7 @@
         <image name="icon-inbox" width="24" height="30"/>
         <image name="imagePick" width="300" height="300"/>
         <image name="login-logo" width="288" height="289"/>
+        <image name="messageindicatorchecked3" width="15" height="15"/>
         <image name="register button" width="120" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>

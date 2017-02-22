@@ -19,7 +19,10 @@ class FormCell: UITableViewCell {
     func configureCell(form: FormData) {
         self.form = form
         self.title.text = form.serviceLabel
-        
-        interestRef = DataService.ds.REF_USER_CURRENT.child("interest")  //using keychainwrapper id and reference to user for
     }
+}
+
+class FormInteract: FormCell {
+    @IBOutlet weak var selectBtn: UIImageView!
+    
 }

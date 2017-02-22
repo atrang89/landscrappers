@@ -38,11 +38,11 @@ class MyFormPopUp: UIViewController {
     }
 
     func postToFirebase(service: String) {
-        let form: Dictionary<String, AnyObject> = ["services": textField.text! as AnyObject]
-        
         let uid = FIRAuth.auth()?.currentUser?.uid
-        let firebasePost = DataService.ds.REF_FORMS.child(uid!)
+        let ref = DataService.ds.REF_SERVICE.child(uid!).childByAutoId()
         
-        firebasePost.setValue(form)
+        let services: Dictionary<String, AnyObject> = ["services": textField.text! as AnyObject]
+        
+        ref.setValue(services)
     }
 }

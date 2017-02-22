@@ -39,6 +39,15 @@ class FormData  {
             self._serviceLabel = serviceLabel
         }
         
-        _formRef = DataService.ds.REF_FORMS.child(_formKey)
+        _formRef = DataService.ds.REF_SERVICE.child(_formKey)
+    }
+}
+
+class FormRequst: FormData {
+    
+    private var _selectService: Bool!
+    
+    var selectService: Bool {
+        return _selectService
     }
 }

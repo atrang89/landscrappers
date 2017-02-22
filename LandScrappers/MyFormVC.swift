@@ -32,8 +32,17 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         formTableView.delegate = self
         formTableView.dataSource = self
         
-        //Gets data from firebase forms of type object (snapshot)
-        DataService.ds.REF_FORMS.observe(.value, with: { (snapshot) in
+        observeServices()
+    }
+    
+    func observeServices() {
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else {
+            return
+        }
+        
+        let ref = DataService.ds.REF_SERVICE.child(uid)
+        
+        ref.observe(.value, with: { (snapshot) in
             
             self.formData = []  //Clear out post array each time its loaded
             
@@ -46,11 +55,12 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                     {
                         //Getting UniqueKey ID from snap
                         let key = snap.key
-                        let formData = FormData(formKey: key, formData: formDict)
-                        self.formData.append(formData)
+                        let service = FormData(formKey: key, formData: formDict)
+                        self.formData.append(service)
                     }
                 }
             }
+            
             self.formData.sort(by: {$0.serviceLabel < $1.serviceLabel})  //sorts table in myForm
             self.formTableView.reloadData()
         })

@@ -12,7 +12,6 @@ import Firebase
 class ExploreDetailsVC: UIViewController {
     
     private var _post: ExplorePosts!
-    private var _post2: ExploreTableVC!
     
     var post: ExplorePosts {
         get {
@@ -34,6 +33,6 @@ class ExploreDetailsVC: UIViewController {
 
         let values = ["fromID": fromID, "toID": toID] as [String : Any]
        
-        DataService.ds.REF_FORMS.childByAutoId().updateChildValues(values)
+        DataService.ds.REF_SERVICE.childByAutoId().updateChildValues(values)
     }
 }
