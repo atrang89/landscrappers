@@ -17,7 +17,6 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBOutlet weak var formTableView: UITableView!
     @IBOutlet weak var locationField: UITextField!
     
-    //var formData = [FormData]()
     var formData: [FormData] = []
     var imagePicker: UIImagePickerController!
     var imageSelected = false
@@ -155,18 +154,7 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         return formData.count
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //TODO MVC this view
-        let selectedCell: UITableViewCell = tableView.cellForRow(at: indexPath)!
-        selectedCell.contentView.backgroundColor = UIColor.blue
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        //TODO MVC this view
-        let cellToDeSelect:UITableViewCell = tableView.cellForRow(at: indexPath)!
-        cellToDeSelect.contentView.backgroundColor = UIColor(red: LIGHT_GRAY, green: LIGHT_GRAY, blue: LIGHT_GRAY, alpha: 0.8)
-    }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let forms = formData[indexPath.row]
@@ -179,6 +167,18 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             //Return empty if failed
             return FormCell()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //TODO MVC this view
+        let selectedCell: UITableViewCell = tableView.cellForRow(at: indexPath)!
+        selectedCell.contentView.backgroundColor = UIColor.blue
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        //TODO MVC this view
+        let cellToDeSelect:UITableViewCell = tableView.cellForRow(at: indexPath)!
+        cellToDeSelect.contentView.backgroundColor = UIColor(red: LIGHT_GRAY, green: LIGHT_GRAY, blue: LIGHT_GRAY, alpha: 0.8)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

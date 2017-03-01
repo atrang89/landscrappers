@@ -43,11 +43,12 @@ class FormData  {
     }
 }
 
-class FormRequst: FormData {
+class FormRequest: FormData {
     
     private var _selectService: Bool!
     
     var selectService: Bool {
         return _selectService
     }
+    
 }
