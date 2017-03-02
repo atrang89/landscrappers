@@ -73,5 +73,8 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         map.addAnnotation(annotation)
     }
 
+    @IBAction func cancelPressed(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
+    }
 
 }

@@ -41,12 +41,34 @@ class ExploreDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         observeServices()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let ref = FIRStorage.storage().reference(forURL: post.imageURL)
+        
+        ref.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in  //2mb
+            if error != nil
+            {
+                print("ANDREW: Unable to download image from Firebase storage")
+            }
+            else
+            {
+                print("ANDREW: Image downloaded from Firebase storage and saving to cache")
+                if let imgData = data
+                {
+                    if let img = UIImage(data: imgData)
+                    {
+                        self.imageOther.image = img
+                        ExploreTableVC.imageCache.setObject(img, forKey: self.post.imageURL as NSString)
+                    }
+                }
+            }
+        })
+    }
+    
     func showUserDetails()
     {
         otherTitle.text = post.title
         otherLocation.text = post.mylocation
-        
-        
     }
     
     func observeServices() {

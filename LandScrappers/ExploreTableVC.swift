@@ -38,6 +38,15 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         fetchUsers()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = UIColor.clear
+    }
+    
     func fetchUsers() {
         //Snap allows you to turn collection of data into free objects
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in
