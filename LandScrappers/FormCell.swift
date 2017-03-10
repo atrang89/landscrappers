@@ -23,7 +23,6 @@ class FormCell: UITableViewCell {
     }
 }
 
-
 class FormInteract: FormCell {
     @IBOutlet weak var selectBtn: UIImageView!
     
@@ -31,13 +30,10 @@ class FormInteract: FormCell {
         super.awakeFromNib()
         setCheckMark(selected: false)
     }
-    
+
     func setCheckMark(selected: Bool){
         let imageChecked = selected ? "messageindicatorchecked3" : "messageindicator3"
-        
-        self.selectBtn = UIImageView(image: UIImage(named: imageChecked))
-        
-        print("Checkmark selected")
-    }
 
+        self.selectBtn.image = UIImage(named: imageChecked)
+    }
 }

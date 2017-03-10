@@ -21,6 +21,8 @@ class ExploreDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     private var _post: ExplorePosts!
     
     private var formData = [FormData]()
+    private var formRequest: FormRequest!
+    private var selectServices = Dictionary<String, FormData>()
     
     var post: ExplorePosts {
         get {
@@ -35,6 +37,7 @@ class ExploreDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         tableSelect.delegate = self
         tableSelect.dataSource = self
+        tableSelect.allowsMultipleSelection = true
         
         //gettingUsers()
         showUserDetails()
@@ -106,7 +109,6 @@ class ExploreDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         let form = formData[indexPath.row]
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "FormInteract") as? FormCell {
-            
             cell.configureCell(form: form)
             return cell
         } else {
@@ -121,6 +123,9 @@ class ExploreDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! FormInteract
         cell.setCheckMark(selected: true)
+        let service = formData[indexPath.row]
+        selectServices[service.formKey] = service
+        
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -129,7 +134,8 @@ class ExploreDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     @IBAction func blueBtnPressed(_ sender: AnyObject) {
-        
+//        formRequest.adjustService()
+//        formRequest.sendMediaPullRequest(senderUID: FIRAuth.auth()!.currentUser!.uid, sendingTo: self.selectServices)
     }
     
     func gettingUsers()
