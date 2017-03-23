@@ -39,22 +39,6 @@ class EmailLoginVC: UIViewController {
         } else {
             alertTheUser(title: "Email And Password Are Required", message: "Please enter email and password in the text fields")
         }
-            
-            //Basic way (use for start up)
-            /*FIRAuth.auth()?.signIn(withEmail: email, password: pwd, completion: { (user, error) in
-                if error == nil {
-                    print("Email: Success")
-                } else {
-                    FIRAuth.auth()?.createUser(withEmail: email, password: pwd, completion: { (user, error) in
-                        if error != nil {
-                            print("Email: Not Succesful")
-                        } else {
-                            print("Email: Successfully logged into firebase")
-                            self.performSegue(withIdentifier: "ToEmailVC", sender: nil)
-                        }
-                    })
-                }
-            })*/
     }
     
     @IBAction func backBtnPressed(_ sender: AnyObject) {

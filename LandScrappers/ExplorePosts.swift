@@ -9,14 +9,16 @@
 import Foundation
 import Firebase
 import CoreLocation
+import MapKit
 
-class ExplorePosts
+class ExplorePosts: NSObject, CLLocationManagerDelegate
 {
     private var _title: String!
     private var _imageURL: String!
     private var _likes: Int!
     private var _location: String!
-    private var _distance: Double!
+    private var _lat: Double!
+    private var _lon: Double!
     
     private var _postKey: String! //used in toID
     private var _postRef: FIRDatabaseReference!
@@ -31,7 +33,7 @@ class ExplorePosts
         return _imageURL
     }
     
-    var mylocation: String
+    var userlocation: String
     {
         return _location
     }
@@ -41,9 +43,14 @@ class ExplorePosts
         return _likes
     }
     
-    var distance: Double
+    var lat: Double
     {
-        return _distance
+        return _lat
+    }
+    
+    var lon: Double
+    {
+        return _lon
     }
     
     var postKey: String
@@ -51,13 +58,14 @@ class ExplorePosts
         return _postKey
     }
     
-    init(title: String, imageURL: String, mylocation: String, likes: Int, distance: Double)
+    init(title: String, imageURL: String, mylocation: String, likes: Int, lat: Double, lon: Double)
     {
         self._title = title
         self._imageURL = imageURL
         self._location = mylocation
         self._likes = likes
-        self._distance = distance
+        self._lat = lat
+        self._lon = lon
     }
     
     //Convert data from firebase to use
@@ -85,9 +93,14 @@ class ExplorePosts
             self._likes = likes
         }
         
-        if let distance = postData["distance"] as? Double
+        if let lat = postData["latitude"] as? Double
         {
-            self._distance = distance
+            self._lat = lat
+        }
+        
+        if let lon = postData["longitude"] as? Double
+        {
+            self._lon = lon
         }
 
         _postRef = DataService.ds.REF_POSTS.child(_postKey)
@@ -104,10 +117,25 @@ class ExplorePosts
         _postRef.child("likes").setValue(_likes)
     }
     
-    func calculateDistance(myDistance: Double) {
-            let roundedDistance = round(myDistance * 100) / 100
-            _distance = roundedDistance
+    var geoCoder: CLGeocoder = CLGeocoder()
+    
+    func postGeoCoordinates(userLocation: String) {
         
-        _postRef.child("distance").setValue(_distance)
+        geoCoder.geocodeAddressString(userLocation, completionHandler: { (placemarks, error) in
+            if error != nil
+            {
+                print("Address: \(error)")
+            } else {
+                if let placemarks = placemarks?.last {
+                    let lat = placemarks.location!.coordinate.latitude
+                    let lon = placemarks.location!.coordinate.longitude
+                    
+                    let uid = FIRAuth.auth()?.currentUser?.uid
+                    
+                    DataService.ds.REF_POSTS.child(uid!).child("geo").child("lat").setValue(lat)
+                    DataService.ds.REF_POSTS.child(uid!).child("geo").child("lon").setValue(lon)
+                }
+            }
+        })
     }
 }

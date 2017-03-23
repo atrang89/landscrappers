@@ -18,15 +18,15 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBOutlet weak var locationField: UITextField!
     
     var formData: [FormData] = []
-    var imagePicker: UIImagePickerController!
+    var imagePicker: UIImagePickerController?
     var imageSelected = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         imagePicker = UIImagePickerController() //Init
-        imagePicker.allowsEditing = true
-        imagePicker.delegate = self
+        imagePicker?.allowsEditing = true
+        imagePicker?.delegate = self
         
         formTableView.delegate = self
         formTableView.dataSource = self
@@ -104,15 +104,18 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                     
                     if let url = downloadURL
                     {
-                        self.postToFirease(imgURL: url)
+                        self.postToFirebase(imgURL: url)
                     }
                 }
             }
         }
+        
+        let newLocation = locationField.text
+        postToProfile(location: newLocation)
     }
     
     //Send data to firebase for ExplorePost
-    func postToFirease(imgURL: String)
+    func postToFirebase(imgURL: String)
     {
         let post: Dictionary<String, AnyObject> = [
             "title": captionField.text! as AnyObject,
@@ -127,8 +130,18 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         firebasePost.setValue(post)
     }
     
+    func postToProfile(location: String!)
+    {
+        let post: Dictionary<String, AnyObject> = ["location": location as AnyObject]
+        
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        let locationUser = DataService.ds.REF_USERS.child(uid!)
+        
+        locationUser.updateChildValues(post)
+    }
+    
     @IBAction func ImageChange(_ sender: AnyObject) {
-        present(imagePicker, animated: true, completion: nil)
+        present(imagePicker!, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -142,7 +155,7 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         {
             print("ANDREW: No Image printed")
         }
-        imagePicker.dismiss(animated: true, completion: nil)
+        imagePicker?.dismiss(animated: true, completion: nil)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

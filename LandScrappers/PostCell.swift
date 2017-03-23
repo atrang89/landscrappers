@@ -19,19 +19,14 @@ class PostCell: UITableViewCell, CLLocationManagerDelegate {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     
-    var post: ExplorePosts!
-    var likesRef: FIRDatabaseReference!
-    var distanceRef: FIRDatabaseReference!
-    var geoCoder: CLGeocoder?
+    var post: ExplorePosts? = nil
+    private var likesRef: FIRDatabaseReference!
+    private var distanceRef: FIRDatabaseReference!
     
     private var locationManager = CLLocationManager()
-    private var userLocation: CLLocationCoordinate2D?
-    private var otherLocation: CLLocationCoordinate2D?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.geoCoder = CLGeocoder()
         
         //Adding tap recognizer since storyboard doesn't instantiate properly in table
         let tap = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
@@ -53,13 +48,11 @@ class PostCell: UITableViewCell, CLLocationManagerDelegate {
     
     func configureCell(post: ExplorePosts, img: UIImage? = nil)
     {
-        self.post = post
-        
         //Send data to firebase
         likesRef = DataService.ds.REF_USER_CURRENT.child("likes").child(post.postKey)
         
         self.companyLabel.text = post.title
-        self.locationLabel.text = post.mylocation
+        self.locationLabel.text = post.userlocation
         self.likesLabel.text = "\(post.likes)"
         //self.distanceLabel.text = "\(post.distance)"
         
@@ -83,13 +76,15 @@ class PostCell: UITableViewCell, CLLocationManagerDelegate {
                         {
                             self.postImage.image = img
                             ExploreTableVC.imageCache.setObject(img, forKey: post.imageURL as NSString)
-                            //self.addressToGeoCoordinates ()  //TODO for distance later
                         }
                     }
                 }
             })
         }
-    }
+        
+        let userLocation = post.userlocation
+        post.postGeoCoordinates(userLocation: userLocation)
+        }
     
     //Push and Pull data to firebase
     func likeTapped(sender: UITapGestureRecognizer)
@@ -97,51 +92,18 @@ class PostCell: UITableViewCell, CLLocationManagerDelegate {
         likesRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let _ = snapshot.value as? NSNull {
                 self.likesImage.image = UIImage(named: "ic_thumb_up")
-                self.post.adjustLikes(addLike: true)
+                self.post?.adjustLikes(addLike: true)
                 self.likesRef.setValue(true)
-                self.likesLabel.text = "\(self.post.likes)"
+                self.likesLabel.text = "\(self.post?.likes)"
             }
             else
             {
                 self.likesImage.image = UIImage(named: "Circle")
-                self.post.adjustLikes(addLike: false)
+                self.post?.adjustLikes(addLike: false)
                 self.likesRef.removeValue()
-                self.likesLabel.text = "\(self.post.likes)"
+                self.likesLabel.text = "\(self.likesRef)"
             }
         })
     }
-    
-    func addressToGeoCoordinates () {
-        if let text = self.locationLabel.text
-        {
-            self.geoCoder?.geocodeAddressString(text, completionHandler: { (placemarks, error) in
-                if error != nil
-                {
-                    print("Address: \(error)")
-                } else {
-                    if let placemarks = placemarks?.last {
-                        let lat = placemarks.location!.coordinate.latitude
-                        let lon = placemarks.location!.coordinate.longitude
-                        
-                        let uid = FIRAuth.auth()?.currentUser?.uid
-                        
-                        DataService.ds.REF_POSTS.child(uid!).child("lat").setValue(lat)
-                        DataService.ds.REF_POSTS.child(uid!).child("lon").setValue(lon)
-                        
-                        let userLocation = CLLocation(latitude: lat, longitude: lon) //userLocation
-                        let otherLocation = CLLocation(latitude: lat, longitude: lon) //otherLocation
-                        
-                        let myDistance: Double = userLocation.distance(from: otherLocation)/1609
-                        
-                        self.post.calculateDistance(myDistance: myDistance)
-                        DataService.ds.REF_USER_CURRENT.child("distance").child(self.post.postKey)
-                        
-                        self.distanceLabel.text = "\(self.post.distance)"
-                        
-                        print("POSTDistance: \(self.post.distance)")
-                    }
-                }
-            })
-        }
-    }
 }
+

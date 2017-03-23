@@ -39,7 +39,6 @@
 		9DEDB7A81DCAE17900573C2C /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDB7A71DCAE17900573C2C /* RegisterVC.swift */; };
 		9DF1FAAA1DFE2389008E342A /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF1FAA91DFE2389008E342A /* LocalAuthentication.framework */; };
 		9DF5FFBB1E21F1D100A4DC25 /* MapHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF5FFBA1E21F1D100A4DC25 /* MapHandler.swift */; };
-		9DFB87461E6908F100EF54FE /* ImageStretchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFB87451E6908F100EF54FE /* ImageStretchButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,7 +80,6 @@
 		9DEDB7A71DCAE17900573C2C /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		9DF1FAA91DFE2389008E342A /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		9DF5FFBA1E21F1D100A4DC25 /* MapHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHandler.swift; sourceTree = "<group>"; };
-		9DFB87451E6908F100EF54FE /* ImageStretchButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStretchButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,7 +183,6 @@
 				9DEA65811DD033CA00937AB5 /* RoundButton.swift */,
 				9DC862471DDEC760003BA1A9 /* CircleView.swift */,
 				9D3660121DE8D32C0002C7C8 /* NextButton.swift */,
-				9DFB87451E6908F100EF54FE /* ImageStretchButton.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -370,7 +367,6 @@
 				9DC3037D1DEBEB2D003F3C17 /* MyFormVC.swift in Sources */,
 				9DEDB7A81DCAE17900573C2C /* RegisterVC.swift in Sources */,
 				9D0C583D1DFA315C000132C9 /* FormData.swift in Sources */,
-				9DFB87461E6908F100EF54FE /* ImageStretchButton.swift in Sources */,
 				9D3660131DE8D32C0002C7C8 /* NextButton.swift in Sources */,
 				9D550BBF1DFBC233002AF24B /* MyFormPopUp.swift in Sources */,
 				9D1381311DDE823F00AF69D9 /* ExploreTableVC.swift in Sources */,

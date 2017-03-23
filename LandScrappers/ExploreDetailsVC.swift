@@ -19,9 +19,9 @@ class ExploreDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     @IBOutlet weak var otherDistance: UILabel!
     
     private var _post: ExplorePosts!
-    
+    private var formRequest: FormData!
     private var formData = [FormData]()
-    private var formRequest: FormRequest!
+    
     private var selectServices = Dictionary<String, FormData>()
     
     var post: ExplorePosts {
@@ -71,13 +71,11 @@ class ExploreDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     func showUserDetails()
     {
         otherTitle.text = post.title
-        otherLocation.text = post.mylocation
+        otherLocation.text = post.userlocation
     }
     
     func observeServices() {
-        
         let toID = post.postKey
-        
         let ref = DataService.ds.REF_SERVICE.child(toID)
         
         ref.observe(.value, with: { (snapshot) in
@@ -134,8 +132,6 @@ class ExploreDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     @IBAction func blueBtnPressed(_ sender: AnyObject) {
-//        formRequest.adjustService()
-//        formRequest.sendMediaPullRequest(senderUID: FIRAuth.auth()!.currentUser!.uid, sendingTo: self.selectServices)
     }
     
     func gettingUsers()

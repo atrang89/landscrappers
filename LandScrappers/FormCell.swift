@@ -14,11 +14,7 @@ class FormCell: UITableViewCell {
     
     @IBOutlet weak var title: UILabel!
     
-    var form: FormData!
-    var interestRef: FIRDatabaseReference!
-    
     func configureCell(form: FormData) {
-        self.form = form
         self.title.text = form.serviceLabel
     }
 }

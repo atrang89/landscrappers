@@ -12,6 +12,7 @@ import Firebase
 class FormData  {
     
     private var _serviceLabel: String!
+    private var _myLocation: String!
     private var _formKey: String!
     private var _formRef: FIRDatabaseReference!
     
@@ -20,14 +21,20 @@ class FormData  {
         return _serviceLabel
     }
     
+    var myLocation: String
+    {
+        return _myLocation
+    }
+    
     var formKey: String
     {
         return _formKey
     }
     
-    init(serviceLabel: String)
+    init(serviceLabel: String, myLocation: String)
     {
         self._serviceLabel = serviceLabel
+        self._myLocation = myLocation
     }
     
     //Get Firebase data and use in MyFormVC
@@ -42,37 +49,14 @@ class FormData  {
         _formRef = DataService.ds.REF_SERVICE.child(_formKey)
     }
     
-    func adjustService()
+    func adjustService(sendingTo: Dictionary<String,FormData>)
     {
-        let sr: Dictionary<String, AnyObject> = [formKey: serviceLabel as AnyObject]
-        DataService.ds.REF_SERVICE.child("Request").updateChildValues(sr)
-    }
-}
-
-class FormRequest: FormData {
-    
-    private var _selectService: Bool!
-    
-    var selectService: Bool {
-        return _selectService
-    }
-    
-    init(serviceLabel: String, selectService: Bool)
-    {
-        self._selectService = selectService
-        super.init(serviceLabel: serviceLabel)
-    }
-    
-    func sendMediaPullRequest(senderUID: String, sendingTo:Dictionary<String, AnyObject>) {
-        
         var uids = [String]()
         for uid in sendingTo.keys {
             uids.append(uid)
         }
         
-        let pr: Dictionary<String, AnyObject> = ["userID":senderUID as AnyObject, "recipients":uids as AnyObject]
-        
-        DataService.ds.REF_SERVICE.child("Request").updateChildValues(pr)
+        let sr: Dictionary<String, AnyObject> = ["serviceInterest": uids as AnyObject]
+        DataService.ds.REF_SERVICE.child("Request").childByAutoId().setValue(sr)
     }
-
 }
