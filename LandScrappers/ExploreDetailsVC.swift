@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
 class ExploreDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     

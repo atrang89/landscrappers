@@ -13,6 +13,7 @@ class Person {
     private var _city: String!
     private var _state: String!
     private var _zip: String!
+    private var _myLocation: String!
     
     var street: String {
         return _street
@@ -34,10 +35,19 @@ class Person {
         return "\(_street!) \(_city!) \(state) \(zip)"
     }
     
+    var myLocation: String {
+        return _myLocation
+    }
+    
     init(street: String, city: String, state: String, zip: String) {
         self._street = street
         self._city = city
         self._state = state
         self._zip = zip
+    }
+    
+    init(location: String)
+    {
+        _myLocation = location
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import FirebaseStorage
 import SwiftKeychainWrapper
 
 //Reference base and make global = Getting the root URL of firebase

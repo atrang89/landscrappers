@@ -19,6 +19,7 @@ class ExplorePosts: NSObject, CLLocationManagerDelegate
     private var _location: String!
     private var _lat: Double!
     private var _lon: Double!
+    private var _distance: Double!
     
     private var _postKey: String! //used in toID
     private var _postRef: FIRDatabaseReference!
@@ -53,19 +54,25 @@ class ExplorePosts: NSObject, CLLocationManagerDelegate
         return _lon
     }
     
+    var distance: Double
+    {
+        return _distance
+    }
+    
     var postKey: String
     {
         return _postKey
     }
     
-    init(title: String, imageURL: String, mylocation: String, likes: Int, lat: Double, lon: Double)
+    init(title: String, imageURL: String, userLocation: String, likes: Int, lat: Double, lon: Double, distance: Double)
     {
         self._title = title
         self._imageURL = imageURL
-        self._location = mylocation
+        self._location = userLocation
         self._likes = likes
         self._lat = lat
         self._lon = lon
+        self._distance = distance
     }
     
     //Convert data from firebase to use
@@ -83,9 +90,9 @@ class ExplorePosts: NSObject, CLLocationManagerDelegate
             self._imageURL = imageURL
         }
         
-        if let mylocation = postData["location"] as? String
+        if let userlocation = postData["location"] as? String
         {
-            self._location = mylocation
+            self._location = userlocation
         }
         
         if let likes = postData["likes"] as? Int
@@ -117,25 +124,8 @@ class ExplorePosts: NSObject, CLLocationManagerDelegate
         _postRef.child("likes").setValue(_likes)
     }
     
-    var geoCoder: CLGeocoder = CLGeocoder()
-    
-    func postGeoCoordinates(userLocation: String) {
-        
-        geoCoder.geocodeAddressString(userLocation, completionHandler: { (placemarks, error) in
-            if error != nil
-            {
-                print("Address: \(error)")
-            } else {
-                if let placemarks = placemarks?.last {
-                    let lat = placemarks.location!.coordinate.latitude
-                    let lon = placemarks.location!.coordinate.longitude
-                    
-                    let uid = FIRAuth.auth()?.currentUser?.uid
-                    
-                    DataService.ds.REF_POSTS.child(uid!).child("geo").child("lat").setValue(lat)
-                    DataService.ds.REF_POSTS.child(uid!).child("geo").child("lon").setValue(lon)
-                }
-            }
-        })
+    func configureDistance(distance: Double)
+    {
+        self._distance = distance
     }
 }

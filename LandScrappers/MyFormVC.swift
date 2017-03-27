@@ -8,9 +8,11 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 import SwiftKeychainWrapper
+import CoreLocation
 
-class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource {
+class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
 
     @IBOutlet weak var imageAdd: CircleView!
     @IBOutlet weak var captionField: UITextField!
@@ -41,7 +43,7 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         
         let ref = DataService.ds.REF_SERVICE.child(uid)
         
-        ref.observe(.value, with: { (snapshot) in
+        ref.observe(.value, with: { (snapshot: FIRDataSnapshot) in
             
             self.formData = []  //Clear out post array each time its loaded
             
@@ -105,13 +107,15 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                     if let url = downloadURL
                     {
                         self.postToFirebase(imgURL: url)
+                        
+                        if let newLocation = self.locationField.text {
+                            self.geoCoordinatePost(userLocation: newLocation)
+                            self.postToProfile(location: newLocation)
+                        }
                     }
                 }
             }
         }
-        
-        let newLocation = locationField.text
-        postToProfile(location: newLocation)
     }
     
     //Send data to firebase for ExplorePost
@@ -127,7 +131,31 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         let uid = FIRAuth.auth()?.currentUser?.uid
         let firebasePost = DataService.ds.REF_POSTS.child(uid!)
         
-        firebasePost.setValue(post)
+        firebasePost.updateChildValues(post)
+    }
+    
+    func geoCoordinatePost(userLocation: String!) {
+        
+        let geoCoder: CLGeocoder = CLGeocoder()
+        
+        geoCoder.geocodeAddressString(userLocation, completionHandler: { (placemarks, error) in
+            if error != nil
+            {
+                print("Address: \(error)")
+            } else {
+                if let placemarks = placemarks?.last {
+                    let lat = placemarks.location!.coordinate.latitude
+                    let lon = placemarks.location!.coordinate.longitude
+                    
+                    let uid = FIRAuth.auth()?.currentUser?.uid
+                    
+                    let post: Dictionary<String, AnyObject> = ["latitude": lat as AnyObject, "longitude": lon as AnyObject]
+                    
+                    DataService.ds.REF_POSTS.child(uid!).updateChildValues(post)
+                    print("GEO: is this executing")
+                }
+            }
+        })
     }
     
     func postToProfile(location: String!)

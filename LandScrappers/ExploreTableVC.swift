@@ -32,10 +32,10 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         searchBar.delegate = self
         
+        fetchUsers()
+        
         //Closes keyboard
         searchBar.returnKeyType = UIReturnKeyType.done
-        
-        fetchUsers()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -133,20 +133,31 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func logOutPressed(_ sender: AnyObject)
     {
-        let keyChainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)  //Remove keychain
-        let loginManager = FBSDKLoginManager()  //Logout Facebook
-        loginManager.logOut()
+//        let keyChainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)  //Remove keychain
         
-        GIDSignIn.sharedInstance().signOut()    //Logout Google
-        try! FIRAuth.auth()!.signOut()          //Logout Firebase
+        do {
+            let loginManager = FBSDKLoginManager()  //Logout Facebook
+            loginManager.logOut()
+            dismiss(animated: true, completion: nil)
+        } catch {
+            print("Error signing out")
+        }
+        
+        do {
+            GIDSignIn.sharedInstance().signOut()    //Logout Google
+            try FIRAuth.auth()!.signOut()
+            dismiss(animated: true, completion: nil)
+        } catch {
+            print("Error signing out")
+        }
+        
+        print("SIGNING OUT")
         
         //Setting rootcontroller back to LoginVC and communicate with Appdelegate
         let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "LoginVCID") as! LoginVC
         let appdelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         appdelegate.window?.rootViewController = signInPage
-        
-        print("Andrew: ID removed from keychain \(keyChainResult)")
-        dismiss(animated: true, completion: nil)
+//        dismiss(animated: true, completion: nil)
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 import CoreLocation
 
 class PostCell: UITableViewCell, CLLocationManagerDelegate {
@@ -54,7 +55,6 @@ class PostCell: UITableViewCell, CLLocationManagerDelegate {
         self.companyLabel.text = post.title
         self.locationLabel.text = post.userlocation
         self.likesLabel.text = "\(post.likes)"
-        //self.distanceLabel.text = "\(post.distance)"
         
         //If in cache, post image
         if img != nil {
@@ -82,9 +82,53 @@ class PostCell: UITableViewCell, CLLocationManagerDelegate {
             })
         }
         
-        let userLocation = post.userlocation
-        post.postGeoCoordinates(userLocation: userLocation)
+        let userLat = post.lat
+        let userLon = post.lon
+        
+        locationCurrentUser(userLat: userLat, userLon: userLon)
+    }
+    
+    func locationCurrentUser(userLat: Double, userLon: Double) {
+        let geoCoder: CLGeocoder = CLGeocoder()
+        
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else {
+            return
         }
+        
+        let ref = DataService.ds.REF_USERS.child(uid)
+        
+        ref.observeSingleEvent(of: .value) { (snapshot: FIRDataSnapshot) in
+            
+             if let value = snapshot.value as? Dictionary<String, AnyObject> {
+                if let myLocation = value["location"] as? String {
+                    geoCoder.geocodeAddressString(myLocation , completionHandler: { (placemarks, error) in
+                        if error != nil
+                        {
+                            print("myLocation: \(error)")
+                        } else {
+                            if let placemarks = placemarks?.last {
+                                
+                                let lat = placemarks.location!.coordinate.latitude
+                                let lon = placemarks.location!.coordinate.longitude
+                                
+                                let userLat = userLat
+                                let userLon = userLon
+                                
+                                let myCoordinate = CLLocation(latitude: lat, longitude: lon)
+                                let userCoordinate = CLLocation(latitude: userLat, longitude: userLon)
+                                
+                                let distanceInMeters = myCoordinate.distance(from: userCoordinate)
+                                let distanceInMiles = distanceInMeters/1609
+                                let roundedDistance = round(distanceInMiles*100)/100
+                                
+                                self.distanceLabel.text = "\(roundedDistance)"	
+                            }
+                        }
+                    })
+                }
+            }
+        }
+    }
     
     //Push and Pull data to firebase
     func likeTapped(sender: UITapGestureRecognizer)
@@ -105,5 +149,7 @@ class PostCell: UITableViewCell, CLLocationManagerDelegate {
             }
         })
     }
+    
+    
 }
 
