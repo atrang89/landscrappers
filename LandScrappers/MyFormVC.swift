@@ -23,6 +23,9 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     var imagePicker: UIImagePickerController?
     var imageSelected = false
     
+    let uid = FIRAuth.auth()?.currentUser?.uid
+    let ref = DataService.ds.REF_SERVICE
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,32 +40,36 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     }
     
     func observeServices() {
-        guard let uid = FIRAuth.auth()?.currentUser?.uid else {
-            return
-        }
+//        let uid = FIRAuth.auth()?.currentUser?.uid
+//        let ref = DataService.ds.REF_SERVICE.child(uid!)
         
-        let ref = DataService.ds.REF_SERVICE.child(uid)
-        
-        ref.observe(.value, with: { (snapshot: FIRDataSnapshot) in
+        ref.child(uid!).queryOrdered(byChild: "services").observe(.value, with: { (snapshot) in
             
-            self.formData = []  //Clear out post array each time its loaded
+            self.formData = []
             
-            if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot]
-            {
-                for snap in snapshot
-                {
-                    print("SNAPform: \(snap)")
-                    if let formDict = snap.value as? Dictionary<String, AnyObject>
-                    {
-                        //Getting UniqueKey ID from snap
-                        let key = snap.key
-                        let service = FormData(formKey: key, formData: formDict)
-                        self.formData.append(service)
+            if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                for snap in snapshot {
+                    print("SnapValue: \(snap)")
+                    if let dict = snap.value as? [String: AnyObject] {
+                        print("SnapValue: \(dict)")
+                        let list = FormData(formKey: snap.key, formData: dict, snapshot: snap)
+                        self.formData.append(list)
                     }
                 }
             }
-            
-            self.formData.sort(by: {$0.serviceLabel < $1.serviceLabel})  //sorts table in myForm
+        
+            //Mark Price SnapChat
+//            if let users = snapshot.value as? Dictionary<String, AnyObject> {
+//                for (key, value) in users {
+//                    if let dict = value as? Dictionary<String, AnyObject> {
+//                        if let firstName = dict["services"] as? String {
+//                            let uid = key
+//                            let user = FormData(key: uid, service: firstName)
+//                            self.formData.append(user)
+//                        }
+//                    }
+//                }
+//            }
             self.formTableView.reloadData()
         })
     }
@@ -186,6 +193,32 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         imagePicker?.dismiss(animated: true, completion: nil)
     }
     
+    
+    @IBAction func addButtonDidTouch(_ sender: AnyObject) {
+        
+        let alert = UIAlertController(title: "Service", message: "Add your service", preferredStyle: .alert)
+        
+        let save = UIAlertAction(title: "Save", style: .default) { _ in
+            
+            guard let textField = alert.textFields?.first,
+                let text = textField.text else { return }
+            
+            let uid = FIRAuth.auth()?.currentUser?.uid
+            let ref = DataService.ds.REF_SERVICE.child(uid!)
+            let list = ["services": text as AnyObject]
+            
+            ref.childByAutoId().setValue(list)
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alert.addTextField()
+        alert.addAction(cancel)
+        alert.addAction(save)
+        
+        present(alert, animated: true, completion: nil)
+    }
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -212,14 +245,16 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //TODO MVC this view
-        let selectedCell: UITableViewCell = tableView.cellForRow(at: indexPath)!
-        selectedCell.contentView.backgroundColor = UIColor.blue
+//        let selectedCell: UITableViewCell = tableView.cellForRow(at: indexPath)!
+//        selectedCell.contentView.backgroundColor = UIColor.blue
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         //TODO MVC this view
-        let cellToDeSelect:UITableViewCell = tableView.cellForRow(at: indexPath)!
-        cellToDeSelect.contentView.backgroundColor = UIColor(red: LIGHT_GRAY, green: LIGHT_GRAY, blue: LIGHT_GRAY, alpha: 0.8)
+//        let cellToDeSelect:UITableViewCell = tableView.cellForRow(at: indexPath)!
+//        cellToDeSelect.contentView.backgroundColor = UIColor(red: LIGHT_GRAY, green: LIGHT_GRAY, blue: LIGHT_GRAY, alpha: 0.8)
+        
+        
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -228,13 +263,9 @@ class MyFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-//        let forms = self.formData[indexPath.row]
-//        let uidFormData = forms["uidFormData"]
-//        let firebaseForm = DataService.ds.REF_FORMS
-        
-        if editingStyle == UITableViewCellEditingStyle.delete {
-            formData.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        if editingStyle == .delete {
+            let listItem = formData[indexPath.row]
+            listItem.formRef.removeValue()
         }
     }
 }

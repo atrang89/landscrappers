@@ -1,4 +1,4 @@
-//
+    //
 //  FormCell.swift
 //  LandScrappers
 //
@@ -12,18 +12,12 @@ import Firebase
 class FormData  {
     
     private var _serviceLabel: String!
-    private var _myLocation: String!
     private var _formKey: String!
-    private var _formRef: FIRDatabaseReference!
+    private let _formRef: FIRDatabaseReference!
     
     var serviceLabel: String
     {
         return _serviceLabel
-    }
-    
-    var myLocation: String
-    {
-        return _myLocation
     }
     
     var formKey: String
@@ -31,14 +25,20 @@ class FormData  {
         return _formKey
     }
     
-    init(serviceLabel: String, myLocation: String)
+    var formRef: FIRDatabaseReference
     {
-        self._serviceLabel = serviceLabel
-        self._myLocation = myLocation
+        return _formRef
     }
+//    
+//    init(key: String, service: String)
+//    {
+//        self._formKey = key
+//        self._serviceLabel = service
+//        self._formRef = nil
+//    }
     
-    //Get Firebase data and use in MyFormVC
-    init(formKey: String!, formData: Dictionary<String, AnyObject>) {
+//    Get Firebase data and use in MyFormVC
+    init(formKey: String, formData: [String: AnyObject], snapshot: FIRDataSnapshot) {
         
         self._formKey = formKey
         
@@ -46,17 +46,23 @@ class FormData  {
             self._serviceLabel = serviceLabel
         }
         
-        _formRef = DataService.ds.REF_SERVICE.child(_formKey)
+        _formRef = snapshot.ref
     }
+    
+//    init(snapshot: FIRDataSnapshot) {
+//        _formKey = snapshot.key
+//        let snapshotValue = snapshot.value as? Dictionary<String, AnyObject>
+//        _serviceLabel = snapshotValue?["services"] as! String
+//        _formRef = snapshot.ref
+//    }
     
     func adjustService(sendingTo: Dictionary<String,FormData>)
     {
-        var uids = [String]()
-        for uid in sendingTo.keys {
-            uids.append(uid)
-        }
-        
-        let sr: Dictionary<String, AnyObject> = ["serviceInterest": uids as AnyObject]
+        let sr: Dictionary<String, AnyObject> = ["serviceInterest": sendingTo.keys as AnyObject]
         DataService.ds.REF_SERVICE.child("Request").childByAutoId().setValue(sr)
     }
+//
+//    func toAnyObject() -> Any {
+//        return ["services": _serviceLabel]
+//    }
 }

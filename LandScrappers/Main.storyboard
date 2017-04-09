@@ -172,7 +172,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cps-nA-DpX" id="Id5-UU-Tbc">
-                                            <frame key="frameInset" width="375" height="62"/>
+                                            <frame key="frameInset" width="375" height="62.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="messageindicatorchecked3" translatesAutoresizingMaskIntoConstraints="NO" id="ZUT-Op-tqg">
@@ -213,7 +213,7 @@
                                             <color key="titleColor" red="0.97254901960784312" green="0.40784313725490196" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="5lC-WZ-Sxr" kind="presentation" id="RJ4-0j-t37"/>
+                                            <action selector="addButtonDidTouch:" destination="EBU-qi-Yq3" eventType="touchUpInside" id="Mz3-ZD-Ahf"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -315,7 +315,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="imageSelect" destination="blf-Gv-0bY" id="jjb-oG-asN"/>
                         <outlet property="textField" destination="FMY-I5-Nwt" id="idm-gt-dwF"/>
                     </connections>
                 </viewController>
@@ -673,7 +672,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="103"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jlJ-eo-Nwr" id="raY-gV-FBr">
-                                            <frame key="frameInset" width="375" height="102"/>
+                                            <frame key="frameInset" width="375" height="102.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ejd-pf-ULG" customClass="VisualTweaks" customModule="LandScrappers" customModuleProvider="target">
@@ -912,7 +911,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7yh-K2-871">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7yh-K2-871">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1102,7 +1101,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="63"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="anl-au-OvT" id="WJV-XG-Q0J">
-                                                    <frame key="frameInset" width="375" height="62"/>
+                                                    <frame key="frameInset" width="375" height="62.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KB3-Gz-iNT">
@@ -1113,7 +1112,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CD3E6D68-C053-4FF9-8BA2-E42268A37BB9" translatesAutoresizingMaskIntoConstraints="NO" id="EQw-Ka-Jyr">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="83B84F27-468F-4F50-BDC4-A525FCE428A8" translatesAutoresizingMaskIntoConstraints="NO" id="EQw-Ka-Jyr">
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="22" id="GS4-BI-Sbp"/>
                                                                 <constraint firstAttribute="width" constant="22" id="OOI-8N-U2E"/>
@@ -1208,7 +1207,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PLW-26-dPx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="PLW-26-dPx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1228,7 +1227,7 @@
                     <tabBarItem key="tabBarItem" title="" image="icon-explore" id="Rvq-5x-RJV"/>
                     <toolbarItems/>
                     <value key="contentSizeForViewInPopover" type="size" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9rs-ze-hwk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9rs-ze-hwk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1247,7 +1246,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CD3E6D68-C053-4FF9-8BA2-E42268A37BB9" width="15" height="15">
+        <image name="83B84F27-468F-4F50-BDC4-A525FCE428A8" width="15" height="15">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

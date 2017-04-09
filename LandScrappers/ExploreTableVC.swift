@@ -135,13 +135,13 @@ class ExploreTableVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     {
 //        let keyChainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)  //Remove keychain
         
-        do {
-            let loginManager = FBSDKLoginManager()  //Logout Facebook
-            loginManager.logOut()
-            dismiss(animated: true, completion: nil)
-        } catch {
-            print("Error signing out")
-        }
+//        do {
+//            let loginManager = FBSDKLoginManager()  //Logout Facebook
+//            loginManager.logOut()
+//            dismiss(animated: true, completion: nil)
+//        } catch {
+//            print("Error signing out")
+//        }
         
         do {
             GIDSignIn.sharedInstance().signOut()    //Logout Google
