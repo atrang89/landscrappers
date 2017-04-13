@@ -12,12 +12,19 @@ import Firebase
 class FormData  {
     
     private var _serviceLabel: String!
+    private var _checkMark: Bool!
     private var _formKey: String!
     private let _formRef: FIRDatabaseReference!
+    private let _interestRef: FIRDatabaseReference!
     
     var serviceLabel: String
     {
         return _serviceLabel
+    }
+    
+    var checkMark: Bool
+    {
+        return _checkMark
     }
     
     var formKey: String
@@ -29,13 +36,11 @@ class FormData  {
     {
         return _formRef
     }
-//    
-//    init(key: String, service: String)
-//    {
-//        self._formKey = key
-//        self._serviceLabel = service
-//        self._formRef = nil
-//    }
+    
+    var interestRef: FIRDatabaseReference
+    {
+        return _interestRef
+    }
     
 //    Get Firebase data and use in MyFormVC
     init(formKey: String, formData: [String: AnyObject], snapshot: FIRDataSnapshot) {
@@ -46,23 +51,26 @@ class FormData  {
             self._serviceLabel = serviceLabel
         }
         
+        if let checkMark = formData["completed"] as? Bool
+        {
+            self._checkMark = checkMark
+        }
+        
         _formRef = snapshot.ref
+        //Test this out
+        _interestRef = DataService.ds.REF_SERVICE.child(_formKey)
     }
     
-//    init(snapshot: FIRDataSnapshot) {
-//        _formKey = snapshot.key
-//        let snapshotValue = snapshot.value as? Dictionary<String, AnyObject>
-//        _serviceLabel = snapshotValue?["services"] as! String
-//        _formRef = snapshot.ref
-//    }
-    
-    func adjustService(sendingTo: Dictionary<String,FormData>)
+    func serviceRequest(toID: String, refCell: String, requestedUID: String)
     {
-        let sr: Dictionary<String, AnyObject> = ["serviceInterest": sendingTo.keys as AnyObject]
-        DataService.ds.REF_SERVICE.child("Request").childByAutoId().setValue(sr)
+        let ref: Dictionary<String, AnyObject> = [requestedUID: true as AnyObject]
+        
+        DataService.ds.REF_SERVICE.child(toID).child(refCell).child("services").childByAutoId().setValue(ref)
     }
-//
-//    func toAnyObject() -> Any {
-//        return ["services": _serviceLabel]
-//    }
+    
+    func adjustService(senderUID: String)
+    {
+        let sr: Dictionary<String, AnyObject> = ["serviceInterest": senderUID as AnyObject]
+        DataService.ds.REF_SERVICE.child("request").childByAutoId().setValue(sr)
+    }
 }

@@ -172,7 +172,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cps-nA-DpX" id="Id5-UU-Tbc">
-                                            <frame key="frameInset" width="375" height="62.5"/>
+                                            <frame key="frameInset" width="375" height="62"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="messageindicatorchecked3" translatesAutoresizingMaskIntoConstraints="NO" id="ZUT-Op-tqg">
@@ -256,71 +256,6 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2492" y="949"/>
-        </scene>
-        <!--My Form Pop Up-->
-        <scene sceneID="jao-oe-TNI">
-            <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="5lC-WZ-Sxr" customClass="MyFormPopUp" customModule="LandScrappers" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="BU6-Eb-Nua"/>
-                        <viewControllerLayoutGuide type="bottom" id="42k-sl-D0j"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="JoJ-35-vNJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GRK-qT-Hju">
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Mnc-kh-6Eq">
-                                    <frame key="frameInset"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <blurEffect style="light"/>
-                            </visualEffectView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fAM-zF-Z0X">
-                                <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FMY-I5-Nwt">
-                                        <frame key="frameInset" minX="48" minY="16" width="263" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="messageindicatorchecked3" translatesAutoresizingMaskIntoConstraints="NO" id="blf-Gv-0bY">
-                                        <frame key="frameInset" minX="8" minY="20" width="22" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WL6-Q1-UOi">
-                                        <frame key="frameInset" minX="324" minY="16" width="43" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Done"/>
-                                        <connections>
-                                            <action selector="popUpClose:" destination="5lC-WZ-Sxr" eventType="touchUpInside" id="dbJ-qb-rzm"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.92941176469999998" green="0.92549019610000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="63" id="175-k6-oKN"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="GRK-qT-Hju" firstAttribute="top" secondItem="JoJ-35-vNJ" secondAttribute="top" id="ARa-3V-c51"/>
-                            <constraint firstAttribute="trailing" secondItem="fAM-zF-Z0X" secondAttribute="trailing" id="UVH-6M-RmO"/>
-                            <constraint firstItem="42k-sl-D0j" firstAttribute="top" secondItem="GRK-qT-Hju" secondAttribute="bottom" id="Wfo-0I-gQN"/>
-                            <constraint firstItem="fAM-zF-Z0X" firstAttribute="leading" secondItem="JoJ-35-vNJ" secondAttribute="leading" id="gao-2V-OJq"/>
-                            <constraint firstItem="fAM-zF-Z0X" firstAttribute="top" secondItem="BU6-Eb-Nua" secondAttribute="bottom" constant="140" id="sCw-MY-6Rf"/>
-                            <constraint firstAttribute="trailing" secondItem="GRK-qT-Hju" secondAttribute="trailing" id="tGT-MX-6Vi"/>
-                            <constraint firstItem="GRK-qT-Hju" firstAttribute="leading" secondItem="JoJ-35-vNJ" secondAttribute="leading" id="xvX-ht-cAy"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="textField" destination="FMY-I5-Nwt" id="idm-gt-dwF"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dnY-e9-TMy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3281" y="976"/>
         </scene>
         <!--Register-->
         <scene sceneID="DkA-aY-eO9">
@@ -672,7 +607,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="103"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jlJ-eo-Nwr" id="raY-gV-FBr">
-                                            <frame key="frameInset" width="375" height="102.5"/>
+                                            <frame key="frameInset" width="375" height="102"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ejd-pf-ULG" customClass="VisualTweaks" customModule="LandScrappers" customModuleProvider="target">
@@ -1101,7 +1036,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="63"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="anl-au-OvT" id="WJV-XG-Q0J">
-                                                    <frame key="frameInset" width="375" height="62.5"/>
+                                                    <frame key="frameInset" width="375" height="62"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KB3-Gz-iNT">
@@ -1112,7 +1047,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="83B84F27-468F-4F50-BDC4-A525FCE428A8" translatesAutoresizingMaskIntoConstraints="NO" id="EQw-Ka-Jyr">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="41BA4560-B4F3-469F-9623-2165F98E2872" translatesAutoresizingMaskIntoConstraints="NO" id="EQw-Ka-Jyr">
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="22" id="GS4-BI-Sbp"/>
                                                                 <constraint firstAttribute="width" constant="22" id="OOI-8N-U2E"/>
@@ -1246,7 +1181,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="83B84F27-468F-4F50-BDC4-A525FCE428A8" width="15" height="15">
+        <image name="41BA4560-B4F3-469F-9623-2165F98E2872" width="15" height="15">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -1329,8 +1264,8 @@ DcYNyQ3OAAAAAAAAAgEAAAAAAAAAQQAAAAAAAAAAAAAAAAAADdA
         <image name="register button" width="120" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gg7-jR-iB7"/>
-        <segue reference="L95-H1-jSK"/>
         <segue reference="x47-U9-1jo"/>
+        <segue reference="sJ8-Kj-nS1"/>
+        <segue reference="gg7-jR-iB7"/>
     </inferredMetricsTieBreakers>
 </document>

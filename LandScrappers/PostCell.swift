@@ -149,7 +149,5 @@ class PostCell: UITableViewCell, CLLocationManagerDelegate {
             }
         })
     }
-    
-    
 }
 

@@ -23,8 +23,6 @@ class ExploreDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     private var formRequest: FormData!
     private var formData = [FormData]()
     
-    private var selectServices = Dictionary<String, FormData>()
-    
     var post: ExplorePosts {
         get {
             return _post
@@ -78,18 +76,17 @@ class ExploreDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         let toID = post.postKey
         let ref = DataService.ds.REF_SERVICE.child(toID)
         
-        ref.queryOrdered(byChild: "services").observe(.value, with: { (snapshot) in
+        ref.queryOrdered(byChild: "services").observeSingleEvent(of: .value, with: { (snapshot) in
             
             self.formData = []
             
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 for snap in snapshot {
-                    print("SnapValue: \(snap)")
-                    if let dict = snap.value as? [String: AnyObject] {
-                        print("SnapValue: \(dict)")
-                        let list = FormData(formKey: snap.key, formData: dict, snapshot: snap)
+                    print("SnapKey: \(snap.key)")
+                    print("SnapValue: \(snap.value)")
+                    let dict = snap.value as! [String: AnyObject]
+                    let list = FormData(formKey: snap.key, formData: dict, snapshot: snap)
                         self.formData.append(list)
-                    }
                 }
             }
             self.tableSelect.reloadData()
@@ -98,9 +95,8 @@ class ExploreDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let form = formData[indexPath.row]
-        
         if let cell = tableView.dequeueReusableCell(withIdentifier: "FormInteract") as? FormCell {
+            let form = formData[indexPath.row]
             cell.configureCell(form: form)
             return cell
         } else {
@@ -115,16 +111,43 @@ class ExploreDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! FormInteract
         cell.setCheckMark(selected: true)
-        let service = formData[indexPath.row]
-        selectServices[service.formKey] = service
+        let serviceCell = formData[indexPath.row]
+        let toggleYes = serviceCell.checkMark
+        let user = FIRAuth.auth()!.currentUser!.uid as String
+        let toID = post.postKey as String
+        
+        let toFirebase: Dictionary<String, AnyObject> = [serviceCell.formKey: serviceCell.serviceLabel as AnyObject]
+        let ref = DataService.ds.REF_SERVICE.child("requests").child(user)
+        ref.updateChildValues(toFirebase)
+        
+//        likesRef = DataService.ds.REF_USER_CURRENT.child("likes").child(post.postKey)
+//        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+//            if let _ = snapshot.value as? NSNull {
+//                self.likesImage.image = UIImage(named: "ic_thumb_up")
+//                self.post?.adjustLikes(addLike: true)
+//                self.likesRef.setValue(true)
+//                self.likesLabel.text = "\(self.post?.likes)"
+//            }
+//            else
+//            {
+//                self.likesImage.image = UIImage(named: "Circle")
+//                self.post?.adjustLikes(addLike: false)
+//                self.likesRef.removeValue()
+//                self.likesLabel.text = "\(self.likesRef)"
+//            }
+//        })
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! FormInteract
+        let serviceCell = formData[indexPath.row]
+        let toggleNo = !serviceCell.checkMark
         cell.setCheckMark(selected: false)
     }
     
+    
+    
     @IBAction func blueBtnPressed(_ sender: AnyObject) {
-        formRequest.adjustService(sendingTo: self.selectServices)
+        
     }
 }
